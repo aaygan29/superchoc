@@ -62,7 +62,7 @@ SENSATION_RULES = {
 
 
 def _normalize(score: float) -> float:
-    return round(min(score / 100.0, 1.0), 3)
+    return round(max(0.0, min(score / 100.0, 1.0)), 3)
 
 
 def _score_rule_set(
@@ -85,9 +85,11 @@ def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]
         return "warming"
     if sensations.get("cooling", 0) >= 0.35:
         return "cooling"
-    if primary_tastes.get("bitter", 0) >= max(primary_tastes.values(), default=0):
+    top_score = max(primary_tastes.values(), default=0)
+    leaders = [taste for taste, score in primary_tastes.items() if score == top_score]
+    if top_score > 0 and leaders == ["bitter"]:
         return "lingering bitter"
-    if primary_tastes.get("sweet", 0) >= max(primary_tastes.values(), default=0):
+    if top_score > 0 and leaders == ["sweet"]:
         return "rounded sweet"
     if primary_tastes.get("sour", 0) >= 0.3:
         return "bright tart"
@@ -104,6 +106,8 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Predict the likely flavor experience from a molecular composition.
 
     Composition values are relative concentrations on a 0-100 scale.
+    Returned scores are normalized to the 0.0-1.0 range, rounded to three
+    decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)
