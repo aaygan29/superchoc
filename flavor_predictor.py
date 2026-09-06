@@ -81,10 +81,12 @@ def _score_rule_set(
 
 
 def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]) -> str:
-    if sensations.get("heat", 0) >= 0.35:
+    heat = sensations.get("heat", 0)
+    cooling = sensations.get("cooling", 0)
+    if heat >= 0.35 or cooling >= 0.35:
+        if cooling > heat:
+            return "cooling"
         return "warming"
-    if sensations.get("cooling", 0) >= 0.35:
-        return "cooling"
     top_score = max(primary_tastes.values(), default=0)
     leaders = {taste for taste, score in primary_tastes.items() if score == top_score}
     if top_score > 0 and "sweet" in leaders:
