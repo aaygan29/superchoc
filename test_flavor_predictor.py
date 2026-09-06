@@ -106,6 +106,17 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertEqual(prediction.sensations["cooling"], 1.0)
         self.assertAlmostEqual(prediction.overall_intensity, 0.133, places=3)
 
+    def test_in_range_single_compounds_do_not_saturate_from_weighting(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "fructose": 95,
+                "quinine": 90,
+            }
+        )
+
+        self.assertEqual(prediction.primary_tastes["sweet"], 0.95)
+        self.assertEqual(prediction.primary_tastes["bitter"], 0.9)
+
     def test_returns_zero_intensity_for_no_recognized_signal(self) -> None:
         prediction = predict_flavor_experience(
             {

@@ -17,7 +17,7 @@ PRIMARY_TASTE_RULES = {
     "sweet": {
         "sucrose": 1.0,
         "glucose": 0.85,
-        "fructose": 1.1,
+        "fructose": 1.0,
         "maltol": 0.35,
         "vanillin": 0.15,
     },
@@ -30,7 +30,7 @@ PRIMARY_TASTE_RULES = {
     "bitter": {
         "caffeine": 1.0,
         "theobromine": 0.7,
-        "quinine": 1.2,
+        "quinine": 1.0,
         "catechin": 0.45,
     },
     "salty": {
@@ -48,7 +48,7 @@ AROMATIC_RULES = {
     "citrus": {"limonene": 1.0, "citral": 0.9},
     "floral": {"linalool": 1.0, "geraniol": 0.85, "nerol": 0.7},
     "fruity": {"isoamyl_acetate": 1.0, "ethyl_butyrate": 0.9, "ethyl_acetate": 0.35},
-    "vanilla": {"vanillin": 1.0, "ethyl_vanillin": 1.1},
+    "vanilla": {"vanillin": 1.0, "ethyl_vanillin": 1.0},
     "roasted": {"pyrazines": 1.0, "furaneol": 0.65},
     "earthy": {"geosmin": 1.0},
 }
@@ -65,6 +65,10 @@ def _normalize(score: float) -> float:
     return round(max(0.0, min(score / 100.0, 1.0)), 3)
 
 
+def _clamp_concentration(value: float) -> float:
+    return max(0.0, min(value, 100.0))
+
+
 def _score_rule_set(
     composition: Mapping[str, float],
     rules: Mapping[str, Mapping[str, float]],
@@ -73,7 +77,7 @@ def _score_rule_set(
     for label, compounds in rules.items():
         total = 0.0
         for compound, weight in compounds.items():
-            total += composition.get(compound, 0.0) * weight
+            total += _clamp_concentration(composition.get(compound, 0.0)) * weight
         normalized = _normalize(total)
         if normalized > 0:
             scores[label] = normalized
