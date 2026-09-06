@@ -1,0 +1,904 @@
+{
+  "target_composition": {
+    "favor": [
+      "lactone",
+      "ether",
+      "ester",
+      "aromatic",
+      "phenol"
+    ],
+    "avoid": [
+      "amine",
+      "furan",
+      "carboxylic_acid",
+      "pyrazine",
+      "sulfur"
+    ]
+  },
+  "composition_predicts_pleasantness_spearman": 0.4213,
+  "class_pleasantness_stats": {
+    "overall_mean": 45.9,
+    "by_class": {
+      "carboxylic_acid": {
+        "n": 38,
+        "mean_pleasantness": 37.5,
+        "lift_vs_overall": -8.4
+      },
+      "ester": {
+        "n": 152,
+        "mean_pleasantness": 50.9,
+        "lift_vs_overall": 5.0
+      },
+      "lactone": {
+        "n": 10,
+        "mean_pleasantness": 55.2,
+        "lift_vs_overall": 9.3
+      },
+      "aldehyde": {
+        "n": 25,
+        "mean_pleasantness": 48.8,
+        "lift_vs_overall": 2.9
+      },
+      "ketone": {
+        "n": 55,
+        "mean_pleasantness": 45.6,
+        "lift_vs_overall": -0.3
+      },
+      "alcohol": {
+        "n": 73,
+        "mean_pleasantness": 45.3,
+        "lift_vs_overall": -0.6
+      },
+      "phenol": {
+        "n": 25,
+        "mean_pleasantness": 49.4,
+        "lift_vs_overall": 3.5
+      },
+      "ether": {
+        "n": 198,
+        "mean_pleasantness": 51.0,
+        "lift_vs_overall": 5.1
+      },
+      "pyrazine": {
+        "n": 10,
+        "mean_pleasantness": 35.0,
+        "lift_vs_overall": -10.9
+      },
+      "furan": {
+        "n": 11,
+        "mean_pleasantness": 37.9,
+        "lift_vs_overall": -8.0
+      },
+      "sulfur": {
+        "n": 30,
+        "mean_pleasantness": 27.8,
+        "lift_vs_overall": -18.1
+      },
+      "amine": {
+        "n": 28,
+        "mean_pleasantness": 44.2,
+        "lift_vs_overall": -1.7
+      },
+      "alkene": {
+        "n": 85,
+        "mean_pleasantness": 48.0,
+        "lift_vs_overall": 2.1
+      },
+      "aromatic": {
+        "n": 127,
+        "mean_pleasantness": 50.0,
+        "lift_vs_overall": 4.1
+      },
+      "terpenoid_like": {
+        "n": 59,
+        "mean_pleasantness": 48.9,
+        "lift_vs_overall": 3.0
+      }
+    }
+  },
+  "recipes": [
+    {
+      "rank": 1,
+      "objective": 1.4682,
+      "predicted_mean_pleasantness": 65.3,
+      "composition_score": 3.7,
+      "chem_novelty": 0.651,
+      "n_denovo_components": 6,
+      "composition_top_classes": [
+        [
+          "ester",
+          1.0
+        ],
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "aromatic",
+          0.9
+        ],
+        [
+          "aldehyde",
+          0.6
+        ],
+        [
+          "phenol",
+          0.6
+        ],
+        [
+          "lactone",
+          0.2
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 76.6,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 71.5,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Whiskey lactone",
+          "smiles": "CCCCC1C(CC(=O)O1)C",
+          "source": "known",
+          "pleasantness": 69.7,
+          "classes": [
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
+          "source": "de-novo",
+          "pleasantness": 68.7,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.4,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 67.7,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Dihydrocoumarin",
+          "smiles": "C1CC(=O)OC2=CC=CC=C21",
+          "source": "known",
+          "pleasantness": 64.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "methyl salicylate",
+          "smiles": "COC(=O)C1=CC=CC=C1O",
+          "source": "known",
+          "pleasantness": 60.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Benzyl salicylate",
+          "smiles": "C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O",
+          "source": "known",
+          "pleasantness": 53.6,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "objective": 1.4522,
+      "predicted_mean_pleasantness": 63.4,
+      "composition_score": 3.7,
+      "chem_novelty": 0.657,
+      "n_denovo_components": 7,
+      "composition_top_classes": [
+        [
+          "ester",
+          1.0
+        ],
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "aromatic",
+          1.0
+        ],
+        [
+          "aldehyde",
+          0.7
+        ],
+        [
+          "phenol",
+          0.6
+        ],
+        [
+          "lactone",
+          0.1
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 76.6,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 71.5,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 64.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Dihydrocoumarin",
+          "smiles": "C1CC(=O)OC2=CC=CC=C21",
+          "source": "known",
+          "pleasantness": 64.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "denovo:C=CCc1ccc(C=O)cc1C(=O)OC(=O)CCCCCC",
+          "smiles": "C=CCc1ccc(C=O)cc1C(=O)OC(=O)CCCCCC",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "aldehyde",
+            "alkene",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCO",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCO",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Benzyl salicylate",
+          "smiles": "C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O",
+          "source": "known",
+          "pleasantness": 53.6,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Phenethyl salicylate",
+          "smiles": "C1=CC=C(C=C1)CCOC(=O)C2=CC=CC=C2O",
+          "source": "known",
+          "pleasantness": 49.2,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "objective": 1.4389,
+      "predicted_mean_pleasantness": 63.2,
+      "composition_score": 3.6,
+      "chem_novelty": 0.667,
+      "n_denovo_components": 8,
+      "composition_top_classes": [
+        [
+          "ester",
+          1.0
+        ],
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "aromatic",
+          1.0
+        ],
+        [
+          "aldehyde",
+          0.8
+        ],
+        [
+          "phenol",
+          0.5
+        ],
+        [
+          "alcohol",
+          0.3
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
+          "source": "de-novo",
+          "pleasantness": 68.7,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.4,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 64.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Dihydrocoumarin",
+          "smiles": "C1CC(=O)OC2=CC=CC=C21",
+          "source": "known",
+          "pleasantness": 64.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCO",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCO",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1CCO",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1CCO",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "cis-3-Hexenyl salicylate",
+          "smiles": "CCC=CCCOC(=O)C1=CC=CC=C1O",
+          "source": "known",
+          "pleasantness": 48.1,
+          "classes": [
+            "alkene",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "objective": 1.4333,
+      "predicted_mean_pleasantness": 65.7,
+      "composition_score": 3.4,
+      "chem_novelty": 0.667,
+      "n_denovo_components": 7,
+      "composition_top_classes": [
+        [
+          "ester",
+          1.0
+        ],
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "aromatic",
+          1.0
+        ],
+        [
+          "aldehyde",
+          0.7
+        ],
+        [
+          "phenol",
+          0.3
+        ],
+        [
+          "lactone",
+          0.1
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 76.6,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "source": "known",
+          "pleasantness": 69.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.4,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 67.8,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 67.7,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Benzyl propionate",
+          "smiles": "CCC(=O)OCC1=CC=CC=C1",
+          "source": "known",
+          "pleasantness": 67.2,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 64.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Dihydrocoumarin",
+          "smiles": "C1CC(=O)OC2=CC=CC=C21",
+          "source": "known",
+          "pleasantness": 64.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "denovo:C=CCc1cc(C=O)ccc1C(=O)OC(=O)CCCCCC",
+          "smiles": "C=CCc1cc(C=O)ccc1C(=O)OC(=O)CCCCCC",
+          "source": "de-novo",
+          "pleasantness": 63.1,
+          "classes": [
+            "aldehyde",
+            "alkene",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "objective": 1.4248,
+      "predicted_mean_pleasantness": 66.2,
+      "composition_score": 3.4,
+      "chem_novelty": 0.631,
+      "n_denovo_components": 8,
+      "composition_top_classes": [
+        [
+          "ester",
+          1.0
+        ],
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "aromatic",
+          1.0
+        ],
+        [
+          "aldehyde",
+          0.8
+        ],
+        [
+          "phenol",
+          0.4
+        ],
+        [
+          "alcohol",
+          0.1
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 76.6,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(Oc2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 71.5,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "source": "known",
+          "pleasantness": 69.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 67.7,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 64.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)C",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)C",
+          "source": "de-novo",
+          "pleasantness": 63.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "terpenoid_like"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCCCCO",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCCCCO",
+          "source": "de-novo",
+          "pleasantness": 63.0,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "methyl salicylate",
+          "smiles": "COC(=O)C1=CC=CC=C1O",
+          "source": "known",
+          "pleasantness": 60.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        }
+      ]
+    }
+  ]
+}

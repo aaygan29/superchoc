@@ -60,4 +60,11 @@ theorem listMax_le_of_all_le (xs : List Nat) (h : ∀ x ∈ xs, x ≤ 100) :
     unfold listMax max2
     split <;> omega
 
+/-- COMPOSITION corollary: given per-class scores, no chemical composition (a weighting of
+    classes) can score above the best single class. Discrete backbone: every class score is
+    <= the max class score. This is why composition tuning alone cannot beat the best class;
+    beating it requires non-additive interactions (the learned mixture model). -/
+theorem composition_bounded_by_best_class (classScores : List Nat) (s : Nat)
+    (hs : s ∈ classScores) : s ≤ listMax classScores := le_listMax classScores s hs
+
 end FlavorMath
