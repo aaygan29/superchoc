@@ -1,62 +1,118 @@
 # superchoc
 
-A computational research project on **Conjecture 4: Superchocolate exists in flavor
-space.**
+**A computational instrument for designing novel, safe, pleasant flavor combinations, built
+toward Jake Wintermute's Conjecture 4 ("Superchocolate exists in flavor space").**
 
-## Attribution
-
-The conjecture and its framing are **not mine**. They are the work of **Jake Wintermute**,
-from his article *"Strange and Marvelous Challenges for Biological AI"* (September 2026),
-proposing a set of Biological Conjectures for Bio-AI teams, published via American Wetware
+The conjecture and framing are **Jake Wintermute's**, from *"Strange and Marvelous
+Challenges for Biological AI"* (Sept 2026), via American Wetware
 ([Substack](https://americanwetware.substack.com/); author
-[LinkedIn](https://www.linkedin.com/in/jake-wintermute/)). Conjecture 4 (Superchocolate)
-is his, as are Conjectures 1-3 (Matrigel, the Calvin cycle, bioreactor scaling).
+[LinkedIn](https://www.linkedin.com/in/jake-wintermute/)). His claim, briefly: chocolate is a
+very high-dimensional flavor (hundreds of odorants across ~30 taste and ~400 odor receptors),
+flavor space is vast and mostly unexplored, so exceptional unexperienced flavors likely exist;
+and because odor receptors are GPCRs (the target of ~36% of approved drugs), solving flavor
+design may advance drug design. **The ideas are his; the implementation and analysis here are
+the author's.** Read his article for the full argument.
 
-This repository is my computational work **toward** his conjecture. The ideas being tested
-originate with Jake Wintermute; the implementation and analysis here are mine. Read his
-article for the full argument; it is not reproduced here.
+---
 
-## The conjecture, briefly
+## What this repository is
 
-Wintermute conjectures that because chocolate is such a high-dimensional flavor (hundreds
-of odor-active molecules acting across ~30 taste and ~400 odor receptors), and flavor
-space is vast and mostly unexplored, there is no reason to think chocolate is the maximum
-of delight: other exceptional, unexperienced flavors ("superchocolate") likely exist.
-Because odor receptors are GPCRs, the same class as ~36% of approved drugs, solving
-generative flavor design may also advance GPCR drug design. See his article for the
-argument in full.
+A working pipeline that follows Wintermute's molecule -> receptor -> percept chain and turns
+it into flavor design:
 
-His three success criteria for Conjecture 4:
+1. **Predict** how pleasant a molecule is from its structure (real human-panel labels).
+2. **Explain** it through odorant-receptor activation and odor descriptors.
+3. **Generate** new molecules (de novo) and blend them into novel, safety-screened recipes
+   with proportions and instructions, while **minimizing toxicity** and **maximizing** predicted
+   pleasantness and novelty.
+4. **Prove** the properties of the scoring metric (Lean) and **validate** the models on real
+   data and with honest controls.
 
-1. **Predict** the experience of a flavor from the structure of a molecule.
-2. **Generate** a new flavor as unique and delicious as chocolate.
-3. **Build** the world-beating model for designing drugs that target GPCRs.
+Nothing here is a wet-lab result. Everything real is validated on public data or with stated
+controls; the generated flavors are **computational hypotheses for a chemist or molecular
+gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 
-## What is in this repository (my work)
+---
 
-- [ROADMAP.md](ROADMAP.md) - the three success criteria decomposed into concrete mapping problems and milestones.
-- [docs/LITERATURE.md](docs/LITERATURE.md) - synthesis of the molecular-flavor and olfaction literature, doubling as a library of experimental techniques and computational tools.
-- [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) - the fixed, public datasets and benchmarks that anchor each criterion, plus the evaluation contract.
-- [docs/SYNTHESIS.md](docs/SYNTHESIS.md) - assessment of whether existing work can be bridged, computationally, into progress on Wintermute's three criteria, and a concrete in-silico experiment plan.
-- [docs/CROSS_DISCIPLINE.md](docs/CROSS_DISCIPLINE.md) - how flavor chemistry, receptor biology, neuroscience, and neuropsychology integrate into the pipeline, with the papers that changed specific modeling choices.
-- [REPLICATION.md](REPLICATION.md) - every step to reproduce the results, the exact methodology, and how to go from the synthetic demo to a real lab-testable suite.
-- [methods/active_flavor_search/](methods/active_flavor_search/) - a validated sequential experimental-design method for deciding which molecule to taste next, so each panel cycle buys maximum progress toward Criterion 2.
-- [methods/goodness_model/](methods/goodness_model/) - a validated ML "goodness" model + combo generator on synthetic ground truth, with a Goodhart control so the picks are good on the true oracle, not just in the model's opinion.
-- [methods/real_flavor/](methods/real_flavor/) - the **real-data** version: real molecules with real human-panel pleasantness labels (Keller 2016 via Pyrfume), a real goodness model (held-out Spearman 0.50), a learned mixture model that beats mean-pooling on non-additive mixtures, a **food-appropriate toxicity screen**, and a ranked suite of novel, safety-passing candidate flavor combinations with a chef/chemist [handoff](methods/real_flavor/HANDOFF.md).
-- [data/](data/) - dataset scaffold and loaders for the ground-truth corpus, plus `online_ingest.py` for live pulls from ChEMBL / PubMed / bioRxiv (does not fabricate data).
+## Main results (all reproducible, see REPLICATION.md)
 
-## Two senses of "online"
+| Result | Value | Where |
+|---|---|---|
+| Structure -> human pleasantness (real, Keller 2016) | 5-fold CV Spearman **0.50**, R2 0.26 | `methods/real_flavor/goodness_real.py` |
+| Learned mixture model vs mean-pooling (non-additive) | Spearman **0.82 vs 0.25** | `mixture_model.py` |
+| Molecule -> odorant-receptor signal (Mainland 2015) | **1.57x** chance | `receptors.py` |
+| Composition -> blend pleasantness | Spearman **0.42** | `composition.py` |
+| Food-safety toxicity screen | 380/420 pass; benzene/formaldehyde/epoxide flagged | `safety.py` |
+| De-novo molecules generated | 434 safe & novel; **top-12 all absent from PubChem** | `lego_assembly.py` |
+| Metric properties (best-part bound, boundedness) | **machine-checked in Lean** (exit 0) | `FlavorMath.lean` |
+| Online active search vs random screening | +0.074, 25/25 seeds (synthetic) | `methods/active_flavor_search/` |
+| Final novel recipes | 5 blends, 6-8/10 de-novo components, novelty 0.63-0.67 | `denovo_recipes.py` |
 
-The project uses "online" two ways, both implemented: (1) **live data ingestion** -
-continuously pulling from public sources as needed (`data/online_ingest.py`), and folding
-newly relevant papers into the methods as concrete design choices (see CROSS_DISCIPLINE.md);
-(2) **online/sequential experimental design** - the active-search method that chooses the
-next molecule to taste one at a time.
+---
 
-## Honesty note
+## Repository map
 
-Nothing here is a solved criterion. The method is validated only on a reproducible
-synthetic ground truth (does online search beat random screening?), which is a fair test
-of the search technique, not a claim about real flavor. Real claims require the public
-datasets in [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) and, for deliciousness, blinded
-human panels.
+```
+superchoc/
+  README.md            <- you are here
+  REPLICATION.md       <- exact steps + methodology to reproduce everything
+  ROADMAP.md           <- Wintermute's 3 success criteria, decomposed
+  requirements.txt     <- Python deps
+  paper/               <- the write-up as a NeurIPS-style paper (+ anonymized PDF)
+  docs/                <- background and honest framing
+    LITERATURE.md         literature synthesis + technique library
+    GROUND_TRUTH.md       the public datasets/benchmarks that anchor each claim
+    CROSS_DISCIPLINE.md   how chemistry/receptor-biology/neuro/neuropsych integrate
+    SYNTHESIS.md          feasibility assessment of bridging the criteria
+  data/                <- dataset loaders + live online ingestion (no fabricated data)
+  methods/
+    active_flavor_search/   online (sequential) design: which molecule to taste next
+    goodness_model/         goodness model + generator on synthetic ground truth (Goodhart control)
+    real_flavor/            THE MAIN PIPELINE (real data): everything below
+```
+
+### `methods/real_flavor/` (the main pipeline)
+
+| file | role | doc |
+|---|---|---|
+| `real_data.py` | real molecules + real pleasantness (Keller 2016 via Pyrfume) | |
+| `featurize.py` | SMILES -> ECFP4 | |
+| `goodness_real.py` | pleasantness model (Criterion 1) | README |
+| `flavor_profile.py` | odor descriptors (Leffingwell) | CROSS_DISCIPLINE |
+| `receptors.py` | molecule -> odorant-receptor activation (Mainland 2015) | |
+| `neuro_reward.py` | reward/mood molecules (caffeine, PEA, ...) | |
+| `safety.py` | food-appropriate toxicity screen | HANDOFF |
+| `mixture_model.py` | learned non-additive mixture model | |
+| `composition.py` | chemical-class composition statistics | COMPOSITION |
+| `flavor_math.py` + `FlavorMath.lean` | tastiness metric + Lean-checked theorems | MATH |
+| `lego_assembly.py` | de-novo molecule construction + PubChem novelty | LEGO |
+| `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` | recipe generators | |
+| `results/` | committed JSON/markdown for every result above | |
+
+---
+
+## Quick start
+
+```bash
+pip install -r requirements.txt          # numpy, scikit-learn, scipy, rdkit, pyrfume
+cd methods/real_flavor
+python validate_real.py                  # real pleasantness CV + mixture + safety gate + novelty
+python denovo_recipes.py                 # the final composition-guided novel recipes
+python lego_assembly.py                  # de-novo molecules + PubChem novelty check
+lean FlavorMath.lean                     # machine-check the metric theorems (needs Lean 4)
+```
+
+See **REPLICATION.md** for the full, step-by-step guide and how to go from these
+computational hypotheses to a real, panel-tested flavor.
+
+---
+
+## Honesty and safety
+
+- Real claims are validated on public data with stated controls; generated flavors are ranked
+  **hypotheses**, not proven-tasty or safe-to-eat.
+- The safety screen is a structural **hazard filter, not a GRAS/regulatory clearance**. De-novo
+  molecules have no safety data at all.
+- "Novel" means distinct from known/public flavors and (for structures) absent from PubChem; it
+  does **not** prove absence from proprietary formulas or from nature.
+- See `methods/real_flavor/HANDOFF.md` before anyone makes or smells anything.
