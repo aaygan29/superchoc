@@ -1,0 +1,18 @@
+{
+  "goodness_cv_spearman": 0.5009,
+  "goodness_cv_r2": 0.2646,
+  "goodness_n": 420,
+  "mixture_meanpool_spearman": 0.2491,
+  "mixture_learned_spearman": 0.819,
+  "mixture_gain": 0.5699,
+  "suite_n_candidates": 10,
+  "suite_all_members_safe": true,
+  "suite_mean_novelty_from_cocoa": 0.8133,
+  "checks": {
+    "goodness_ok": true,
+    "mixture_ok": true,
+    "safety_gate": true,
+    "novelty_ok": true
+  },
+  "validated": true
+}

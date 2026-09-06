@@ -7,30 +7,24 @@ space.**
 
 The conjecture and its framing are **not mine**. They are the work of **Jake Wintermute**,
 from his article *"Strange and Marvelous Challenges for Biological AI"* (September 2026),
-which proposes a set of Biological Conjectures for Bio-AI teams, published via
-[American Wetware](https://americanwetware.com/). Conjecture 4 (Superchocolate) is his,
-as are Conjectures 1-3 (Matrigel, the Calvin cycle, bioreactor scaling). All conjecture
-text quoted below is his.
+proposing a set of Biological Conjectures for Bio-AI teams, published via American Wetware
+([Substack](https://americanwetware.substack.com/); author
+[LinkedIn](https://www.linkedin.com/in/jake-wintermute/)). Conjecture 4 (Superchocolate)
+is his, as are Conjectures 1-3 (Matrigel, the Calvin cycle, bioreactor scaling).
 
-This repository is my computational work **toward** his conjecture: a literature library,
-a ground-truth dataset corpus, and an online experimental-design method. The ideas being
-tested originate with Jake Wintermute; the implementation and analysis here are mine.
+This repository is my computational work **toward** his conjecture. The ideas being tested
+originate with Jake Wintermute; the implementation and analysis here are mine. Read his
+article for the full argument; it is not reproduced here.
 
-## The conjecture, in Wintermute's words
+## The conjecture, briefly
 
-> "We conjecture that the complexity of chocolate implies the possibility of
-> superchocolate. [...] there is no particular reason to think that chocolate represents
-> a maximum of delight."
-
-The argument, briefly (paraphrased from his article): chocolate has more than
-[600 flavor-active volatiles](https://pubmed.ncbi.nlm.nih.gov/33371573/), where vanilla,
-banana, and pineapple are each essentially one molecule. Each volatile has a binding
-profile across ~30 taste and ~400 odor receptors, so a flavor is a high-dimensional
-receptor-activation embedding. Flavor space is vast and mostly unexplored, so exceptional
-embeddings no human has tasted likely exist. Because human odor receptors are GPCRs, the
-same target class as ~36% of approved drugs
-([Nature Rev Drug Discov 2025](https://www.nature.com/articles/s41573-025-01139-y)),
-solving generative flavor design plausibly advances generative GPCR drug design.
+Wintermute conjectures that because chocolate is such a high-dimensional flavor (hundreds
+of odor-active molecules acting across ~30 taste and ~400 odor receptors), and flavor
+space is vast and mostly unexplored, there is no reason to think chocolate is the maximum
+of delight: other exceptional, unexperienced flavors ("superchocolate") likely exist.
+Because odor receptors are GPCRs, the same class as ~36% of approved drugs, solving
+generative flavor design may also advance GPCR drug design. See his article for the
+argument in full.
 
 His three success criteria for Conjecture 4:
 
@@ -47,7 +41,8 @@ His three success criteria for Conjecture 4:
 - [docs/CROSS_DISCIPLINE.md](docs/CROSS_DISCIPLINE.md) - how flavor chemistry, receptor biology, neuroscience, and neuropsychology integrate into the pipeline, with the papers that changed specific modeling choices.
 - [REPLICATION.md](REPLICATION.md) - every step to reproduce the results, the exact methodology, and how to go from the synthetic demo to a real lab-testable suite.
 - [methods/active_flavor_search/](methods/active_flavor_search/) - a validated sequential experimental-design method for deciding which molecule to taste next, so each panel cycle buys maximum progress toward Criterion 2.
-- [methods/goodness_model/](methods/goodness_model/) - a validated ML "goodness" model + combo generator: learns which molecules taste good and composes a ranked, lab-testable suite of novel "super-chocolate" candidate combinations (with a Goodhart control so the picks are good on the true oracle, not just in the model's opinion).
+- [methods/goodness_model/](methods/goodness_model/) - a validated ML "goodness" model + combo generator on synthetic ground truth, with a Goodhart control so the picks are good on the true oracle, not just in the model's opinion.
+- [methods/real_flavor/](methods/real_flavor/) - the **real-data** version: real molecules with real human-panel pleasantness labels (Keller 2016 via Pyrfume), a real goodness model (held-out Spearman 0.50), a learned mixture model that beats mean-pooling on non-additive mixtures, a **food-appropriate toxicity screen**, and a ranked suite of novel, safety-passing candidate flavor combinations with a chef/chemist [handoff](methods/real_flavor/HANDOFF.md).
 - [data/](data/) - dataset scaffold and loaders for the ground-truth corpus, plus `online_ingest.py` for live pulls from ChEMBL / PubMed / bioRxiv (does not fabricate data).
 
 ## Two senses of "online"

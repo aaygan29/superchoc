@@ -1,0 +1,238 @@
+{
+  "note": "Predicted pleasantness from a REAL model (Keller 2016 human panel labels, ECFP4 -> RandomForest). Members are real molecules and all pass a food-appropriate safety SCREEN (not a GRAS determination). Scores are combo mean predicted pleasantness (additive estimate); a learned mixture model is the documented non-additive refinement. Do NOT ingest without proper safety review.",
+  "n_molecules_total": 420,
+  "n_molecules_safe_eligible": 380,
+  "pleasantness_scale": "0-100 (human panel)",
+  "candidates": [
+    {
+      "members": [
+        "Allyl heptanoate",
+        "ethyl hexanoate",
+        "Ethyl Vanillin",
+        "Vanillin Acetate"
+      ],
+      "smiles": [
+        "CCCCCCC(=O)OCC=C",
+        "CCCCCC(=O)OCC",
+        "CCOC1=C(C=CC(=C1)C=O)O",
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC"
+      ],
+      "predicted_mean_pleasantness": 73.06,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.845,
+      "rank": 1
+    },
+    {
+      "members": [
+        "Vanillin Acetate",
+        "Ethyl 2-methylpentanoate",
+        "Ethyl Vanillin",
+        "Isoeugenol"
+      ],
+      "smiles": [
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+        "CCCC(C)C(=O)OCC",
+        "CCOC1=C(C=CC(=C1)C=O)O",
+        "CC=CC1=CC(=C(C=C1)O)OC"
+      ],
+      "predicted_mean_pleasantness": 72.81,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.827,
+      "rank": 2
+    },
+    {
+      "members": [
+        "allyl hexanoate",
+        "Isoeugenol",
+        "Ethyl Vanillin",
+        "ethyl hexanoate"
+      ],
+      "smiles": [
+        "CCCCCC(=O)OCC=C",
+        "CC=CC1=CC(=C(C=C1)O)OC",
+        "CCOC1=C(C=CC(=C1)C=O)O",
+        "CCCCCC(=O)OCC"
+      ],
+      "predicted_mean_pleasantness": 72.77,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.849,
+      "rank": 3
+    },
+    {
+      "members": [
+        "ethyl hexanoate",
+        "Ethyl 2-methylpentanoate",
+        "allyl hexanoate",
+        "Ethyl Vanillin"
+      ],
+      "smiles": [
+        "CCCCCC(=O)OCC",
+        "CCCC(C)C(=O)OCC",
+        "CCCCCC(=O)OCC=C",
+        "CCOC1=C(C=CC(=C1)C=O)O"
+      ],
+      "predicted_mean_pleasantness": 72.5,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.829,
+      "rank": 4
+    },
+    {
+      "members": [
+        "Ethyl Vanillin",
+        "Ethyl 2-methylbutyrate",
+        "Allyl heptanoate",
+        "allyl hexanoate"
+      ],
+      "smiles": [
+        "CCOC1=C(C=CC(=C1)C=O)O",
+        "CCC(C)C(=O)OCC",
+        "CCCCCCC(=O)OCC=C",
+        "CCCCCC(=O)OCC=C"
+      ],
+      "predicted_mean_pleasantness": 72.25,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.81,
+      "rank": 5
+    },
+    {
+      "members": [
+        "Linalool",
+        "Vanillin Acetate",
+        "ethyl hexanoate",
+        "vanillin"
+      ],
+      "smiles": [
+        "CC(=CCCC(C)(C=C)O)C",
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+        "CCCCCC(=O)OCC",
+        "COC1=C(C=CC(=C1)C=O)O"
+      ],
+      "predicted_mean_pleasantness": 71.96,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.635,
+      "rank": 6
+    },
+    {
+      "members": [
+        "Ethyl 2-methylbutyrate",
+        "Ethyl Vanillin",
+        "piperonal",
+        "Isoeugenol"
+      ],
+      "smiles": [
+        "CCC(C)C(=O)OCC",
+        "CCOC1=C(C=CC(=C1)C=O)O",
+        "C1OC2=C(O1)C=C(C=C2)C=O",
+        "CC=CC1=CC(=C(C=C1)O)OC"
+      ],
+      "predicted_mean_pleasantness": 71.43,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.803,
+      "rank": 7
+    },
+    {
+      "members": [
+        "Isoeugenol",
+        "Vanillin Acetate",
+        "ethyl hexanoate",
+        "Allyl heptanoate"
+      ],
+      "smiles": [
+        "CC=CC1=CC(=C(C=C1)O)OC",
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+        "CCCCCC(=O)OCC",
+        "CCCCCCC(=O)OCC=C"
+      ],
+      "predicted_mean_pleasantness": 70.17,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.859,
+      "rank": 8
+    },
+    {
+      "members": [
+        "ethyl hexanoate",
+        "Vanillin Acetate",
+        "Ethyl 2-methylpentanoate",
+        "allyl hexanoate"
+      ],
+      "smiles": [
+        "CCCCCC(=O)OCC",
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+        "CCCC(C)C(=O)OCC",
+        "CCCCCC(=O)OCC=C"
+      ],
+      "predicted_mean_pleasantness": 70.0,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.838,
+      "rank": 9
+    },
+    {
+      "members": [
+        "allyl hexanoate",
+        "Vanillin Acetate",
+        "ethyl hexanoate",
+        "Ethyl 2-methylpentanoate"
+      ],
+      "smiles": [
+        "CCCCCC(=O)OCC=C",
+        "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+        "CCCCCC(=O)OCC",
+        "CCCC(C)C(=O)OCC"
+      ],
+      "predicted_mean_pleasantness": 70.0,
+      "member_safety": [
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ],
+      "novelty_from_cocoa": 0.838,
+      "rank": 10
+    }
+  ]
+}
