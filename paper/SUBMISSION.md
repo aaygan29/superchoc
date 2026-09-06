@@ -42,8 +42,8 @@ adding at least a small human-panel validation of the top candidates.
 
 The paper can cite an anonymized copy of this repository:
 
-1. Go to https://anonymous.4open.science and create a new anonymized repository from the
-   GitHub URL `https://github.com/aaygan29/superchoc` (you must be signed in as the owner).
+1. Go to https://anonymous.4open.science and create a new anonymized repository from this
+   repository's GitHub URL (you must be signed in as the owner).
 2. Set an embargo date at/after the decision notification.
 3. Paste the generated `anonymous.4open.science/r/...` link into the paper where code is cited.
 

@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \newtheorem{theorem}{Theorem}
 
@@ -31,7 +32,7 @@ generator that maximizes predicted pleasantness and novelty while minimizing tox
 show a learned non-additive mixture model captures interaction that mean-pooling cannot
 ($0.82$ vs $0.25$ Spearman on a controlled non-additive oracle), and we \emph{machine-check
 in Lean} the key property that under an additive score no blend can exceed its best
-component---formalizing precisely why non-additive modeling is required. We are explicit about
+component. This formalizes precisely why non-additive modeling is required. We are explicit about
 scope: outputs are computational hypotheses for a chemist or molecular gastronomist, not
 safety-cleared recipes, and human validation remains future work.
 \end{abstract}
@@ -98,6 +99,15 @@ is $\le$ the maximum) is formalized and machine-checked in Lean~4 (\texttt{Flavo
 explicit why the empirical, learned mixture model is necessary and where additivity is a wall.
 
 \section{Results}
+\begin{figure}[h]\centering
+\includegraphics[width=0.72\linewidth]{class_pleasantness.pdf}
+\caption{Chemical-class pleasantness lifts learned from real human-panel data (Keller \&
+Vosshall 2016). Lactones, ethers, esters, aromatics, and phenols raise pleasantness; sulfur,
+pyrazine, carboxylic-acid, and furan groups lower it. These data-driven lifts define the target
+composition used to steer recipe generation, and recover well-known flavor chemistry.}
+\label{fig:classlift}
+\end{figure}
+
 \begin{table}[h]\centering
 \begin{tabular}{lll}
 \toprule
