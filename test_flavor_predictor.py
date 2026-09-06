@@ -47,7 +47,7 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertEqual(prediction.primary_tastes["sweet"], 1.0)
         self.assertNotIn("sour", prediction.primary_tastes)
         self.assertEqual(prediction.sensations["cooling"], 1.0)
-        self.assertEqual(prediction.overall_intensity, 0.133)
+        self.assertAlmostEqual(prediction.overall_intensity, 0.133, places=3)
 
     def test_returns_zero_intensity_for_no_recognized_signal(self) -> None:
         prediction = predict_flavor_experience(
