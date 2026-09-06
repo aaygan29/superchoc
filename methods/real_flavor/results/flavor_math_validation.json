@@ -1,0 +1,23 @@
+{
+  "property_checks": {
+    "P1_bounded_taste": true,
+    "P2_no_free_lunch": true,
+    "P3_cosine_metric": true,
+    "P4_objective_bound": true,
+    "all_passed": true
+  },
+  "empirical_validity": {
+    "metric_vs_human_spearman": 0.5009,
+    "metric_vs_human_r2": 0.2646,
+    "n": 420
+  },
+  "lean_machine_checked": true,
+  "lean_file": "FlavorMath.lean",
+  "lean_theorems": [
+    "le_max2_left",
+    "le_max2_right",
+    "le_listMax",
+    "blend_not_better_than_best",
+    "listMax_le_of_all_le"
+  ]
+}
