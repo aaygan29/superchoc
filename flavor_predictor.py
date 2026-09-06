@@ -84,7 +84,7 @@ def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]
     heat = sensations.get("heat", 0)
     cooling = sensations.get("cooling", 0)
     if heat >= 0.35 or cooling >= 0.35:
-        if cooling > heat:
+        if cooling >= heat:
             return "cooling"
         return "warming"
     top_score = max(primary_tastes.values(), default=0)
@@ -118,7 +118,8 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Overall intensity is the average across all modeled taste, aroma, and
     sensation dimensions, with absent dimensions treated as zero. A single
     compound may contribute to multiple dimensions when it appears in more than
-    one rule set.
+    one rule set. When strong heat and cooling sensations tie, cooling wins the
+    finish label.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)

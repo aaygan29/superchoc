@@ -54,6 +54,16 @@ class FlavorPredictorTests(unittest.TestCase):
 
         self.assertEqual(prediction.finish, "cooling")
 
+    def test_prefers_cooling_when_heat_and_cooling_tie(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "capsaicin": 40,
+                "menthol": 40,
+            }
+        )
+
+        self.assertEqual(prediction.finish, "cooling")
+
     def test_detects_lingering_bitter_finish(self) -> None:
         prediction = predict_flavor_experience(
             {
