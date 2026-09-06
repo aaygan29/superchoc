@@ -97,8 +97,10 @@ def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]
 
 
 def _overall_intensity(*score_sets: Iterable[float]) -> float:
-    total = sum(sum(scores) for scores in score_sets)
-    return round(min(total / 3.0, 1.0), 3)
+    values = [score for scores in score_sets for score in scores]
+    if not values:
+        return 0.0
+    return round(sum(values) / len(values), 3)
 
 
 def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperience:
@@ -108,6 +110,8 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Composition values are relative concentrations on a 0-100 scale.
     Returned scores are normalized to the 0.0-1.0 range, rounded to three
     decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
+    Overall intensity is the average of all produced taste, aroma, and
+    sensation scores.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)
