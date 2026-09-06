@@ -35,6 +35,43 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertIn("heat", prediction.sensations)
         self.assertIn("roasted", prediction.aromatic_notes)
 
+    def test_detects_cooling_finish(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "menthol": 40,
+            }
+        )
+
+        self.assertEqual(prediction.finish, "cooling")
+
+    def test_detects_lingering_bitter_finish(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "caffeine": 40,
+            }
+        )
+
+        self.assertEqual(prediction.finish, "lingering bitter")
+
+    def test_detects_bright_tart_finish(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "citric_acid": 35,
+            }
+        )
+
+        self.assertEqual(prediction.finish, "bright tart")
+
+    def test_prefers_sweet_finish_for_tied_dominant_tastes(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "sucrose": 40,
+                "caffeine": 40,
+            }
+        )
+
+        self.assertEqual(prediction.finish, "rounded sweet")
+
     def test_clamps_out_of_range_inputs(self) -> None:
         prediction = predict_flavor_experience(
             {

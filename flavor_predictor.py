@@ -86,11 +86,13 @@ def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]
     if sensations.get("cooling", 0) >= 0.35:
         return "cooling"
     top_score = max(primary_tastes.values(), default=0)
-    leaders = [taste for taste, score in primary_tastes.items() if score == top_score]
-    if top_score > 0 and leaders == ["bitter"]:
-        return "lingering bitter"
-    if top_score > 0 and leaders == ["sweet"]:
+    leaders = {taste for taste, score in primary_tastes.items() if score == top_score}
+    if top_score > 0 and "sweet" in leaders:
         return "rounded sweet"
+    if top_score > 0 and "bitter" in leaders:
+        return "lingering bitter"
+    if top_score > 0 and "sour" in leaders:
+        return "bright tart"
     if primary_tastes.get("sour", 0) >= 0.3:
         return "bright tart"
     return "clean"
