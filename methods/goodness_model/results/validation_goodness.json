@@ -1,0 +1,21 @@
+{
+  "n_seeds": 8,
+  "k": 4,
+  "goodness_r2_mean": 0.6511,
+  "generated_true_mean": 0.5928,
+  "random_true_mean": 0.4992,
+  "gen_minus_random": 0.0936,
+  "chocolate_ref_mean": 0.5558,
+  "gen_minus_choc": 0.037,
+  "goodhart_pred_true_corr": 0.8582,
+  "goodhart_pred_minus_true_gap": -0.0539,
+  "novelty_from_choc_mean": 0.8045,
+  "checks": {
+    "model_learnable": true,
+    "beats_random": true,
+    "reaches_chocolate": true,
+    "not_goodharting": true,
+    "novel": true
+  },
+  "validated": true
+}

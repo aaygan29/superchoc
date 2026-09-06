@@ -1,0 +1,160 @@
+{
+  "is_synthetic_demo": true,
+  "banner": "SYNTHETIC DEMO: members are pool indices, scores are demonstration values. Swap in a real molecule table + real goodness model for a lab-testable suite.",
+  "goodness_model_r2": 0.6522,
+  "chocolate_reference_true_goodness": 0.5679,
+  "candidates": [
+    {
+      "rank": 1,
+      "members": [
+        "mol#544",
+        "mol#277",
+        "mol#354",
+        "mol#223"
+      ],
+      "member_indices": [
+        544,
+        277,
+        354,
+        223
+      ],
+      "predicted_goodness": 0.5306,
+      "true_goodness_oracle": 0.6109,
+      "novelty_from_chocolate": 0.3983,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 2,
+      "members": [
+        "mol#435",
+        "mol#506",
+        "mol#130",
+        "mol#281"
+      ],
+      "member_indices": [
+        435,
+        506,
+        130,
+        281
+      ],
+      "predicted_goodness": 0.5303,
+      "true_goodness_oracle": 0.5742,
+      "novelty_from_chocolate": 0.5834,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 3,
+      "members": [
+        "mol#417",
+        "mol#108",
+        "mol#130",
+        "mol#506"
+      ],
+      "member_indices": [
+        417,
+        108,
+        130,
+        506
+      ],
+      "predicted_goodness": 0.53,
+      "true_goodness_oracle": 0.5842,
+      "novelty_from_chocolate": 0.9669,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 4,
+      "members": [
+        "mol#215",
+        "mol#33",
+        "mol#508",
+        "mol#307"
+      ],
+      "member_indices": [
+        215,
+        33,
+        508,
+        307
+      ],
+      "predicted_goodness": 0.5299,
+      "true_goodness_oracle": 0.6158,
+      "novelty_from_chocolate": 0.6382,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 5,
+      "members": [
+        "mol#679",
+        "mol#214",
+        "mol#82",
+        "mol#652"
+      ],
+      "member_indices": [
+        679,
+        214,
+        82,
+        652
+      ],
+      "predicted_goodness": 0.529,
+      "true_goodness_oracle": 0.6208,
+      "novelty_from_chocolate": 0.5562,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 6,
+      "members": [
+        "mol#631",
+        "mol#622",
+        "mol#459",
+        "mol#586"
+      ],
+      "member_indices": [
+        631,
+        622,
+        459,
+        586
+      ],
+      "predicted_goodness": 0.5266,
+      "true_goodness_oracle": 0.6123,
+      "novelty_from_chocolate": 0.625,
+      "beats_chocolate": true
+    },
+    {
+      "rank": 7,
+      "members": [
+        "mol#761",
+        "mol#283",
+        "mol#56",
+        "mol#256"
+      ],
+      "member_indices": [
+        761,
+        283,
+        56,
+        256
+      ],
+      "predicted_goodness": 0.5257,
+      "true_goodness_oracle": 0.5469,
+      "novelty_from_chocolate": 0.6282,
+      "beats_chocolate": false
+    },
+    {
+      "rank": 8,
+      "members": [
+        "mol#128",
+        "mol#28",
+        "mol#650",
+        "mol#638"
+      ],
+      "member_indices": [
+        128,
+        28,
+        650,
+        638
+      ],
+      "predicted_goodness": 0.5239,
+      "true_goodness_oracle": 0.6129,
+      "novelty_from_chocolate": 0.4862,
+      "beats_chocolate": true
+    }
+  ]
+}
