@@ -45,9 +45,13 @@ def build_keller_pleasantness(concentration_ratio="1/1000", cache_path=None) -> 
     single["CID"] = pd.to_numeric(single["CIDs"], errors="coerce")
 
     df = single.merge(stim_pl, on="Stimulus", how="inner")
-    df = df.merge(mols[["CID", "OdorName", "CanonicalSMILES"]], on="CID", how="inner")
+    cols = ["CID", "OdorName", "CanonicalSMILES"] + (["CAS"] if "CAS" in mols.columns else [])
+    df = df.merge(mols[cols], on="CID", how="inner")
     df = df.rename(columns={"OdorName": "name", "CanonicalSMILES": "smiles"})
-    df = df[["CID", "name", "smiles", "pleasantness"]].dropna().drop_duplicates("CID")
+    if "CAS" not in df.columns:
+        df["CAS"] = ""
+    df = df[["CID", "name", "smiles", "CAS", "pleasantness"]].dropna(
+        subset=["name", "smiles", "pleasantness"]).drop_duplicates("CID")
     df = df.reset_index(drop=True)
 
     if cache_path:

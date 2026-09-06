@@ -1,0 +1,1072 @@
+{
+  "note": "Flavor RECIPES (blends with proportions), scored by a real pleasantness model (Keller 2016). Odor profiles from Leffingwell descriptors. Every component passes a food-appropriate safety SCREEN (not a GRAS clearance). Proportions are heuristic starting points to be balanced by a flavorist with odor-threshold data. Do NOT ingest without regulatory + safety review.",
+  "novelty_method": "Each recipe is required to be distinct from every reference flavor (chocolate, vanilla, coffee, banana, strawberry, rose) both CHEMICALLY (mean best-match Tanimoto) and PERCEPTUALLY (descriptor-profile cosine), and to share few components with any reference. This demonstrates a flavor character not matching known/public flavors; it does NOT prove absence from proprietary formulas.",
+  "recipes": [
+    {
+      "rank": 1,
+      "flavor_name": "sweet-vanilla-fruity accord",
+      "predicted_mean_pleasantness": 69.3,
+      "n_components": 12,
+      "flavor_profile_top_notes": [
+        [
+          "sweet",
+          0.44
+        ],
+        [
+          "vanilla",
+          0.44
+        ],
+        [
+          "fruity",
+          0.44
+        ],
+        [
+          "floral",
+          0.33
+        ],
+        [
+          "creamy",
+          0.22
+        ],
+        [
+          "coumarinic",
+          0.22
+        ],
+        [
+          "cherry",
+          0.22
+        ],
+        [
+          "green",
+          0.22
+        ]
+      ],
+      "novelty": {
+        "chem_distance_to_nearest": 0.588,
+        "nearest_chem_flavor": "vanilla",
+        "perceptual_distance_to_nearest": 0.47,
+        "nearest_perceptual_flavor": "banana",
+        "components_resembling_known": 3
+      },
+      "batch": {
+        "total_g": 10.0,
+        "aroma_g": 1.0,
+        "carrier_g": 9.0,
+        "carrier": "propylene glycol (food grade)",
+        "aroma_load_pct": 10.0
+      },
+      "components": [
+        {
+          "molecule": "Ethyl Vanillin",
+          "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-32-4",
+          "percent_of_aroma_w_w": 27.9,
+          "mass_mg_in_batch": 279.0,
+          "odor_notes": [
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 83.9,
+          "safety": "OK"
+        },
+        {
+          "molecule": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-33-5",
+          "percent_of_aroma_w_w": 22.82,
+          "mass_mg_in_batch": 228.2,
+          "odor_notes": [
+            "vanilla",
+            "creamy"
+          ],
+          "panel_pleasantness": 84.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Vanillin Acetate",
+          "smiles": "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+          "cas": "881-68-5",
+          "percent_of_aroma_w_w": 7.96,
+          "mass_mg_in_batch": 79.6,
+          "odor_notes": [
+            "vanilla",
+            "creamy",
+            "sweet"
+          ],
+          "panel_pleasantness": 72.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenol",
+          "smiles": "CC=CC1=CC(=C(C=C1)O)OC",
+          "cas": "97-54-1",
+          "percent_of_aroma_w_w": 6.56,
+          "mass_mg_in_batch": 65.6,
+          "odor_notes": [],
+          "panel_pleasantness": 68.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Allyl heptanoate",
+          "smiles": "CCCCCCC(=O)OCC=C",
+          "cas": "142-19-8",
+          "percent_of_aroma_w_w": 6.29,
+          "mass_mg_in_batch": 62.9,
+          "odor_notes": [
+            "pineapple",
+            "fruity",
+            "banana"
+          ],
+          "panel_pleasantness": 73.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylpentanoate",
+          "smiles": "CCCC(C)C(=O)OCC",
+          "cas": "39255-32-8",
+          "percent_of_aroma_w_w": 5.74,
+          "mass_mg_in_batch": 57.4,
+          "odor_notes": [
+            "pineapple",
+            "pear",
+            "fruity"
+          ],
+          "panel_pleasantness": 74.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylbutyrate",
+          "smiles": "CCC(C)C(=O)OCC",
+          "cas": "7452-79-1",
+          "percent_of_aroma_w_w": 5.45,
+          "mass_mg_in_batch": 54.5,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 75.1,
+          "safety": "OK"
+        },
+        {
+          "molecule": "piperonal",
+          "smiles": "C1OC2=C(O1)C=C(C=C2)C=O",
+          "cas": "120-57-0",
+          "percent_of_aroma_w_w": 4.2,
+          "mass_mg_in_batch": 42.0,
+          "odor_notes": [
+            "cherry",
+            "sweet",
+            "floral"
+          ],
+          "panel_pleasantness": 72.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "isoeugenol acetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)C)OC",
+          "cas": "93-29-8",
+          "percent_of_aroma_w_w": 3.81,
+          "mass_mg_in_batch": 38.1,
+          "odor_notes": [],
+          "panel_pleasantness": 66.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Whiskey lactone",
+          "smiles": "CCCCC1C(CC(=O)O1)C",
+          "cas": "39212-23-2",
+          "percent_of_aroma_w_w": 3.43,
+          "mass_mg_in_batch": 34.3,
+          "odor_notes": [
+            "woody",
+            "coconut",
+            "coumarinic"
+          ],
+          "panel_pleasantness": 69.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "cas": "104-21-2",
+          "percent_of_aroma_w_w": 3.1,
+          "mass_mg_in_batch": 31.0,
+          "odor_notes": [
+            "coumarinic",
+            "fruity",
+            "cherry"
+          ],
+          "panel_pleasantness": 69.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "6-Acetyl-1,1,2,4,4,7-Hexamethyltetralin",
+          "smiles": "CC1CC(C2=C(C1(C)C)C=C(C(=C2)C(=O)C)C)(C)C",
+          "cas": "21145-77-7",
+          "percent_of_aroma_w_w": 2.73,
+          "mass_mg_in_batch": 27.3,
+          "odor_notes": [],
+          "panel_pleasantness": 67.7,
+          "safety": "OK"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "flavor_name": "fruity-sweet-vanilla accord",
+      "predicted_mean_pleasantness": 66.73,
+      "n_components": 12,
+      "flavor_profile_top_notes": [
+        [
+          "fruity",
+          0.73
+        ],
+        [
+          "sweet",
+          0.45
+        ],
+        [
+          "vanilla",
+          0.36
+        ],
+        [
+          "floral",
+          0.27
+        ],
+        [
+          "pineapple",
+          0.27
+        ],
+        [
+          "apple",
+          0.18
+        ],
+        [
+          "banana",
+          0.18
+        ],
+        [
+          "creamy",
+          0.18
+        ]
+      ],
+      "novelty": {
+        "chem_distance_to_nearest": 0.577,
+        "nearest_chem_flavor": "strawberry",
+        "perceptual_distance_to_nearest": 0.357,
+        "nearest_perceptual_flavor": "banana",
+        "components_resembling_known": 3
+      },
+      "batch": {
+        "total_g": 10.0,
+        "aroma_g": 1.0,
+        "carrier_g": 9.0,
+        "carrier": "propylene glycol (food grade)",
+        "aroma_load_pct": 10.0
+      },
+      "components": [
+        {
+          "molecule": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-33-5",
+          "percent_of_aroma_w_w": 32.02,
+          "mass_mg_in_batch": 320.2,
+          "odor_notes": [
+            "vanilla",
+            "creamy"
+          ],
+          "panel_pleasantness": 84.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Vanillin Acetate",
+          "smiles": "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+          "cas": "881-68-5",
+          "percent_of_aroma_w_w": 11.18,
+          "mass_mg_in_batch": 111.8,
+          "odor_notes": [
+            "vanilla",
+            "creamy",
+            "sweet"
+          ],
+          "panel_pleasantness": 72.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "ethyl hexanoate",
+          "smiles": "CCCCCC(=O)OCC",
+          "cas": "123-66-0",
+          "percent_of_aroma_w_w": 9.53,
+          "mass_mg_in_batch": 95.3,
+          "odor_notes": [
+            "pineapple",
+            "tropical",
+            "strawberry"
+          ],
+          "panel_pleasantness": 78.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "allyl hexanoate",
+          "smiles": "CCCCCC(=O)OCC=C",
+          "cas": "123-68-2",
+          "percent_of_aroma_w_w": 9.28,
+          "mass_mg_in_batch": 92.8,
+          "odor_notes": [
+            "winey",
+            "fruity",
+            "pineapple"
+          ],
+          "panel_pleasantness": 71.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Allyl heptanoate",
+          "smiles": "CCCCCCC(=O)OCC=C",
+          "cas": "142-19-8",
+          "percent_of_aroma_w_w": 8.83,
+          "mass_mg_in_batch": 88.3,
+          "odor_notes": [
+            "pineapple",
+            "fruity",
+            "banana"
+          ],
+          "panel_pleasantness": 73.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylbutyrate",
+          "smiles": "CCC(C)C(=O)OCC",
+          "cas": "7452-79-1",
+          "percent_of_aroma_w_w": 7.65,
+          "mass_mg_in_batch": 76.5,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 75.1,
+          "safety": "OK"
+        },
+        {
+          "molecule": "ethyl-3-hydroxybutyrate",
+          "smiles": "CCOC(=O)CC(C)O",
+          "cas": "5405-41-4",
+          "percent_of_aroma_w_w": 5.31,
+          "mass_mg_in_batch": 53.1,
+          "odor_notes": [
+            "grape",
+            "fruity",
+            "fresh"
+          ],
+          "panel_pleasantness": 75.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "6-Acetyl-1,1,2,4,4,7-Hexamethyltetralin",
+          "smiles": "CC1CC(C2=C(C1(C)C)C=C(C(=C2)C(=O)C)C)(C)C",
+          "cas": "21145-77-7",
+          "percent_of_aroma_w_w": 3.83,
+          "mass_mg_in_batch": 38.3,
+          "odor_notes": [],
+          "panel_pleasantness": 67.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Nopol acetate",
+          "smiles": "CC(=O)OCCC1=CCC2CC1C2(C)C",
+          "cas": "35836-72-7",
+          "percent_of_aroma_w_w": 3.79,
+          "mass_mg_in_batch": 37.9,
+          "odor_notes": [
+            "woody",
+            "fruity",
+            "sweet"
+          ],
+          "panel_pleasantness": 70.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Methyl caprylate",
+          "smiles": "CCCCCCCC(=O)OC",
+          "cas": "111-11-5",
+          "percent_of_aroma_w_w": 3.15,
+          "mass_mg_in_batch": 31.5,
+          "odor_notes": [
+            "winey",
+            "orange",
+            "fruity"
+          ],
+          "panel_pleasantness": 68.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "p-Anisaldehyde",
+          "smiles": "COC1=CC=C(C=C1)C=O",
+          "cas": "123-11-5",
+          "percent_of_aroma_w_w": 3.04,
+          "mass_mg_in_batch": 30.4,
+          "odor_notes": [
+            "herbal",
+            "sweet",
+            "hay"
+          ],
+          "panel_pleasantness": 60.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenyl phenylacetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)CC2=CC=CC=C2)OC",
+          "cas": "120-24-1",
+          "percent_of_aroma_w_w": 2.39,
+          "mass_mg_in_batch": 23.9,
+          "odor_notes": [
+            "honey",
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 56.2,
+          "safety": "OK"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "flavor_name": "fruity-green-apple accord",
+      "predicted_mean_pleasantness": 66.63,
+      "n_components": 12,
+      "flavor_profile_top_notes": [
+        [
+          "fruity",
+          0.7
+        ],
+        [
+          "green",
+          0.4
+        ],
+        [
+          "apple",
+          0.3
+        ],
+        [
+          "pear",
+          0.2
+        ],
+        [
+          "strawberry",
+          0.2
+        ],
+        [
+          "waxy",
+          0.2
+        ],
+        [
+          "cherry",
+          0.2
+        ],
+        [
+          "vanilla",
+          0.2
+        ]
+      ],
+      "novelty": {
+        "chem_distance_to_nearest": 0.587,
+        "nearest_chem_flavor": "strawberry",
+        "perceptual_distance_to_nearest": 0.384,
+        "nearest_perceptual_flavor": "banana",
+        "components_resembling_known": 3
+      },
+      "batch": {
+        "total_g": 10.0,
+        "aroma_g": 1.0,
+        "carrier_g": 9.0,
+        "carrier": "propylene glycol (food grade)",
+        "aroma_load_pct": 10.0
+      },
+      "components": [
+        {
+          "molecule": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-33-5",
+          "percent_of_aroma_w_w": 33.44,
+          "mass_mg_in_batch": 334.4,
+          "odor_notes": [
+            "vanilla",
+            "creamy"
+          ],
+          "panel_pleasantness": 84.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "ethyl hexanoate",
+          "smiles": "CCCCCC(=O)OCC",
+          "cas": "123-66-0",
+          "percent_of_aroma_w_w": 9.95,
+          "mass_mg_in_batch": 99.5,
+          "odor_notes": [
+            "pineapple",
+            "tropical",
+            "strawberry"
+          ],
+          "panel_pleasantness": 78.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenol",
+          "smiles": "CC=CC1=CC(=C(C=C1)O)OC",
+          "cas": "97-54-1",
+          "percent_of_aroma_w_w": 9.62,
+          "mass_mg_in_batch": 96.2,
+          "odor_notes": [],
+          "panel_pleasantness": 68.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylpentanoate",
+          "smiles": "CCCC(C)C(=O)OCC",
+          "cas": "39255-32-8",
+          "percent_of_aroma_w_w": 8.41,
+          "mass_mg_in_batch": 84.1,
+          "odor_notes": [
+            "pineapple",
+            "pear",
+            "fruity"
+          ],
+          "panel_pleasantness": 74.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylbutyrate",
+          "smiles": "CCC(C)C(=O)OCC",
+          "cas": "7452-79-1",
+          "percent_of_aroma_w_w": 7.99,
+          "mass_mg_in_batch": 79.9,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 75.1,
+          "safety": "OK"
+        },
+        {
+          "molecule": "piperonal",
+          "smiles": "C1OC2=C(O1)C=C(C=C2)C=O",
+          "cas": "120-57-0",
+          "percent_of_aroma_w_w": 6.16,
+          "mass_mg_in_batch": 61.6,
+          "odor_notes": [
+            "cherry",
+            "sweet",
+            "floral"
+          ],
+          "panel_pleasantness": 72.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "isoeugenol acetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)C)OC",
+          "cas": "93-29-8",
+          "percent_of_aroma_w_w": 5.58,
+          "mass_mg_in_batch": 55.8,
+          "odor_notes": [],
+          "panel_pleasantness": 66.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "cas": "104-21-2",
+          "percent_of_aroma_w_w": 4.54,
+          "mass_mg_in_batch": 45.4,
+          "odor_notes": [
+            "coumarinic",
+            "fruity",
+            "cherry"
+          ],
+          "panel_pleasantness": 69.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Diethyl malonate",
+          "smiles": "CCOC(=O)CC(=O)OCC",
+          "cas": "105-53-3",
+          "percent_of_aroma_w_w": 3.99,
+          "mass_mg_in_batch": 39.9,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 71.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "eugenol",
+          "smiles": "COC1=C(C=CC(=C1)CC=C)O",
+          "cas": "97-53-0",
+          "percent_of_aroma_w_w": 3.75,
+          "mass_mg_in_batch": 37.5,
+          "odor_notes": [
+            "pungent",
+            "dry",
+            "smoky"
+          ],
+          "panel_pleasantness": 67.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Methyl caprylate",
+          "smiles": "CCCCCCCC(=O)OC",
+          "cas": "111-11-5",
+          "percent_of_aroma_w_w": 3.29,
+          "mass_mg_in_batch": 32.9,
+          "odor_notes": [
+            "winey",
+            "orange",
+            "fruity"
+          ],
+          "panel_pleasantness": 68.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Methyl heptanoate",
+          "smiles": "CCCCCCC(=O)OC",
+          "cas": "106-73-0",
+          "percent_of_aroma_w_w": 3.29,
+          "mass_mg_in_batch": 32.9,
+          "odor_notes": [
+            "apple",
+            "fruity",
+            "waxy"
+          ],
+          "panel_pleasantness": 58.8,
+          "safety": "OK"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "flavor_name": "sweet-fruity-floral accord",
+      "predicted_mean_pleasantness": 65.74,
+      "n_components": 12,
+      "flavor_profile_top_notes": [
+        [
+          "sweet",
+          0.67
+        ],
+        [
+          "fruity",
+          0.44
+        ],
+        [
+          "floral",
+          0.33
+        ],
+        [
+          "citrus",
+          0.22
+        ],
+        [
+          "apple",
+          0.22
+        ],
+        [
+          "vanilla",
+          0.22
+        ]
+      ],
+      "novelty": {
+        "chem_distance_to_nearest": 0.663,
+        "nearest_chem_flavor": "vanilla",
+        "perceptual_distance_to_nearest": 0.434,
+        "nearest_perceptual_flavor": "banana",
+        "components_resembling_known": 3
+      },
+      "batch": {
+        "total_g": 10.0,
+        "aroma_g": 1.0,
+        "carrier_g": 9.0,
+        "carrier": "propylene glycol (food grade)",
+        "aroma_load_pct": 10.0
+      },
+      "components": [
+        {
+          "molecule": "Ethyl Vanillin",
+          "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-32-4",
+          "percent_of_aroma_w_w": 40.31,
+          "mass_mg_in_batch": 403.1,
+          "odor_notes": [
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 83.9,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenol",
+          "smiles": "CC=CC1=CC(=C(C=C1)O)OC",
+          "cas": "97-54-1",
+          "percent_of_aroma_w_w": 9.48,
+          "mass_mg_in_batch": 94.8,
+          "odor_notes": [],
+          "panel_pleasantness": 68.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Allyl heptanoate",
+          "smiles": "CCCCCCC(=O)OCC=C",
+          "cas": "142-19-8",
+          "percent_of_aroma_w_w": 9.09,
+          "mass_mg_in_batch": 90.9,
+          "odor_notes": [
+            "pineapple",
+            "fruity",
+            "banana"
+          ],
+          "panel_pleasantness": 73.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylbutyrate",
+          "smiles": "CCC(C)C(=O)OCC",
+          "cas": "7452-79-1",
+          "percent_of_aroma_w_w": 7.88,
+          "mass_mg_in_batch": 78.8,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 75.1,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Linalool",
+          "smiles": "CC(=CCCC(C)(C=C)O)C",
+          "cas": "78-70-6",
+          "percent_of_aroma_w_w": 6.43,
+          "mass_mg_in_batch": 64.3,
+          "odor_notes": [
+            "woody",
+            "citrus",
+            "floral"
+          ],
+          "panel_pleasantness": 74.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "isoeugenol acetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)C)OC",
+          "cas": "93-29-8",
+          "percent_of_aroma_w_w": 5.5,
+          "mass_mg_in_batch": 55.0,
+          "odor_notes": [],
+          "panel_pleasantness": 66.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "ethyl-3-hydroxybutyrate",
+          "smiles": "CCOC(=O)CC(C)O",
+          "cas": "5405-41-4",
+          "percent_of_aroma_w_w": 5.47,
+          "mass_mg_in_batch": 54.7,
+          "odor_notes": [
+            "grape",
+            "fruity",
+            "fresh"
+          ],
+          "panel_pleasantness": 75.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "4-Ethoxybenzaldehyde",
+          "smiles": "CCOC1=CC=C(C=C1)C=O",
+          "cas": "10031-82-0",
+          "percent_of_aroma_w_w": 4.71,
+          "mass_mg_in_batch": 47.1,
+          "odor_notes": [
+            "cherry",
+            "almond",
+            "anisic"
+          ],
+          "panel_pleasantness": 67.4,
+          "safety": "OK"
+        },
+        {
+          "molecule": "6-Acetyl-1,1,2,4,4,7-Hexamethyltetralin",
+          "smiles": "CC1CC(C2=C(C1(C)C)C=C(C(=C2)C(=O)C)C)(C)C",
+          "cas": "21145-77-7",
+          "percent_of_aroma_w_w": 3.95,
+          "mass_mg_in_batch": 39.5,
+          "odor_notes": [],
+          "panel_pleasantness": 67.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Acetanisole",
+          "smiles": "CC(=O)C1=CC=C(C=C1)OC",
+          "cas": "100-06-1",
+          "percent_of_aroma_w_w": 3.16,
+          "mass_mg_in_batch": 31.6,
+          "odor_notes": [
+            "hay",
+            "sweet",
+            "floral"
+          ],
+          "panel_pleasantness": 68.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenyl phenylacetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)CC2=CC=CC=C2)OC",
+          "cas": "120-24-1",
+          "percent_of_aroma_w_w": 2.46,
+          "mass_mg_in_batch": 24.6,
+          "odor_notes": [
+            "honey",
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 56.2,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Linalyl acetate",
+          "smiles": "CC(=CCCC(C)(C=C)OC(=O)C)C",
+          "cas": "115-95-7",
+          "percent_of_aroma_w_w": 1.57,
+          "mass_mg_in_batch": 15.7,
+          "odor_notes": [
+            "citrus",
+            "pear",
+            "fruity"
+          ],
+          "panel_pleasantness": 56.9,
+          "safety": "OK"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "flavor_name": "green-fruity-vanilla accord",
+      "predicted_mean_pleasantness": 65.73,
+      "n_components": 12,
+      "flavor_profile_top_notes": [
+        [
+          "green",
+          0.45
+        ],
+        [
+          "fruity",
+          0.45
+        ],
+        [
+          "vanilla",
+          0.36
+        ],
+        [
+          "sweet",
+          0.27
+        ],
+        [
+          "coumarinic",
+          0.18
+        ],
+        [
+          "strawberry",
+          0.18
+        ],
+        [
+          "floral",
+          0.18
+        ],
+        [
+          "pineapple",
+          0.18
+        ]
+      ],
+      "novelty": {
+        "chem_distance_to_nearest": 0.593,
+        "nearest_chem_flavor": "strawberry",
+        "perceptual_distance_to_nearest": 0.431,
+        "nearest_perceptual_flavor": "strawberry",
+        "components_resembling_known": 3
+      },
+      "batch": {
+        "total_g": 10.0,
+        "aroma_g": 1.0,
+        "carrier_g": 9.0,
+        "carrier": "propylene glycol (food grade)",
+        "aroma_load_pct": 10.0
+      },
+      "components": [
+        {
+          "molecule": "Ethyl Vanillin",
+          "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
+          "cas": "121-32-4",
+          "percent_of_aroma_w_w": 39.37,
+          "mass_mg_in_batch": 393.7,
+          "odor_notes": [
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 83.9,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Vanillin Acetate",
+          "smiles": "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+          "cas": "881-68-5",
+          "percent_of_aroma_w_w": 11.24,
+          "mass_mg_in_batch": 112.4,
+          "odor_notes": [
+            "vanilla",
+            "creamy",
+            "sweet"
+          ],
+          "panel_pleasantness": 72.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "ethyl hexanoate",
+          "smiles": "CCCCCC(=O)OCC",
+          "cas": "123-66-0",
+          "percent_of_aroma_w_w": 9.58,
+          "mass_mg_in_batch": 95.8,
+          "odor_notes": [
+            "pineapple",
+            "tropical",
+            "strawberry"
+          ],
+          "panel_pleasantness": 78.6,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylpentanoate",
+          "smiles": "CCCC(C)C(=O)OCC",
+          "cas": "39255-32-8",
+          "percent_of_aroma_w_w": 8.1,
+          "mass_mg_in_batch": 81.0,
+          "odor_notes": [
+            "pineapple",
+            "pear",
+            "fruity"
+          ],
+          "panel_pleasantness": 74.5,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Ethyl 2-methylbutyrate",
+          "smiles": "CCC(C)C(=O)OCC",
+          "cas": "7452-79-1",
+          "percent_of_aroma_w_w": 7.7,
+          "mass_mg_in_batch": 77.0,
+          "odor_notes": [
+            "green",
+            "apple",
+            "fruity"
+          ],
+          "panel_pleasantness": 75.1,
+          "safety": "OK"
+        },
+        {
+          "molecule": "isoeugenol acetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)C)OC",
+          "cas": "93-29-8",
+          "percent_of_aroma_w_w": 5.38,
+          "mass_mg_in_batch": 53.8,
+          "odor_notes": [],
+          "panel_pleasantness": 66.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Whiskey lactone",
+          "smiles": "CCCCC1C(CC(=O)O1)C",
+          "cas": "39212-23-2",
+          "percent_of_aroma_w_w": 4.85,
+          "mass_mg_in_batch": 48.5,
+          "odor_notes": [
+            "woody",
+            "coconut",
+            "coumarinic"
+          ],
+          "panel_pleasantness": 69.7,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "cas": "104-21-2",
+          "percent_of_aroma_w_w": 4.37,
+          "mass_mg_in_batch": 43.7,
+          "odor_notes": [
+            "coumarinic",
+            "fruity",
+            "cherry"
+          ],
+          "panel_pleasantness": 69.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Methyl 2-nonynoate",
+          "smiles": "CCCCCCC#CC(=O)OC",
+          "cas": "111-80-8",
+          "percent_of_aroma_w_w": 2.65,
+          "mass_mg_in_batch": 26.5,
+          "odor_notes": [
+            "green",
+            "violet",
+            "leafy"
+          ],
+          "panel_pleasantness": 65.0,
+          "safety": "OK"
+        },
+        {
+          "molecule": "cis-3-hexenyl acetate",
+          "smiles": "CCC=CCCOC(=O)C",
+          "cas": "3681-71-8",
+          "percent_of_aroma_w_w": 2.42,
+          "mass_mg_in_batch": 24.2,
+          "odor_notes": [
+            "green",
+            "grassy",
+            "fruity"
+          ],
+          "panel_pleasantness": 63.8,
+          "safety": "OK"
+        },
+        {
+          "molecule": "Isoeugenyl phenylacetate",
+          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)CC2=CC=CC=C2)OC",
+          "cas": "120-24-1",
+          "percent_of_aroma_w_w": 2.4,
+          "mass_mg_in_batch": 24.0,
+          "odor_notes": [
+            "honey",
+            "vanilla",
+            "sweet"
+          ],
+          "panel_pleasantness": 56.2,
+          "safety": "OK"
+        },
+        {
+          "molecule": "diethyl succinate",
+          "smiles": "CCOC(=O)CCC(=O)OCC",
+          "cas": "123-25-1",
+          "percent_of_aroma_w_w": 1.94,
+          "mass_mg_in_batch": 19.4,
+          "odor_notes": [
+            "winey",
+            "green",
+            "grape"
+          ],
+          "panel_pleasantness": 57.7,
+          "safety": "OK"
+        }
+      ]
+    }
+  ]
+}
