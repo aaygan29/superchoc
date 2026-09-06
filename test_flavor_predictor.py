@@ -18,7 +18,7 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertGreater(prediction.primary_tastes["sweet"], prediction.primary_tastes["sour"])
         self.assertIn("citrus", prediction.aromatic_notes)
         self.assertIn("floral", prediction.aromatic_notes)
-        self.assertAlmostEqual(prediction.overall_intensity, 0.233, places=3)
+        self.assertAlmostEqual(prediction.overall_intensity, 0.062, places=3)
 
     def test_detects_warming_profile(self) -> None:
         prediction = predict_flavor_experience(
@@ -47,7 +47,21 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertEqual(prediction.primary_tastes["sweet"], 1.0)
         self.assertNotIn("sour", prediction.primary_tastes)
         self.assertEqual(prediction.sensations["cooling"], 1.0)
-        self.assertEqual(prediction.overall_intensity, 1.0)
+        self.assertEqual(prediction.overall_intensity, 0.133)
+
+    def test_returns_zero_intensity_for_no_recognized_signal(self) -> None:
+        prediction = predict_flavor_experience(
+            {
+                "unknown_compound": 80,
+                "citric_acid": -10,
+            }
+        )
+
+        self.assertEqual(prediction.primary_tastes, {})
+        self.assertEqual(prediction.aromatic_notes, {})
+        self.assertEqual(prediction.sensations, {})
+        self.assertEqual(prediction.overall_intensity, 0.0)
+        self.assertEqual(prediction.finish, "clean")
 
 
 if __name__ == "__main__":

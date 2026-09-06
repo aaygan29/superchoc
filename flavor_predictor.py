@@ -96,11 +96,11 @@ def _finish(primary_tastes: Mapping[str, float], sensations: Mapping[str, float]
     return "clean"
 
 
-def _overall_intensity(*score_sets: Iterable[float]) -> float:
-    values = [score for scores in score_sets for score in scores]
-    if not values:
+def _overall_intensity(*score_sets: Iterable[float], total_dimensions: int) -> float:
+    if total_dimensions <= 0:
         return 0.0
-    return round(sum(values) / len(values), 3)
+    total = sum(score for scores in score_sets for score in scores)
+    return round(total / total_dimensions, 3)
 
 
 def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperience:
@@ -111,8 +111,8 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Unknown compounds are ignored.
     Returned scores are normalized to the 0.0-1.0 range, rounded to three
     decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
-    Overall intensity is the average of all produced taste, aroma, and
-    sensation scores.
+    Overall intensity is the average across all modeled taste, aroma, and
+    sensation dimensions, with absent dimensions treated as zero.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)
@@ -127,6 +127,9 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
             primary_tastes.values(),
             aromatic_notes.values(),
             sensations.values(),
+            total_dimensions=(
+                len(PRIMARY_TASTE_RULES) + len(AROMATIC_RULES) + len(SENSATION_RULES)
+            ),
         ),
         finish=_finish(primary_tastes, sensations),
     )
