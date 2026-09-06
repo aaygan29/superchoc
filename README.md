@@ -1,91 +1,56 @@
 # superchoc
 
-**Conjecture 4: Superchocolate exists in flavor space.**
+A computational research project on **Conjecture 4: Superchocolate exists in flavor
+space.**
 
-## The conjecture
+## Attribution
 
-Chocolate is a wonder of the world. There is no official list of which inventions
-have produced the most total human happiness, but chocolate would have to be on it.
+The conjecture and its framing are **not mine**. They are the work of **Jake Wintermute**,
+from his article *"Strange and Marvelous Challenges for Biological AI"* (September 2026),
+which proposes a set of Biological Conjectures for Bio-AI teams, published via
+[American Wetware](https://americanwetware.com/). Conjecture 4 (Superchocolate) is his,
+as are Conjectures 1-3 (Matrigel, the Calvin cycle, bioreactor scaling). All conjecture
+text quoted below is his.
 
-Chocolate is also a weird fluke. Evolution did not select the cacao tree to be
-delicious to humans. Of the 80,000 plant species native to South America, the seeds
-of one particular tree, properly fermented and roasted, transform into the world's
-most popular dessert ingredient. The deeper you look into chocolate, the more the
-mystery of chocolate stares back.
+This repository is my computational work **toward** his conjecture: a literature library,
+a ground-truth dataset corpus, and an online experimental-design method. The ideas being
+tested originate with Jake Wintermute; the implementation and analysis here are mine.
 
-Many of the flavors we experience are relatively simple at the molecular level. The
-essence of vanilla is a single molecule known as vanillin. Banana is isoamyl acetate.
-Pineapple is ethyl butyrate. But chocolate has [more than 600](https://pubmed.ncbi.nlm.nih.gov/33371573/)
-different flavor-active volatile compounds. Even attempts to reduce chocolate to its
-barest chemical essence still require dozens of molecules.
+## The conjecture, in Wintermute's words
 
-This means the experience of chocolate is extraordinarily high-dimensional. Hundreds
-of flavor molecules, each one with a specific binding profile across 30 human taste
-receptors and 400 human odor receptors. Their combined activation profile represents a
-kind of embedding, a neuronal signature unique to chocolate.
+> "We conjecture that the complexity of chocolate implies the possibility of
+> superchocolate. [...] there is no particular reason to think that chocolate represents
+> a maximum of delight."
 
-We conjecture that the complexity of chocolate implies the possibility of
-**superchocolate**. Chocolate didn't have to exist. If the cacao tree had gone extinct
-before humans arrived, the particular point in flavor space that chocolate encodes
-would simply be unknown to us. Given how extraordinarily large flavor space is, it
-seems likely that other exceptionally delicious embeddings exist that no human has ever
-experienced. And there is no particular reason to think that chocolate represents a
-maximum of delight. The right combination of molecules might make chocolate look like
-oatmeal.
+The argument, briefly (paraphrased from his article): chocolate has more than
+[600 flavor-active volatiles](https://pubmed.ncbi.nlm.nih.gov/33371573/), where vanilla,
+banana, and pineapple are each essentially one molecule. Each volatile has a binding
+profile across ~30 taste and ~400 odor receptors, so a flavor is a high-dimensional
+receptor-activation embedding. Flavor space is vast and mostly unexplored, so exceptional
+embeddings no human has tasted likely exist. Because human odor receptors are GPCRs, the
+same target class as ~36% of approved drugs
+([Nature Rev Drug Discov 2025](https://www.nature.com/articles/s41573-025-01139-y)),
+solving generative flavor design plausibly advances generative GPCR drug design.
 
-## Why this is a Bio-AI problem
-
-The process of flavor discovery is well aligned to the strengths of Bio-AI in 2026. It
-requires mapping flavor molecules to the receptors they activate, then mapping receptor
-activation profiles to flavor descriptions. Ultimately, the human experience of flavor
-is what matters, so the model will need to learn from reports of human tasters.
-
-As a challenge for Bio-AI, designing a molecular mix to produce a flavor response bears
-a remarkable similarity to designing a drug cocktail to produce a clinical response.
-Both require exploring large libraries of molecules, and both require generating large
-datasets with relevant context for human biology. The chocolate challenge has the
-advantage of allowing much cheaper and safer design cycles. It is easier to find humans
-to describe new flavors than to trial new pharmaceuticals.
-
-The similarity between flavors and drugs extends to the molecular level. Human odor
-receptors are GPCRs (G protein-coupled receptors), a versatile class of proteins used
-throughout the human body to sense signals and control cellular responses. This same
-protein class is an abnormally effective target for new medicines. More than 500 small
-molecules, about 36% of all approved drugs,
-[target GPCRs](https://www.nature.com/articles/s41573-025-01139-y).
-
-So there is a chance that, while solving generative flavor design, a Bio-AI team might
-also solve generative drug design. Ten years ago, a comprehensive theory of flavor
-seemed extraordinarily hard. Today it looks more like a necessary step toward solving
-the general problem of human pharmacology.
-
-## Success criteria
+His three success criteria for Conjecture 4:
 
 1. **Predict** the experience of a flavor from the structure of a molecule.
 2. **Generate** a new flavor as unique and delicious as chocolate.
 3. **Build** the world-beating model for designing drugs that target GPCRs.
 
-See [ROADMAP.md](ROADMAP.md) for how each criterion breaks down into concrete work.
+## What is in this repository (my work)
 
-## Repository contents
+- [ROADMAP.md](ROADMAP.md) - the three success criteria decomposed into concrete mapping problems and milestones.
+- [docs/LITERATURE.md](docs/LITERATURE.md) - synthesis of the molecular-flavor and olfaction literature, doubling as a library of experimental techniques and computational tools.
+- [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) - the fixed, public datasets and benchmarks that anchor each criterion, plus the evaluation contract.
+- [docs/SYNTHESIS.md](docs/SYNTHESIS.md) - assessment of whether existing work can be bridged, computationally, into progress on Wintermute's three criteria, and a concrete in-silico experiment plan.
+- [methods/active_flavor_search/](methods/active_flavor_search/) - a validated online (sequential) experimental-design method for deciding which molecule to taste next, so each human-panel cycle buys maximum progress toward Criterion 2.
+- [data/](data/) - dataset scaffold and loaders for the ground-truth corpus (interfaces and sources; does not fabricate data).
 
-- [ROADMAP.md](ROADMAP.md) - the three success criteria broken into concrete mapping problems and milestones.
-- [docs/LITERATURE.md](docs/LITERATURE.md) - synthesis of the molecular-flavor and olfaction literature, doubling as a library of experimental techniques and computational tools to draw from.
-- [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) - the fixed, public datasets and benchmarks that anchor each criterion, plus the evaluation contract that keeps claims honest.
+## Honesty note
 
-## Conclusion
-
-If taste is the last moat, then maybe superchocolate is the ultimate expression of
-taste. Scientific progress has always depended, in part, on the ability to select good
-problems. The most productive research teams have the ability to recognize when a
-particular idea's time has come. In the AI era, it seems likely that many ideas will
-see their time come all at once.
-
-## References
-
-- Mishra et al., 2024. Anatomy and processing of the cacao tree.
-- Frauendorfer & Schieberle, 2006. Selected aroma compounds in cocoa powder.
-- [Chocolate flavor-active volatile compounds (PubMed)](https://pubmed.ncbi.nlm.nih.gov/33371573/)
-- [Google Research, 2022. The Principal Odor Map.](https://research.google/)
-- Liu et al., 2024. Structural pocket prediction for drugging GPCRs.
-- [GPCRs as drug targets (Nature Reviews Drug Discovery, 2025)](https://www.nature.com/articles/s41573-025-01139-y)
+Nothing here is a solved criterion. The method is validated only on a reproducible
+synthetic ground truth (does online search beat random screening?), which is a fair test
+of the search technique, not a claim about real flavor. Real claims require the public
+datasets in [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) and, for deliciousness, blinded
+human panels.

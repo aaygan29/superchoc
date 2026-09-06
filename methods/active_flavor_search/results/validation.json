@@ -1,0 +1,17 @@
+{
+  "n_seeds": 25,
+  "budget": 50,
+  "strategy": "ucb",
+  "active_mean_final": 0.6326,
+  "random_mean_final": 0.5584,
+  "mean_gain": 0.0742,
+  "active_win_rate": 1.0,
+  "active_mean_at_half_budget": 0.6204,
+  "efficiency_gap_half_vs_full": 0.0619,
+  "checks": {
+    "gain_ok": true,
+    "winrate_ok": true,
+    "efficiency_ok": true
+  },
+  "validated": true
+}
