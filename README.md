@@ -67,6 +67,12 @@ the general problem of human pharmacology.
 
 See [ROADMAP.md](ROADMAP.md) for how each criterion breaks down into concrete work.
 
+## Repository contents
+
+- [ROADMAP.md](ROADMAP.md) - the three success criteria broken into concrete mapping problems and milestones.
+- [docs/LITERATURE.md](docs/LITERATURE.md) - synthesis of the molecular-flavor and olfaction literature, doubling as a library of experimental techniques and computational tools to draw from.
+- [docs/GROUND_TRUTH.md](docs/GROUND_TRUTH.md) - the fixed, public datasets and benchmarks that anchor each criterion, plus the evaluation contract that keeps claims honest.
+
 ## Conclusion
 
 If taste is the last moat, then maybe superchocolate is the ultimate expression of
