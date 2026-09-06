@@ -10,6 +10,7 @@ class FlavorExperience:
     aromatic_notes: Dict[str, float]
     sensations: Dict[str, float]
     overall_intensity: float
+    intensity_model: str
     finish: str
 
 
@@ -59,6 +60,9 @@ SENSATION_RULES = {
     "astringent": {"tannin": 1.0, "catechin": 0.75},
     "creamy": {"diacetyl": 1.0},
 }
+
+INTENSITY_MODEL = "dimension-average-v1"
+INTENSITY_BASELINE_DIMENSIONS = 15
 
 
 def _normalize(score: float) -> float:
@@ -119,11 +123,12 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Unknown compounds are ignored.
     Returned scores are normalized to the 0.0-1.0 range, rounded to three
     decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
-    Overall intensity is the average across all modeled taste, aroma, and
-    sensation dimensions, with absent dimensions treated as zero. A single
-    compound may contribute to multiple dimensions when it appears in more than
-    one rule set. When strong heat and cooling sensations tie, cooling wins the
-    finish label.
+    Overall intensity uses the fixed `dimension-average-v1` model, which
+    averages scores against a stable 15-dimension baseline so values stay
+    comparable even if the rule catalog expands later. A single compound may
+    contribute to multiple dimensions when it appears in more than one rule
+    set. When strong heat and cooling sensations tie, cooling wins the finish
+    label.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)
@@ -138,9 +143,8 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
             primary_tastes.values(),
             aromatic_notes.values(),
             sensations.values(),
-            total_dimensions=(
-                len(PRIMARY_TASTE_RULES) + len(AROMATIC_RULES) + len(SENSATION_RULES)
-            ),
+            total_dimensions=INTENSITY_BASELINE_DIMENSIONS,
         ),
+        intensity_model=INTENSITY_MODEL,
         finish=_finish(primary_tastes, sensations),
     )

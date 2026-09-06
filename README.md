@@ -21,7 +21,7 @@ prediction = predict_flavor_experience(
 print(prediction)
 ```
 
-Unknown compounds are ignored, and recognized compound scores are normalized to the `0.0-1.0` range. The overall intensity score averages across all modeled taste, aroma, and sensation dimensions, so missing dimensions contribute `0.0`. A single compound can affect more than one modeled dimension when it contributes to multiple rules.
+Unknown compounds are ignored, and recognized compound scores are normalized to the `0.0-1.0` range. The returned `intensity_model` currently uses `dimension-average-v1`, which averages across a fixed 15-dimension baseline so scores remain comparable even if new rules are added later. A single compound can affect more than one modeled dimension when it contributes to multiple rules.
 
 The predictor estimates:
 

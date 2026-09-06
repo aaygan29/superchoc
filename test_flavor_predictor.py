@@ -19,6 +19,7 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertIn("citrus", prediction.aromatic_notes)
         self.assertIn("floral", prediction.aromatic_notes)
         self.assertAlmostEqual(prediction.overall_intensity, 0.062, places=3)
+        self.assertEqual(prediction.intensity_model, "dimension-average-v1")
 
     def test_detects_warming_profile(self) -> None:
         prediction = predict_flavor_experience(
