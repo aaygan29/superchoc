@@ -108,6 +108,7 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Predict the likely flavor experience from a molecular composition.
 
     Composition values are relative concentrations on a 0-100 scale.
+    Unknown compounds are ignored.
     Returned scores are normalized to the 0.0-1.0 range, rounded to three
     decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
     Overall intensity is the average of all produced taste, aroma, and

@@ -47,6 +47,7 @@ class FlavorPredictorTests(unittest.TestCase):
         self.assertEqual(prediction.primary_tastes["sweet"], 1.0)
         self.assertNotIn("sour", prediction.primary_tastes)
         self.assertEqual(prediction.sensations["cooling"], 1.0)
+        self.assertEqual(prediction.overall_intensity, 1.0)
 
 
 if __name__ == "__main__":

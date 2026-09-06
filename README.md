@@ -21,6 +21,8 @@ prediction = predict_flavor_experience(
 print(prediction)
 ```
 
+Unknown compounds are ignored, and recognized compound scores are normalized to the `0.0-1.0` range.
+
 The predictor estimates:
 
 - primary tastes such as sweet, sour, bitter, salty, and umami
