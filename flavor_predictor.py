@@ -112,7 +112,9 @@ def predict_flavor_experience(composition: Mapping[str, float]) -> FlavorExperie
     Returned scores are normalized to the 0.0-1.0 range, rounded to three
     decimals, capped at 1.0 for high inputs, and clamped to 0.0 for negatives.
     Overall intensity is the average across all modeled taste, aroma, and
-    sensation dimensions, with absent dimensions treated as zero.
+    sensation dimensions, with absent dimensions treated as zero. A single
+    compound may contribute to multiple dimensions when it appears in more than
+    one rule set.
     """
 
     primary_tastes = _score_rule_set(composition, PRIMARY_TASTE_RULES)
