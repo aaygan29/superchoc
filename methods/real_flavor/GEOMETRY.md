@@ -25,11 +25,21 @@ Using Leffingwell odor descriptors as the perceptual representation of ~2500 mol
    shuffled **0.0205**, i.e. flavor space is **more tree-like than the control**, consistent
    with the hyperbolic-structure literature (the effect is modest, as expected for a 113-note
    descriptor space).
-2. **Low-dimensional map.** A PCA coordinate embedding. Honest finding: a flat linear 3D
-   Euclidean embedding preserves perceptual (Jaccard) distance only weakly (**Spearman ~0.24**,
-   flat across 3-30 dims), which is exactly why the literature turns to hyperbolic geometry.
-   So the PCA coordinate is reported only as a rough map; the actual evaluation uses full
-   perceptual distance.
+2. **Low-dimensional map, Euclidean vs hyperbolic.** A flat linear PCA embedding preserves
+   perceptual (Jaccard) distance only weakly (**Spearman ~0.24-0.27**, flat across 3-30 dims).
+   A **Poincare-ball (hyperbolic) embedding** fit to the same distances (torch, autograd,
+   `poincare_faithfulness`) does much better and wins at every dimension, replicating
+   Sharpee et al. on our data:
+
+   | dim | hyperbolic Spearman | Euclidean Spearman | improvement |
+   |---|---|---|---|
+   | 2 | 0.566 | 0.260 | +0.31 |
+   | 3 | **0.592** | 0.265 | +0.33 |
+   | 5 | 0.651 | 0.277 | +0.37 |
+
+   The 3D hyperbolic fit ($\approx$0.59) matches the paper's finding that a 3D hyperbolic
+   space fits odor perception. The PCA coordinate is kept only as a rough visual map; the
+   `locate` evaluation below uses full perceptual distance, not the lossy linear map.
 3. **`locate(blend)`.** Places a blend by its mean descriptor profile and reports, in the
    FULL perceptual space (generalized Jaccard):
    - `nearest_known_flavors` (where it lands),

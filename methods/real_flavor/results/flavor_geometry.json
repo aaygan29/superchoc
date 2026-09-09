@@ -7,6 +7,29 @@
     "more_tree_like_than_control": true
   },
   "euclidean_embedding_faithfulness_spearman": 0.2401,
+  "poincare_vs_euclidean": [
+    {
+      "dim": 2,
+      "hyperbolic_spearman": 0.5658,
+      "euclidean_spearman": 0.2602,
+      "hyperbolic_wins": true,
+      "improvement": 0.3056
+    },
+    {
+      "dim": 3,
+      "hyperbolic_spearman": 0.5919,
+      "euclidean_spearman": 0.2653,
+      "hyperbolic_wins": true,
+      "improvement": 0.3266
+    },
+    {
+      "dim": 5,
+      "hyperbolic_spearman": 0.6512,
+      "euclidean_spearman": 0.2765,
+      "hyperbolic_wins": true,
+      "improvement": 0.3747
+    }
+  ],
   "located_top_denovo_recipe": {
     "map_coordinates_pca": [
       0.064,

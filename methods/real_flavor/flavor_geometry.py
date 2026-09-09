@@ -109,7 +109,7 @@ class FlavorSpaceGeometry:
                 "more_tree_like_than_control": bool(real < ctrl)}
 
     def embedding_faithfulness(self, n_sample=300, seed=0):
-        """Do low-dim coordinates preserve perceptual (descriptor) distances?"""
+        """Do low-dim EUCLIDEAN (PCA) coordinates preserve perceptual distances?"""
         from scipy.stats import spearmanr
         rng = np.random.default_rng(seed)
         idx = rng.choice(len(self.names), size=min(n_sample, len(self.names)), replace=False)
@@ -118,6 +118,65 @@ class FlavorSpaceGeometry:
         Demb = np.sqrt(((C[:, None, :] - C[None, :, :]) ** 2).sum(-1))
         iu = np.triu_indices(len(idx), 1)
         return round(float(spearmanr(Dtrue[iu], Demb[iu]).correlation), 4)
+
+    def poincare_faithfulness(self, n_sample=250, dim=3, steps=800, seed=0):
+        """Fit a Poincare-ball (hyperbolic) embedding to the perceptual distance matrix and
+        compare its distance-preservation to the flat Euclidean (PCA) embedding at the same
+        dimension. Sharpee et al. (2018) predict hyperbolic geometry fits odor space better;
+        this tests that on our data. Returns both Spearman values and the winner.
+
+        Poincare distance: d(u,v) = arcosh(1 + 2||u-v||^2 / ((1-||u||^2)(1-||v||^2)))."""
+        import torch
+        from scipy.stats import spearmanr
+
+        rng = np.random.default_rng(seed)
+        idx = rng.choice(len(self.names), size=min(n_sample, len(self.names)), replace=False)
+        D = _jaccard_dist(self.V[idx])
+        iu = np.triu_indices(len(idx), 1)
+        target = torch.tensor(D[iu], dtype=torch.float64)
+
+        torch.manual_seed(seed)
+        n = len(idx)
+        X = torch.nn.Parameter(torch.randn(n, dim, dtype=torch.float64) * 0.01)
+        log_s = torch.nn.Parameter(torch.zeros((), dtype=torch.float64))  # learnable scale
+        opt = torch.optim.Adam([X, log_s], lr=5e-2)
+        I, J = iu
+        I = torch.tensor(I); J = torch.tensor(J)
+        eps = 1e-6
+        for _ in range(steps):
+            opt.zero_grad()
+            norm = (X * X).sum(1)
+            norm = torch.clamp(norm, max=1 - 1e-4)
+            u, v = X[I], X[J]
+            nu, nv = norm[I], norm[J]
+            diff2 = ((u - v) ** 2).sum(1)
+            arg = 1 + 2 * diff2 / ((1 - nu) * (1 - nv) + eps)
+            dP = torch.acosh(torch.clamp(arg, min=1 + eps))
+            loss = ((dP - torch.exp(log_s) * target) ** 2).mean()
+            loss.backward()
+            opt.step()
+            with torch.no_grad():                     # keep points inside the ball
+                nrm = X.norm(dim=1, keepdim=True)
+                too_big = (nrm > 1 - 1e-3).squeeze()
+                if too_big.any():
+                    X[too_big] = X[too_big] / nrm[too_big] * (1 - 1e-3)
+        with torch.no_grad():
+            norm = torch.clamp((X * X).sum(1), max=1 - 1e-4)
+            u, v = X[I], X[J]
+            diff2 = ((u - v) ** 2).sum(1)
+            arg = 1 + 2 * diff2 / ((1 - norm[I]) * (1 - norm[J]) + eps)
+            dP = torch.acosh(torch.clamp(arg, min=1 + eps)).cpu().numpy()
+        hyp = float(spearmanr(D[iu], dP).correlation)
+        # Euclidean PCA baseline on the SAME sample and dimension
+        Vc = self.V[idx] - self.V[idx].mean(0)
+        U, S, Wt = np.linalg.svd(Vc, full_matrices=False)
+        C = Vc @ Wt[:dim].T
+        Demb = np.sqrt(((C[:, None, :] - C[None, :, :]) ** 2).sum(-1))
+        euc = float(spearmanr(D[iu], Demb[iu]).correlation)
+        return {"dim": dim, "hyperbolic_spearman": round(hyp, 4),
+                "euclidean_spearman": round(euc, 4),
+                "hyperbolic_wins": bool(hyp > euc),
+                "improvement": round(hyp - euc, 4)}
 
     def _blend_descriptor(self, smiles_list):
         """Mean descriptor profile of a blend; each molecule uses its own descriptors if
