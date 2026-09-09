@@ -1,0 +1,61 @@
+{
+  "n_molecules": 2500,
+  "dim": 3,
+  "hyperbolicity": {
+    "gromov_delta_real": 0.0188,
+    "gromov_delta_shuffled": 0.0205,
+    "more_tree_like_than_control": true
+  },
+  "euclidean_embedding_faithfulness_spearman": 0.2401,
+  "located_top_denovo_recipe": {
+    "map_coordinates_pca": [
+      0.064,
+      0.386,
+      -0.052
+    ],
+    "nearest_known_flavors": [
+      "anisyl propionate",
+      "(-)-menthyl isobutyrate",
+      "dimethyl adipate",
+      "10039-39-1",
+      "benzylisopropyl propionate"
+    ],
+    "local_isolation_knn_dist": 0.82,
+    "novelty_percentile": 0.403,
+    "interpretation": "sits among known flavors"
+  },
+  "located_chocolate_like": {
+    "map_coordinates_pca": [
+      0.139,
+      -0.143,
+      0.379
+    ],
+    "nearest_known_flavors": [
+      "phenylacetaldehyde",
+      "phenethyl butyrate",
+      "3-methylbutanal",
+      "2-ethyl-5-methylpyrazine",
+      "heptan-3-yl acetate"
+    ],
+    "local_isolation_knn_dist": 0.766,
+    "novelty_percentile": 0.433,
+    "interpretation": "sits among known flavors"
+  },
+  "located_common_fruity": {
+    "map_coordinates_pca": [
+      -0.67,
+      -0.111,
+      -0.559
+    ],
+    "nearest_known_flavors": [
+      "butyl acetate",
+      "ethyl hexanoate",
+      "ethyl butyrate",
+      "butyl butyrate",
+      "isobutyl butyrate"
+    ],
+    "local_isolation_knn_dist": 0.505,
+    "novelty_percentile": 0.003,
+    "interpretation": "sits among known flavors"
+  }
+}
