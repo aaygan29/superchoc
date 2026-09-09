@@ -57,12 +57,21 @@ mixture labels, so not used to rank).
 - `real_data.py` - real molecules + real pleasantness labels (Keller 2016 via Pyrfume).
 - `featurize.py` - RDKit SMILES -> ECFP4.
 - `goodness_real.py` - real goodness model + cross-validation.
+- `flavor_profile.py` - odor descriptors (Leffingwell) used for profiling and geometry.
+- `receptors.py` - molecule -> odorant-receptor activation (Mainland 2015).
+- `neuro_reward.py` - reward/mood molecules (caffeine, PEA, serotonin/dopamine precursors).
 - `safety.py` - food-appropriate toxicity screen.
 - `mixture_model.py` - learned set mixture model vs mean-pool baseline (non-additive oracle).
-- `suite_real.py` - the candidate-suite generator.
+- `composition.py` - chemical-class composition statistics (see COMPOSITION.md).
+- `flavor_math.py` + `FlavorMath.lean` - tastiness metric + Lean-checked theorems (see MATH.md).
+- `flavor_geometry.py` - flavor-space geometry: hyperbolicity test + locate-a-blend (see GEOMETRY.md).
+- `lego_assembly.py` - de-novo molecule construction + PubChem novelty (see LEGO.md).
+- `reference_flavors.py` - reference flavor key-odorant sets for novelty comparison.
+- `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` - recipe generators.
+- `suite_real.py` - the single-molecule candidate-suite generator.
 - `validate_real.py` - pre-registered validation incl. a hard safety gate.
 - `test_real_flavor.py` - offline unit tests.
-- `results/` - validation JSON + the generated suite (JSON + markdown).
+- `results/` - validation JSON + generated suites/recipes (JSON + markdown).
 - `HANDOFF.md` - what to give a chemist / molecular gastronomist, and safety caveats.
 
 ## Honest limits

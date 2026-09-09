@@ -45,6 +45,8 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Food-safety toxicity screen | 380/420 pass; benzene/formaldehyde/epoxide flagged | `safety.py` |
 | De-novo molecules generated | 434 safe & novel; **top-12 all absent from PubChem** | `lego_assembly.py` |
 | Metric properties (best-part bound, boundedness) | **machine-checked in Lean** (exit 0) | `FlavorMath.lean` |
+| Flavor-space geometry (is it tree-like/hyperbolic?) | real Gromov δ **0.0188 < 0.0205** shuffled | `flavor_geometry.py` |
+| Locate-a-blend novelty layer | discriminates common (0.003) vs de-novo (~0.40) blends | `flavor_geometry.py` |
 | Online active search vs random screening | +0.074, 25/25 seeds (synthetic) | `methods/active_flavor_search/` |
 | Final novel recipes | 5 blends, 6-8/10 de-novo components, novelty 0.63-0.67 | `denovo_recipes.py` |
 
@@ -85,6 +87,7 @@ superchoc/
 | `mixture_model.py` | learned non-additive mixture model | |
 | `composition.py` | chemical-class composition statistics | COMPOSITION |
 | `flavor_math.py` + `FlavorMath.lean` | tastiness metric + Lean-checked theorems | MATH |
+| `flavor_geometry.py` | flavor-space geometry: hyperbolicity test + locate-a-blend | GEOMETRY |
 | `lego_assembly.py` | de-novo molecule construction + PubChem novelty | LEGO |
 | `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` | recipe generators | |
 | `results/` | committed JSON/markdown for every result above | |
