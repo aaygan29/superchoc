@@ -61,7 +61,9 @@ superchoc/
   REPLICATION.md       <- exact steps + methodology to reproduce everything
   ROADMAP.md           <- Wintermute's 3 success criteria, decomposed
   requirements.txt     <- Python deps
-  paper/               <- the write-up as a NeurIPS-style paper (+ anonymized PDF)
+  paper/               <- superchoc_v1_older_article-class.{tex,pdf}: an OLDER article-class
+                          draft. The current NeurIPS-template submission (with the geometry
+                          results) lives in the submission bundle, not in this repo.
   docs/                <- background and honest framing
     LITERATURE.md         literature synthesis + technique library
     GROUND_TRUTH.md       the public datasets/benchmarks that anchor each claim
