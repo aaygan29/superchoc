@@ -1,0 +1,17 @@
+{
+  "calibration": {
+    "n": 200,
+    "median": 1.859,
+    "p90": 3.3023000000000002,
+    "threshold": 8.30305,
+    "pct": 99.0
+  },
+  "known_good_stable": "10/10",
+  "should_flag_flagged": "4/4",
+  "denovo_verdicts": {
+    "STABLE": 149,
+    "STRAINED": 0,
+    "FAILED": 0
+  },
+  "denovo_n": 149
+}

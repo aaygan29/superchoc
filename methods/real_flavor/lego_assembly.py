@@ -38,6 +38,7 @@ from goodness_real import RealGoodnessModel
 from real_data import build_keller_pleasantness
 import flavor_profile as fp
 import receptors as rc
+import geometry_gate as gg
 
 
 def _tanimoto(a, b):
@@ -161,20 +162,32 @@ def run(seed=0, n_build=800, top_k_pubchem=12):
     # keep safe, novel-vs-training, reasonable in-distribution similarity
     keep = [e for e in evald if e["safety"] == "OK" and e["novel_vs_training"]]
     keep.sort(key=lambda e: e["predicted_pleasantness"], reverse=True)
-    # empirical structure novelty: PubChem check on the top candidates
+    # 3D geometry gate: cull any de-novo structure that is not physically realizable in 3D
+    # (impossible valence/ring closure, non-embeddable, non-convergent). Threshold calibrated
+    # once on a sample of the known safe molecules so the strain flag is data-driven.
+    geo_thr = gg.calibrate_threshold(safe_smiles[:60])["threshold"]
+    for e in keep:
+        gv = gg.geometry_check(e["smiles"], threshold=geo_thr)
+        e["geometry"] = gv["verdict"]
+        e["strain_per_heavy_atom"] = gv.get("strain_per_heavy_atom")
+    n_before_geo = len(keep)
+    keep = [e for e in keep if e["geometry"] == "STABLE"]
+    # empirical structure novelty: PubChem check on the top surviving candidates
     for e in keep[:top_k_pubchem]:
         known = pubchem_known(e["inchikey"])
         e["in_pubchem"] = known
         e["structurally_novel"] = (known is False)
         time.sleep(0.25)
     return {"n_fragments": len(frags), "n_assembled": len(cands),
-            "n_safe_novel": len(keep), "candidates": keep}
+            "n_safe_novel": n_before_geo, "n_geometry_stable": len(keep),
+            "geometry_threshold": round(geo_thr, 3), "candidates": keep}
 
 
 if __name__ == "__main__":
     out = run()
-    print("fragments=%d assembled=%d safe&novel=%d" %
-          (out["n_fragments"], out["n_assembled"], out["n_safe_novel"]))
+    print("fragments=%d assembled=%d safe&novel=%d geometry_stable=%d" %
+          (out["n_fragments"], out["n_assembled"], out["n_safe_novel"],
+           out["n_geometry_stable"]))
     for e in out["candidates"][:10]:
         print(f"  pl={e['predicted_pleasantness']:.1f} sim={e['nearest_known_tanimoto']} "
               f"pubchem={e.get('in_pubchem')} notes={e['predicted_odor_notes'][:3]} {e['smiles']}")
