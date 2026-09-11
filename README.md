@@ -45,7 +45,7 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Food-safety toxicity screen | 380/420 pass; benzene/formaldehyde/epoxide flagged | `safety.py` |
 | De-novo molecules generated | 434 safe & novel; **top-12 all absent from PubChem** | `lego_assembly.py` |
 | 3D geometry gate (de-novo validity) | **10/10** real molecules pass, **4/4** invalid rejected; library 100% valid | `geometry_gate.py` |
-| Structure-based receptor binding (Boltz-2 co-fold, held-out specificity) | harness ready; **blocked on Boltz credits** (402) | `receptor_binding.py` |
+| Structure-based receptor binding (Boltz-2 co-fold, held-out specificity swap) | **separates cognate from non-cognate: AUC 0.875, 2/2 receptors** | `receptor_binding.py` |
 | Metric properties (best-part bound, boundedness) | **machine-checked in Lean** (exit 0) | `FlavorMath.lean` |
 | Flavor space is hyperbolic (Poincaré vs Euclidean, 3D) | Spearman **0.59 vs 0.27** (+0.33) | `flavor_geometry.py` |
 | Flavor-space tree-likeness (Gromov δ vs shuffled) | real **0.0188 < 0.0205** shuffled | `flavor_geometry.py` |

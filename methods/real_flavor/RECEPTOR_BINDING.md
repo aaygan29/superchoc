@@ -42,17 +42,36 @@ reported finding and the structural-NN layer in `receptors.py` remains the recep
 If it does separate, it becomes a real structure-based upgrade to the weakest quantitative link
 in the pipeline.
 
-## Status
+## Result (8 co-folds, `results/receptor_binding.json`)
 
-Layer and validation harness are built and schema-verified against the live API (the top-level
-`binding: {type: ligand_protein_binding, binder_chain_id: B}` block validates; each co-fold is
-~$0.05, so the 8-run matrix is ~$0.40). **Runs are currently blocked on Boltz account credits**
-(the API returned `402 payment_required`, "All credits depleted"). Add prepaid credits or enable
-on-demand billing at the api.boltz.bio console, then:
+The score is `ligand_iptm` (the ligand interface pTM from Boltz-2); the runs did not emit a
+separate affinity head, so this is a pose-confidence proxy, not a measured affinity.
+
+| receptor | cognate class mean | non-cognate class mean | margin | direction |
+|---|---|---|---|---|
+| OR5AN1 (musk) | 0.940 | 0.729 | **+0.211** | correct |
+| OR51E2 (acid) | 0.838 | 0.793 | **+0.045** | correct |
+
+Per-pair `ligand_iptm`: OR5AN1 muscone 0.961, civetone 0.919, acetic 0.833, propionic 0.625;
+OR51E2 propionic 0.891, muscone 0.816, acetic 0.786, civetone 0.771.
+
+**Separation AUC (cognate > non-cognate) = 0.875, 2/2 receptors in the correct direction ->
+verdict SEPARATES.** The structure-based co-fold recovers receptor specificity for molecule
+-receptor pairs that are not in this repo's training data.
+
+Honest caveats (do not overclaim):
+- n is small (2 receptors x 4 ligands). This is a proof of concept, not a benchmark.
+- OR51E2's margin is thin (+0.045): muscone scores 0.816 on the acid receptor, above cognate
+  acetic acid (0.786). Discrimination is much stronger for OR5AN1 than OR51E2.
+- `ligand_iptm` is interface-pose confidence, which correlates with but is not binding affinity.
+- Boltz-2 on 7TM GPCRs is out-of-distribution; that it separates here is encouraging, not proof
+  the score is calibrated to real EC50s.
+
+## Reproduce
 
 ```bash
-python validate_receptor_binding.py --estimate   # confirm cost, no GPU
-python validate_receptor_binding.py               # run the 8 co-folds, cache, write results
+python validate_receptor_binding.py --estimate   # confirm cost (~$0.05 each), no GPU
+python validate_receptor_binding.py               # run/reload the 8 co-folds, write results
 ```
 
 Results cache under `results/boltz/`, so re-running is free after the first pass.

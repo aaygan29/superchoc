@@ -1,0 +1,94 @@
+{
+  "score_field": "ligand_iptm",
+  "rows": [
+    {
+      "receptor": "OR5AN1",
+      "ligand": "muscone",
+      "class": "musk",
+      "cognate": true,
+      "score": 0.961117684841156,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR5AN1",
+      "ligand": "civetone",
+      "class": "musk",
+      "cognate": true,
+      "score": 0.9189674854278564,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR5AN1",
+      "ligand": "propionic_acid",
+      "class": "acid",
+      "cognate": false,
+      "score": 0.6245611310005188,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR5AN1",
+      "ligand": "acetic_acid",
+      "class": "acid",
+      "cognate": false,
+      "score": 0.8332224488258362,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR51E2",
+      "ligand": "muscone",
+      "class": "musk",
+      "cognate": false,
+      "score": 0.8155596852302551,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR51E2",
+      "ligand": "civetone",
+      "class": "musk",
+      "cognate": false,
+      "score": 0.7711086273193359,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR51E2",
+      "ligand": "propionic_acid",
+      "class": "acid",
+      "cognate": true,
+      "score": 0.8910620212554932,
+      "score_field": "ligand_iptm",
+      "cached": false
+    },
+    {
+      "receptor": "OR51E2",
+      "ligand": "acetic_acid",
+      "class": "acid",
+      "cognate": true,
+      "score": 0.785658061504364,
+      "score_field": "ligand_iptm",
+      "cached": false
+    }
+  ],
+  "per_receptor": {
+    "OR5AN1": {
+      "cognate_mean": 0.94,
+      "noncognate_mean": 0.7289,
+      "margin": 0.2112,
+      "correct_direction": true
+    },
+    "OR51E2": {
+      "cognate_mean": 0.8384,
+      "noncognate_mean": 0.7933,
+      "margin": 0.045,
+      "correct_direction": true
+    }
+  },
+  "separation_auc": 0.875,
+  "receptors_correct_direction": "2/2",
+  "verdict": "SEPARATES"
+}
