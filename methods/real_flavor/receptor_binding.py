@@ -106,25 +106,35 @@ def estimate_cost(receptor, smiles):
 
 
 def _parse_metrics(run_dir: Path):
-    """Pull confidence + affinity from a completed run's output tree."""
+    """Pull confidence + affinity from a completed run's output tree.
+
+    Boltz-2 writes metrics.json with the per-sample metrics nested under best_sample.metrics
+    (ptm, iptm, ligand_iptm, structure_confidence, complex_plddt, ...). Affinity, when present,
+    appears as affinity_pred_value / affinity_probability_binary. We flatten whichever exist.
+    """
+    wanted = ("structure_confidence", "ptm", "iptm", "ligand_iptm", "protein_iptm",
+              "complex_plddt", "complex_iplddt", "complex_pde", "complex_ipde",
+              "affinity_pred_value", "affinity_probability_binary")
     out = {}
-    files = list(run_dir.rglob("*.json"))
-    for f in files:
-        name = f.name.lower()
+    for f in run_dir.rglob("*.json"):
         try:
             d = json.loads(f.read_text())
         except Exception:
             continue
-        if "confidence" in name or "metrics" in name or "summary" in name:
-            for k in ("iptm", "ptm", "complex_iptm", "plddt", "complex_plddt",
-                      "ligand_iptm", "protein_iptm", "confidence_score"):
-                if k in d:
-                    out[k] = d[k]
-        if "affinity" in name:
-            for k in ("affinity_pred_value", "affinity_probability_binary",
-                      "affinity_pred_value1", "affinity_probability_binary1"):
-                if k in d:
-                    out[k] = d[k]
+        # search top-level and one nested level (best_sample.metrics)
+        candidates = [d]
+        if isinstance(d, dict):
+            bs = d.get("best_sample")
+            if isinstance(bs, dict) and isinstance(bs.get("metrics"), dict):
+                candidates.append(bs["metrics"])
+            if isinstance(d.get("metrics"), dict):
+                candidates.append(d["metrics"])
+        for c in candidates:
+            if not isinstance(c, dict):
+                continue
+            for k in wanted:
+                if k in c and c[k] is not None:
+                    out[k] = c[k]
     return out
 
 

@@ -44,9 +44,11 @@ LIGANDS = {
 # receptor -> the ligand CLASS it is cognate for
 COGNATE = {"OR5AN1": "musk", "OR51E2": "acid"}
 
-# binding-confidence-like fields, best-first; first present is used as the score.
-SCORE_FIELDS = ["binding_confidence", "complex_iptm", "iptm",
-                "affinity_probability_binary", "confidence_score", "ptm"]
+# binding-confidence-like fields, best-first; first present is used as the score. For a
+# ligand-protein complex the interface pTM for the ligand (ligand_iptm) is the natural binding
+# signal; affinity fields are used if the run produced them.
+SCORE_FIELDS = ["affinity_probability_binary", "ligand_iptm", "iptm",
+                "structure_confidence", "ptm"]
 
 
 def _score(metrics):
