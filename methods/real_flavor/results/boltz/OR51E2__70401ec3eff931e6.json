@@ -1,0 +1,19 @@
+{
+  "receptor": "OR51E2",
+  "uniprot": "Q9H255",
+  "smiles": "CCC(=O)O",
+  "metrics": {
+    "structure_confidence": 0.9277783632278442,
+    "ptm": 0.9322199821472168,
+    "iptm": 0.8910620212554932,
+    "ligand_iptm": 0.8910620212554932,
+    "protein_iptm": 0,
+    "complex_plddt": 0.9369574189186096,
+    "complex_iplddt": 0.9284650087356567,
+    "complex_pde": 0.4206036329269409,
+    "complex_ipde": 1.6886634826660156
+  },
+  "cached": false,
+  "stdout_tail": "",
+  "stderr_tail": "Run directory /Users/aayushgandhi/Desktop/Research/projects/AI/superchoc/methods/real_flavor/results/boltz/_runs/OR51E2__70401ec3eff931e6/OR51E2__70401ec3eff931e6 already contains .boltz-run.json; use download-results to resume it or choose a different --name/--run-dir\n"
+}

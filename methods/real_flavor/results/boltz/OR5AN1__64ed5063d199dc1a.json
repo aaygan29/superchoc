@@ -1,0 +1,19 @@
+{
+  "receptor": "OR5AN1",
+  "uniprot": "Q8NGI8",
+  "smiles": "CC(=O)O",
+  "metrics": {
+    "structure_confidence": 0.8796111345291138,
+    "ptm": 0.9365478754043579,
+    "iptm": 0.8332224488258362,
+    "ligand_iptm": 0.8332224488258362,
+    "protein_iptm": 0,
+    "complex_plddt": 0.8912082314491272,
+    "complex_iplddt": 0.8532187938690186,
+    "complex_pde": 0.4239098131656647,
+    "complex_ipde": 2.6705892086029053
+  },
+  "cached": false,
+  "stdout_tail": "/Users/aayushgandhi/Desktop/Research/projects/AI/superchoc/methods/real_flavor/results/boltz/_runs/OR5AN1__64ed5063d199dc1a/OR5AN1__64ed5063d199dc1a\n",
+  "stderr_tail": ""
+}
