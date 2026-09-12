@@ -58,12 +58,25 @@ The ubiquitous fruity blend is correctly flagged as **not** novel; the de-novo r
 a more sparsely populated region. This is the "where should this land" hypothesis layer:
 a coordinate + nearest neighbors + an honest novelty estimate against a same-size baseline.
 
-## How it plugs into the pipeline
+## How it plugs into the pipeline (now wired)
 
-`locate()` is an evaluation layer for any candidate from `recipes.py` / `denovo_recipes.py`:
-attach `novelty_percentile` and `nearest_known_flavors` to each proposed blend to hypothesize
-its perceptual position before a panel ever tastes it. Full hyperbolic (Poincare/Lorentz)
-embedding, following Sharpee, is the natural next step and would improve the map coordinate.
+`denovo_recipes.compose()` calls `locate()` on every generated recipe (via `_locate_recipes`,
+guarded so a geometry failure never breaks generation) and attaches a `flavor_space` field:
+map coordinate, `nearest_known_flavors`, `novelty_percentile` (vs same-size random blends), and
+an interpretation. So each proposed recipe now carries a hypothesis for where it lands in flavor
+space before any panel tastes it. Artifact: `results/denovo_recipes.json`.
+
+**Honest finding this surfaced.** The de-novo recipes are highly novel *chemically*
+(Tanimoto-based novelty 0.6-0.7, 5-7 of 10 components de-novo) but sit at LOW *perceptual*
+novelty (percentile 0.0-0.22, "among known flavors"): their nearest neighbours are familiar
+esters/salicylates. Chemical novelty is not perceptual novelty. The new molecules smell like
+known compounds, so the blends land in populated flavor-space regions rather than empty ones.
+For a "make it taste good" goal that may be fine (or even desirable); for "reach a genuinely
+unexperienced flavor" it says the current generator is not yet pushing into sparse regions. The
+geometry layer makes that tension measurable instead of assumed.
+
+Full hyperbolic (Poincare/Lorentz) placement of the located blend, following Sharpee, is the
+natural next step and would sharpen the map coordinate.
 
 ## Reproduce
 

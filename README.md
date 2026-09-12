@@ -52,6 +52,7 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Locate-a-blend novelty layer | discriminates common (0.003) vs de-novo (~0.40) blends | `flavor_geometry.py` |
 | Online active search vs random screening | +0.074, 25/25 seeds (synthetic) | `methods/active_flavor_search/` |
 | Final novel recipes | 5 blends, 6-8/10 de-novo components, novelty 0.63-0.67 | `denovo_recipes.py` |
+| Recipes located in flavor space (geometry layer wired in) | chemically novel (~0.65) but perceptually familiar (novelty pct 0.0-0.22) | `denovo_recipes.py` + `flavor_geometry.py` |
 
 ---
 
