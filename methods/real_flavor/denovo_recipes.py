@@ -32,6 +32,7 @@ from safety import screen
 import composition as comp
 from reference_flavors import REFERENCE_FLAVORS
 import flavor_geometry as fg
+import mixtures as mx
 
 _HERE = os.path.dirname(__file__)
 
@@ -111,9 +112,66 @@ def _locate_recipes(recipes_out):
     return recipes_out
 
 
+def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
+    """Attach mixture-level (combo) analysis to each recipe, prioritizing the externally-
+    validated Snitz/Ravia angle-distance representation:
+      - mixture_distinctiveness: min perceptual angle-distance to any known reference flavor
+        (higher = more perceptually distinct as a COMBO), + the nearest reference flavor;
+      - olfactory_white_risk: Weiss & Sobel complexity guardrail;
+      - key_components: omission test (drop each component, measure perceptual shift) in the
+        SAME validated representation -> which molecules most shape the blend's percept.
+    For the top recipe, also derive optimal PROPORTIONS via Scheffe mixture-design optimization
+    (exact math) over an additive-pleasantness + distinctiveness objective (non-additive in
+    proportions, so the optimum is not degenerate). Guarded: failures never break generation."""
+    try:
+        ref_mix = {f: list(mols.values()) for f, mols in REFERENCE_FLAVORS.items()}
+        ref_smiles = [s for ms in ref_mix.values() for s in ms]
+        space = mx.MixtureSpace(ref_smiles + [p["smiles"] for p in model_ctx["pool"]])
+    except Exception as e:
+        for r in recipes_out:
+            r["mixture"] = {"error": f"mixture space unavailable: {type(e).__name__}"}
+        return recipes_out
+
+    for r in recipes_out:
+        smis = [c["smiles"] for c in r["components"]]
+        try:
+            dists = {f: space.distance(smis, ms) for f, ms in ref_mix.items()}
+            dists = {f: d for f, d in dists.items() if d is not None}
+            nearest = min(dists, key=dists.get) if dists else None
+            r["mixture"] = {
+                "perceptual_distinctiveness": round(min(dists.values()), 3) if dists else None,
+                "nearest_reference_flavor": nearest,
+                "olfactory_white": mx.olfactory_white_risk(len(smis)),
+                "key_components": [d["omitted"] for d in
+                                   mx.omission_test(smis, space.vector)[:3]],
+            }
+        except Exception as e:
+            r["mixture"] = {"error": f"analysis failed: {type(e).__name__}"}
+
+    if optimize_top and recipes_out:
+        try:
+            top = recipes_out[0]
+            smis = [c["smiles"] for c in top["components"]]
+            X = np.vstack([smiles_to_ecfp4(s) for s in smis])
+            mono = model_ctx["model"].predict(X)  # per-molecule pleasantness
+
+            ref_all = [s for ms in ref_mix.values() for s in ms]
+
+            def score(p):  # proportion-weighted: additive pleasantness + distinctiveness
+                dist = space.distance(smis, ref_all, weights_a=p) or 0.0
+                return float((p * mono).sum()) / 100.0 + dist
+
+            opt = mx.optimize_ratios(smis, score)
+            opt["objective"] = "proportion-weighted pleasantness + Snitz distinctiveness"
+            top["optimal_levels"] = opt
+        except Exception as e:
+            recipes_out[0]["optimal_levels"] = {"error": f"{type(e).__name__}"}
+    return recipes_out
+
+
 def compose(seed=0, n_components=10, n_recipes=5, iters=500,
             w_taste=1.0, w_comp=0.15, w_novel=0.4, chem_novelty_min=0.5,
-            with_geometry=True):
+            with_geometry=True, with_mixture=True):
     df, pool, X, model, stats, target, ref_fp = _prep()
     elig = np.array([i for i, p in enumerate(pool) if p["safety"] == "OK"])
     rng = np.random.default_rng(seed)
@@ -170,6 +228,8 @@ def compose(seed=0, n_components=10, n_recipes=5, iters=500,
                     "components": comps})
     if with_geometry:
         out = _locate_recipes(out)
+    if with_mixture:
+        out = _mixture_analysis(out, {"pool": pool, "model": model})
     return {"target_composition": target,
             "composition_predicts_pleasantness_spearman": validate_composition(df, target, seed=seed),
             "class_pleasantness_stats": stats, "recipes": out}
@@ -186,3 +246,13 @@ if __name__ == "__main__":
               f"top={[k for k,_ in r['composition_top_classes'][:3]]}")
         print(f"     flavor-space: novelty_pct={fsp.get('novelty_percentile')} "
               f"near={fsp.get('nearest_known_flavors')} -> {fsp.get('interpretation', fsp.get('error'))}")
+        mxa = r.get("mixture") or {}
+        if "error" not in mxa:
+            print(f"     mixture: distinctiveness={mxa.get('perceptual_distinctiveness')} rad "
+                  f"(nearest {mxa.get('nearest_reference_flavor')}), "
+                  f"white_risk={(mxa.get('olfactory_white') or {}).get('white_risk')}, "
+                  f"key={mxa.get('key_components')}")
+        ol = r.get("optimal_levels")
+        if ol and "error" not in ol:
+            print(f"     optimal levels (Scheffe): interior={ol['interior_optimum']} "
+                  f"R2={ol['design_r2']} -> {ol['reading'][:70]}")
