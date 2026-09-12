@@ -31,6 +31,7 @@ from goodness_real import RealGoodnessModel
 from safety import screen
 import composition as comp
 from reference_flavors import REFERENCE_FLAVORS
+import flavor_geometry as fg
 
 _HERE = os.path.dirname(__file__)
 
@@ -91,8 +92,28 @@ def validate_composition(df, target, n=1500, seed=0):
     return round(float(spearmanr(cs, pl).correlation), 4)
 
 
+def _locate_recipes(recipes_out):
+    """Attach a flavor-space position to each recipe via the geometry layer (locate): its map
+    coordinate, nearest known flavors, and a novelty percentile vs same-size random blends.
+    This is the evaluation/hypothesis layer that connects the (validated) flavor-space
+    mathematics to each generated recipe. Guarded: a geometry failure leaves recipes intact."""
+    try:
+        geo = fg.FlavorSpaceGeometry(dim=3)
+    except Exception as e:
+        for r in recipes_out:
+            r["flavor_space"] = {"error": f"geometry unavailable: {type(e).__name__}"}
+        return recipes_out
+    for r in recipes_out:
+        try:
+            r["flavor_space"] = geo.locate([c["smiles"] for c in r["components"]])
+        except Exception as e:
+            r["flavor_space"] = {"error": f"locate failed: {type(e).__name__}"}
+    return recipes_out
+
+
 def compose(seed=0, n_components=10, n_recipes=5, iters=500,
-            w_taste=1.0, w_comp=0.15, w_novel=0.4, chem_novelty_min=0.5):
+            w_taste=1.0, w_comp=0.15, w_novel=0.4, chem_novelty_min=0.5,
+            with_geometry=True):
     df, pool, X, model, stats, target, ref_fp = _prep()
     elig = np.array([i for i, p in enumerate(pool) if p["safety"] == "OK"])
     rng = np.random.default_rng(seed)
@@ -147,6 +168,8 @@ def compose(seed=0, n_components=10, n_recipes=5, iters=500,
                     "n_denovo_components": sum(1 for c in comps if c["source"] == "de-novo"),
                     "composition_top_classes": [(k, round(v, 2)) for k, v in cv_top],
                     "components": comps})
+    if with_geometry:
+        out = _locate_recipes(out)
     return {"target_composition": target,
             "composition_predicts_pleasantness_spearman": validate_composition(df, target, seed=seed),
             "class_pleasantness_stats": stats, "recipes": out}
@@ -157,6 +180,9 @@ if __name__ == "__main__":
     print("composition->pleasantness Spearman:", d["composition_predicts_pleasantness_spearman"])
     print("target favor:", d["target_composition"]["favor"], "avoid:", d["target_composition"]["avoid"])
     for r in d["recipes"]:
+        fsp = r.get("flavor_space") or {}
         print(f"  #{r['rank']} pl={r['predicted_mean_pleasantness']} comp={r['composition_score']} "
               f"nov={r['chem_novelty']} denovo={r['n_denovo_components']} "
               f"top={[k for k,_ in r['composition_top_classes'][:3]]}")
+        print(f"     flavor-space: novelty_pct={fsp.get('novelty_percentile')} "
+              f"near={fsp.get('nearest_known_flavors')} -> {fsp.get('interpretation', fsp.get('error'))}")
