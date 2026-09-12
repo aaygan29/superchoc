@@ -53,6 +53,8 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Online active search vs random screening | +0.074, 25/25 seeds (synthetic) | `methods/active_flavor_search/` |
 | Final novel recipes | 5 blends, 6-8/10 de-novo components, novelty 0.63-0.67 | `denovo_recipes.py` |
 | Recipes located in flavor space (geometry layer wired in) | chemically novel (~0.65) but perceptually familiar (novelty pct 0.0-0.22) | `denovo_recipes.py` + `flavor_geometry.py` |
+| Mixture perceptual-distance metric vs real human ratings (Snitz 2013) | Spearman **-0.49** / Pearson **-0.53** on 360 mixture pairs (correct sign) | `mixtures.py` |
+| Combo layer wired into recipes (distinctiveness, omission key-components, olfactory-white, Scheffe ratio optimization) | per-recipe; ratio optima interior only under a non-additive response | `mixtures.py` + `denovo_recipes.py` |
 
 ---
 
