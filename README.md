@@ -55,6 +55,7 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Recipes located in flavor space (geometry layer wired in) | chemically novel (~0.65) but perceptually familiar (novelty pct 0.0-0.22) | `denovo_recipes.py` + `flavor_geometry.py` |
 | Mixture perceptual-distance metric vs real human ratings (Snitz 2013) | Spearman **-0.49** / Pearson **-0.53** on 360 mixture pairs (correct sign) | `mixtures.py` |
 | Combo layer wired into recipes (distinctiveness, omission key-components, olfactory-white, Scheffe ratio optimization) | per-recipe; ratio optima interior only under a non-additive response | `mixtures.py` + `denovo_recipes.py` |
+| Recipe-level good-flavor classifier (RF+GBM+logistic ensemble, leave-one-flavor-out) | ROC-AUC **0.69** (unseen flavor); drives non-degenerate optimal ratios | `recipe_classifier.py` |
 
 ---
 
@@ -98,6 +99,8 @@ superchoc/
 | `composition.py` | chemical-class composition statistics | COMPOSITION |
 | `flavor_math.py` + `FlavorMath.lean` | tastiness metric + Lean-checked theorems | MATH |
 | `flavor_geometry.py` | flavor-space geometry: hyperbolicity test + locate-a-blend | GEOMETRY |
+| `mixtures.py` | combo science: validated mixture-distance, ratio optimization, OAV, omission | MIXTURES |
+| `recipe_classifier.py` | recipe-level good-flavor classifier (drives optimal ratios) | RECIPE_CLASSIFIER |
 | `lego_assembly.py` | de-novo molecule construction + PubChem novelty | LEGO |
 | `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` | recipe generators | |
 | `results/` | committed JSON/markdown for every result above | |

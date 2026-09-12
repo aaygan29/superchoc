@@ -33,6 +33,7 @@ import composition as comp
 from reference_flavors import REFERENCE_FLAVORS
 import flavor_geometry as fg
 import mixtures as mx
+import recipe_classifier as rc
 
 _HERE = os.path.dirname(__file__)
 
@@ -132,6 +133,14 @@ def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
             r["mixture"] = {"error": f"mixture space unavailable: {type(e).__name__}"}
         return recipes_out
 
+    # recipe-level "good flavor" classifier (learns good combos vs random blends): gives each
+    # recipe a good-flavor probability and, crucially, a NON-ADDITIVE response for ratio search.
+    clf = None
+    try:
+        clf = rc.RecipeClassifier().fit()
+    except Exception:
+        clf = None
+
     for r in recipes_out:
         smis = [c["smiles"] for c in r["components"]]
         try:
@@ -145,6 +154,8 @@ def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
                 "key_components": [d["omitted"] for d in
                                    mx.omission_test(smis, space.vector)[:3]],
             }
+            if clf is not None:
+                r["good_flavor_probability"] = round(float(clf.score(smis)), 3)
         except Exception as e:
             r["mixture"] = {"error": f"analysis failed: {type(e).__name__}"}
 
@@ -152,17 +163,23 @@ def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
         try:
             top = recipes_out[0]
             smis = [c["smiles"] for c in top["components"]]
-            X = np.vstack([smiles_to_ecfp4(s) for s in smis])
-            mono = model_ctx["model"].predict(X)  # per-molecule pleasantness
-
-            ref_all = [s for ms in ref_mix.values() for s in ms]
-
-            def score(p):  # proportion-weighted: additive pleasantness + distinctiveness
-                dist = space.distance(smis, ref_all, weights_a=p) or 0.0
-                return float((p * mono).sum()) / 100.0 + dist
-
+            if clf is not None:
+                # ideal ratios that MAXIMIZE the learned good-flavor probability. The classifier
+                # is proportion-aware, so this response is genuinely non-additive -> interior
+                # blend optima (not the single-component collapse of an additive score).
+                def score(p):
+                    return float(clf.score(smis, weights=p))
+                objective = "recipe classifier P(good flavor), proportion-weighted"
+            else:
+                X = np.vstack([smiles_to_ecfp4(s) for s in smis])
+                mono = model_ctx["model"].predict(X)
+                ref_all = [s for ms in ref_mix.values() for s in ms]
+                def score(p):
+                    dist = space.distance(smis, ref_all, weights_a=p) or 0.0
+                    return float((p * mono).sum()) / 100.0 + dist
+                objective = "fallback: additive pleasantness + distinctiveness"
             opt = mx.optimize_ratios(smis, score)
-            opt["objective"] = "proportion-weighted pleasantness + Snitz distinctiveness"
+            opt["objective"] = objective
             top["optimal_levels"] = opt
         except Exception as e:
             recipes_out[0]["optimal_levels"] = {"error": f"{type(e).__name__}"}
@@ -246,6 +263,8 @@ if __name__ == "__main__":
               f"top={[k for k,_ in r['composition_top_classes'][:3]]}")
         print(f"     flavor-space: novelty_pct={fsp.get('novelty_percentile')} "
               f"near={fsp.get('nearest_known_flavors')} -> {fsp.get('interpretation', fsp.get('error'))}")
+        if r.get("good_flavor_probability") is not None:
+            print(f"     good-flavor P(classifier)={r['good_flavor_probability']}")
         mxa = r.get("mixture") or {}
         if "error" not in mxa:
             print(f"     mixture: distinctiveness={mxa.get('perceptual_distinctiveness')} rad "
