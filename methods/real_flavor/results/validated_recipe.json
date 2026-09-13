@@ -1,0 +1,148 @@
+{
+  "n_components": 6,
+  "good_flavor_probability": 0.839,
+  "profile_strength": 0.528,
+  "objective": 1.103,
+  "taste_profile": {
+    "basic_tastes": {
+      "sweet": 0.931,
+      "sour": 0.0,
+      "salty": 0.0,
+      "bitter": 0.069,
+      "umami": 0.0
+    },
+    "dominant_taste": "sweet",
+    "top_descriptors": [
+      [
+        "fruity",
+        0.67
+      ],
+      [
+        "apple",
+        0.5
+      ],
+      [
+        "green",
+        0.33
+      ],
+      [
+        "pineapple",
+        0.17
+      ],
+      [
+        "rum",
+        0.17
+      ],
+      [
+        "ethereal",
+        0.17
+      ]
+    ],
+    "flavor_region": [
+      "ethereal",
+      "fermented",
+      "winey",
+      "tropical",
+      "oily",
+      "apricot"
+    ],
+    "note": "basic tastes are an aroma->taste heuristic; salty/umami are weak because they are ionic gustation outside odorant chemistry"
+  },
+  "optimal_levels": {
+    "proportions": [
+      0.139,
+      0.689,
+      0.052,
+      0.009,
+      0.107,
+      0.004
+    ],
+    "interior_optimum": true,
+    "design_r2": 1.0,
+    "reading": "interior blend optimum (interaction present)"
+  },
+  "perceptual_distance_to_known_flavors": {
+    "chocolate": 1.344,
+    "vanilla": 1.606,
+    "coffee": 1.225,
+    "banana": 0.637,
+    "strawberry": 0.319,
+    "rose": 1.946
+  },
+  "nearest_known_flavor": "strawberry",
+  "components": [
+    {
+      "molecule": "gamma-decalactone",
+      "smiles": "CCCCCCC1CCC(=O)O1",
+      "proportion": 0.139,
+      "pleasantness": 64.9,
+      "safety": "OK",
+      "classes": [
+        "ester",
+        "ether",
+        "lactone"
+      ]
+    },
+    {
+      "molecule": "Methyl Propionate",
+      "smiles": "CCC(=O)OC",
+      "proportion": 0.689,
+      "pleasantness": 55.8,
+      "safety": "OK",
+      "classes": [
+        "ester",
+        "ether"
+      ]
+    },
+    {
+      "molecule": "Ethyl Valerate",
+      "smiles": "CCCCC(=O)OCC",
+      "proportion": 0.052,
+      "pleasantness": 71.4,
+      "safety": "OK",
+      "classes": [
+        "ester",
+        "ether"
+      ]
+    },
+    {
+      "molecule": "cis-3-Hexenyl propionate",
+      "smiles": "CCC=CCCOC(=O)CC",
+      "proportion": 0.009,
+      "pleasantness": 64.4,
+      "safety": "OK",
+      "classes": [
+        "alkene",
+        "ester",
+        "ether"
+      ]
+    },
+    {
+      "molecule": "cis-3-hexenyl acetate",
+      "smiles": "CCC=CCCOC(=O)C",
+      "proportion": 0.107,
+      "pleasantness": 63.8,
+      "safety": "OK",
+      "classes": [
+        "alkene",
+        "ester",
+        "ether"
+      ]
+    },
+    {
+      "molecule": "methyl salicylate",
+      "smiles": "COC(=O)C1=CC=CC=C1O",
+      "proportion": 0.004,
+      "pleasantness": 60.8,
+      "safety": "OK",
+      "classes": [
+        "aromatic",
+        "ester",
+        "ether",
+        "phenol"
+      ]
+    }
+  ],
+  "how_to_make": "Combine the components at the listed proportions (by perceptual weight) in a neutral carrier; confirm FEMA/GRAS status and dose limits per HANDOFF.md before any tasting.",
+  "validation_note": "All scores from externally-grounded/validated models (classifier LOFO AUC 0.69; Snitz/Ravia mixture-distance; Keller pleasantness) + safety gate. Not human-tasted; a hypothesis for a chemist/chef."
+}

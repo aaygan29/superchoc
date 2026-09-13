@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import functools
+
 import numpy as np
 
 
+@functools.lru_cache(maxsize=20000)
 def smiles_to_ecfp4(smiles: str, n_bits: int = 2048, radius: int = 2) -> np.ndarray:
     from rdkit import Chem
     from rdkit.Chem import rdFingerprintGenerator
