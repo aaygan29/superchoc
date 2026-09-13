@@ -1,0 +1,545 @@
+{
+  "superchocolate": [
+    {
+      "good_flavor_probability": 0.393,
+      "chemical_novelty": 0.58,
+      "perceptual_novelty_percentile": 0.73,
+      "profile_strength": 0.469,
+      "taste_description": "A distinct, predominantly sweet and bitter flavor led by dry, cognac, winey notes; perceptually closest to vanilla but shifted into a solvent/buttery region. Predicted good-flavor 0.39; chemical novelty 0.58, perceptual novelty 0.73.",
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.512,
+          "sour": 0.16,
+          "salty": 0.0,
+          "bitter": 0.328,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "top_descriptors": [
+          [
+            "dry",
+            0.33
+          ],
+          [
+            "cognac",
+            0.33
+          ],
+          [
+            "winey",
+            0.33
+          ],
+          [
+            "fruity",
+            0.33
+          ],
+          [
+            "smoky",
+            0.33
+          ],
+          [
+            "pungent",
+            0.33
+          ]
+        ],
+        "flavor_region": [
+          "solvent",
+          "buttery",
+          "coconut",
+          "milky",
+          "chocolate",
+          "sharp"
+        ]
+      },
+      "optimal_levels": {
+        "proportions": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "interior_optimum": false,
+        "reading": "optimum collapses to a single component: the response is effectively additive (FlavorMath.lean best-part bound). A non-degenerate ratio optimum requires a validated non-additive/synergy response, which is not yet available for real molecules."
+      },
+      "perceptual_distance_to_known_flavors": {
+        "chocolate": 1.052,
+        "vanilla": 0.686,
+        "coffee": 0.835,
+        "banana": 1.249,
+        "strawberry": 1.133,
+        "rose": 1.181
+      },
+      "nearest_known_flavor": "vanilla",
+      "n_denovo_components": 4,
+      "components": [
+        {
+          "molecule": "denovo:C=CCc1ccc(O)c(CC(=O)OC(=O)CCCCCC)c1",
+          "smiles": "C=CCc1ccc(O)c(CC(=O)OC(=O)CCCCCC)c1",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "alkene",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "pungent",
+            "dry",
+            "smoky"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C)cc1C(C)=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C)cc1C(C)=O",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "ketone"
+          ],
+          "evoked_flavor": [
+            "herbal",
+            "animal",
+            "oily"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCCO",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CCCO",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "alcohol",
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "winey",
+            "cognac",
+            "fruity"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "winey",
+            "cognac",
+            "fruity"
+          ]
+        },
+        {
+          "molecule": "Ethyl Vanillin",
+          "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
+          "proportion": 1.0,
+          "source": "known",
+          "pleasantness": 83.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "vanilla",
+            "sweet"
+          ]
+        },
+        {
+          "molecule": "eugenol",
+          "smiles": "COC1=C(C=CC(=C1)CC=C)O",
+          "proportion": 0.0,
+          "source": "known",
+          "pleasantness": 67.6,
+          "classes": [
+            "alkene",
+            "aromatic",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "pungent",
+            "dry",
+            "smoky"
+          ]
+        }
+      ]
+    },
+    {
+      "good_flavor_probability": 0.355,
+      "chemical_novelty": 0.611,
+      "perceptual_novelty_percentile": 0.55,
+      "profile_strength": 0.439,
+      "taste_description": "A distinct, predominantly sweet flavor led by fruity, floral, apple notes; perceptually closest to banana but shifted into a creamy/mint region. Predicted good-flavor 0.35; chemical novelty 0.61, perceptual novelty 0.55.",
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.804,
+          "sour": 0.0,
+          "salty": 0.0,
+          "bitter": 0.196,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "top_descriptors": [
+          [
+            "fruity",
+            0.33
+          ],
+          [
+            "floral",
+            0.33
+          ],
+          [
+            "apple",
+            0.33
+          ],
+          [
+            "sweet",
+            0.33
+          ],
+          [
+            "woody",
+            0.17
+          ],
+          [
+            "spicy",
+            0.17
+          ]
+        ],
+        "flavor_region": [
+          "creamy",
+          "mint",
+          "woody",
+          "orris",
+          "sharp",
+          "peach"
+        ]
+      },
+      "optimal_levels": {
+        "proportions": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "interior_optimum": false,
+        "reading": "optimum collapses to a single component: the response is effectively additive (FlavorMath.lean best-part bound). A non-degenerate ratio optimum requires a validated non-additive/synergy response, which is not yet available for real molecules."
+      },
+      "perceptual_distance_to_known_flavors": {
+        "chocolate": 0.712,
+        "vanilla": 0.968,
+        "coffee": 0.756,
+        "banana": 0.426,
+        "strawberry": 0.458,
+        "rose": 0.787
+      },
+      "nearest_known_flavor": "banana",
+      "n_denovo_components": 4,
+      "components": [
+        {
+          "molecule": "cis-3-hexenyl acetate",
+          "smiles": "CCC=CCCOC(=O)C",
+          "proportion": 0.0,
+          "source": "known",
+          "pleasantness": 63.8,
+          "classes": [
+            "alkene",
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "green",
+            "apple",
+            "fruity"
+          ]
+        },
+        {
+          "molecule": "methyl caproate",
+          "smiles": "CCCCCC(=O)OC",
+          "proportion": 1.0,
+          "source": "known",
+          "pleasantness": 56.2,
+          "classes": [
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "ethereal",
+            "apple",
+            "fruity"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc2c(c1)OCO2",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc2c(c1)OCO2",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "woody",
+            "cherry",
+            "sweet"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(CC)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(CC)ccc1O",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "spicy"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "vanilla",
+            "sweet"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(OC(=O)C(C)C)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(OC(=O)C(C)C)c1",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol",
+            "terpenoid_like"
+          ],
+          "evoked_flavor": [
+            "herbal",
+            "animal",
+            "oily"
+          ]
+        }
+      ]
+    },
+    {
+      "good_flavor_probability": 0.324,
+      "chemical_novelty": 0.567,
+      "perceptual_novelty_percentile": 0.58,
+      "profile_strength": 0.44,
+      "taste_description": "A distinct, predominantly sweet and bitter flavor led by oily, sweet, herbal notes; perceptually closest to coffee but shifted into a cinnamon/spicy region. Predicted good-flavor 0.32; chemical novelty 0.57, perceptual novelty 0.58.",
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.714,
+          "sour": 0.0,
+          "salty": 0.0,
+          "bitter": 0.286,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "top_descriptors": [
+          [
+            "oily",
+            0.33
+          ],
+          [
+            "sweet",
+            0.33
+          ],
+          [
+            "herbal",
+            0.33
+          ],
+          [
+            "floral",
+            0.33
+          ],
+          [
+            "animal",
+            0.33
+          ],
+          [
+            "pear",
+            0.17
+          ]
+        ],
+        "flavor_region": [
+          "cinnamon",
+          "spicy",
+          "aromatic",
+          "pine",
+          "mint",
+          "warm"
+        ]
+      },
+      "optimal_levels": {
+        "proportions": [
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "interior_optimum": true,
+        "reading": "interior blend optimum (interaction present)"
+      },
+      "perceptual_distance_to_known_flavors": {
+        "chocolate": 0.694,
+        "vanilla": 0.565,
+        "coffee": 0.5,
+        "banana": 0.691,
+        "strawberry": 0.641,
+        "rose": 0.828
+      },
+      "nearest_known_flavor": "coffee",
+      "n_denovo_components": 3,
+      "components": [
+        {
+          "molecule": "ethyl hexanoate",
+          "smiles": "CCCCCC(=O)OCC",
+          "proportion": 0.5,
+          "source": "known",
+          "pleasantness": 78.6,
+          "classes": [
+            "ester",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "pineapple",
+            "tropical",
+            "strawberry"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(OC=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(OC=O)ccc1O",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "herbal",
+            "animal",
+            "oily"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(O)c(CCO)c1",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(O)c(CCO)c1",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "alcohol",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "spicy"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(C(C)C)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(C(C)C)c1",
+          "proportion": 0.0,
+          "source": "de-novo",
+          "pleasantness": null,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol",
+            "terpenoid_like"
+          ],
+          "evoked_flavor": [
+            "herbal",
+            "animal",
+            "oily"
+          ]
+        },
+        {
+          "molecule": "methyl salicylate",
+          "smiles": "COC(=O)C1=CC=CC=C1O",
+          "proportion": 0.5,
+          "source": "known",
+          "pleasantness": 60.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ],
+          "evoked_flavor": [
+            "warm",
+            "sweet"
+          ]
+        },
+        {
+          "molecule": "Veratraldehyde",
+          "smiles": "COC1=C(C=C(C=C1)C=O)OC",
+          "proportion": 0.0,
+          "source": "known",
+          "pleasantness": 62.4,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ether"
+          ],
+          "evoked_flavor": [
+            "woody",
+            "vanilla",
+            "sweet"
+          ]
+        }
+      ]
+    }
+  ]
+}

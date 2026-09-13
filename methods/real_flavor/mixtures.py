@@ -38,6 +38,7 @@ Scheffe 1958 (mixture designs).
 
 from __future__ import annotations
 
+import functools
 import itertools
 
 import numpy as np
@@ -64,6 +65,7 @@ _DESC = [
 ]
 
 
+@functools.lru_cache(maxsize=20000)
 def _descriptors(smiles):
     m = Chem.MolFromSmiles(smiles)
     if m is None:
@@ -318,9 +320,57 @@ def olfactory_white_risk(n_components):
                         else "moderately complex")}
 
 
+def validate_ravia():
+    """Second external validation on Ravia et al. 2020 (Nature): 195 pairwise mixture-similarity
+    ratings (behavior_2). Same method as Snitz: correlate the angle distance with rated
+    similarity; expect a negative relationship."""
+    import re
+    import pyrfume
+    from scipy.stats import spearmanr, pearsonr
+
+    st = pyrfume.load_data("ravia_2020/stimuli.csv")
+    mol = pyrfume.load_data("ravia_2020/molecules.csv")
+    cid2smi = {int(c): r["IsomericSMILES"] for c, r in mol.iterrows()
+               if isinstance(r["IsomericSMILES"], str)}
+    b2 = pyrfume.load_data("ravia_2020/behavior_2.csv").reset_index()
+
+    def stim_smiles(stim_id):
+        if stim_id not in st.index:
+            return []
+        cids = re.split(r"[;,]", str(st.loc[stim_id, "CID"]))
+        out = []
+        for t in cids:
+            t = t.strip()
+            if t.isdigit() and int(t) in cid2smi:
+                s = cid2smi[int(t)]
+                if Chem.MolFromSmiles(s) is not None:
+                    out.append(s)
+        return out
+
+    ref = [s for s in cid2smi.values() if Chem.MolFromSmiles(s) is not None]
+    space = MixtureSpace(ref)
+    dist, sim = [], []
+    for _, r in b2.iterrows():
+        A, B = stim_smiles(r["Stimulus 1"]), stim_smiles(r["Stimulus 2"])
+        if not A or not B:
+            continue
+        d = space.distance(A, B)
+        if d is None:
+            continue
+        dist.append(d); sim.append(float(r["RatedSimilarity"]))
+    dist, sim = np.array(dist), np.array(sim)
+    sp = float(spearmanr(dist, sim).correlation)
+    pr = float(pearsonr(dist, sim)[0])
+    return {"n_pairs": int(len(dist)), "spearman_dist_vs_similarity": round(sp, 3),
+            "pearson_dist_vs_similarity": round(pr, 3),
+            "reading": ("angle distance tracks human dissimilarity (negative corr as expected)"
+                        if sp < 0 else "no expected negative relationship (method fails here)")}
+
+
 if __name__ == "__main__":
     import json
     print("Snitz 2013 validation:", json.dumps(validate_snitz(), indent=2))
+    print("Ravia 2020 validation:", json.dumps(validate_ravia(), indent=2))
     # small demos of the exact-math pieces (no external calls)
     demo = ["O=Cc1ccc(O)c(OC)c1", "CC(C)C1CCC(C)CC1O", "CC(C)=CCCC(C)(O)C=C"]  # vanillin,menthol,linalool
     ref = ["CCCC(=O)OCC", "CC(C)CCOC(C)=O", "O=Cc1ccccc1"]

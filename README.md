@@ -56,6 +56,9 @@ gastronomist**, not recipes cleared to eat (see the handoff and safety notes).
 | Mixture perceptual-distance metric vs real human ratings (Snitz 2013) | Spearman **-0.49** / Pearson **-0.53** on 360 mixture pairs (correct sign) | `mixtures.py` |
 | Combo layer wired into recipes (distinctiveness, omission key-components, olfactory-white, Scheffe ratio optimization) | per-recipe; ratio optima interior only under a non-additive response | `mixtures.py` + `denovo_recipes.py` |
 | Recipe-level good-flavor classifier (RF+GBM+logistic ensemble, leave-one-flavor-out) | ROC-AUC **0.69** (unseen flavor); drives non-degenerate optimal ratios | `recipe_classifier.py` |
+| Mixture perceptual-distance vs real human ratings (Ravia 2020) | Spearman **-0.245** on 195 pairs (2nd external validation, correct sign) | `mixtures.py` |
+| Taste-profile layer (5 basic tastes + chef descriptors mapped to flavor regions) | vanilla->sweet, strawberry->sweet/fruity, chocolate->sweet/bitter | `taste_profile.py` |
+| **Overarching analyzer** (cascade funnel: safety -> pleasantness -> classifier -> full profile) | ranked novel good-taste recipes, each with a written taste description | `analyzer.py` |
 
 ---
 
@@ -99,8 +102,11 @@ superchoc/
 | `composition.py` | chemical-class composition statistics | COMPOSITION |
 | `flavor_math.py` + `FlavorMath.lean` | tastiness metric + Lean-checked theorems | MATH |
 | `flavor_geometry.py` | flavor-space geometry: hyperbolicity test + locate-a-blend | GEOMETRY |
-| `mixtures.py` | combo science: validated mixture-distance, ratio optimization, OAV, omission | MIXTURES |
+| `analyzer.py` | **overarching analyzer**: synthesizes everything into ranked novel good-taste recipes + descriptions | ANALYZER |
+| `mixtures.py` | combo science: validated mixture-distance (Snitz+Ravia), ratio optimization, OAV, omission | MIXTURES |
 | `recipe_classifier.py` | recipe-level good-flavor classifier (drives optimal ratios) | RECIPE_CLASSIFIER |
+| `taste_profile.py` | five basic tastes + chef-descriptor flavor regions + steering lever | ANALYZER |
+| `validated_recipe.py` | one high-confidence strong-profile recipe (full package) | ANALYZER |
 | `lego_assembly.py` | de-novo molecule construction + PubChem novelty | LEGO |
 | `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` | recipe generators | |
 | `results/` | committed JSON/markdown for every result above | |
@@ -112,6 +118,7 @@ superchoc/
 ```bash
 pip install -r requirements.txt          # numpy, scikit-learn, scipy, rdkit, pyrfume
 cd methods/real_flavor
+python analyzer.py                       # THE analyzer: ranked novel good-taste recipes + superchocolate
 python validate_real.py                  # real pleasantness CV + mixture + safety gate + novelty
 python denovo_recipes.py                 # the final composition-guided novel recipes
 python lego_assembly.py                  # de-novo molecules + 3D geometry gate + PubChem novelty

@@ -99,74 +99,82 @@
   "recipes": [
     {
       "rank": 1,
-      "objective": 1.4094,
-      "predicted_mean_pleasantness": 60.9,
-      "composition_score": 3.5,
-      "chem_novelty": 0.688,
-      "n_denovo_components": 7,
+      "objective": 1.3628,
+      "predicted_mean_pleasantness": 63.0,
+      "composition_score": 3.2,
+      "chem_novelty": 0.632,
+      "n_denovo_components": 5,
       "composition_top_classes": [
-        [
-          "ester",
-          1.0
-        ],
         [
           "ether",
           1.0
         ],
         [
+          "ester",
+          0.9
+        ],
+        [
           "aromatic",
-          1.0
+          0.9
         ],
         [
           "aldehyde",
-          0.7
+          0.6
         ],
         [
           "phenol",
-          0.4
+          0.3
         ],
         [
-          "alcohol",
-          0.3
+          "ketone",
+          0.2
         ]
       ],
       "components": [
         {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
-          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
-          "source": "de-novo",
-          "pleasantness": 68.4,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
-          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
-          "source": "de-novo",
-          "pleasantness": 64.9,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "Dihydrocoumarin",
-          "smiles": "C1CC(=O)OC2=CC=CC=C21",
+          "molecule": "Ethyl Vanillin",
+          "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
           "source": "known",
-          "pleasantness": 64.8,
+          "pleasantness": 83.9,
           "classes": [
+            "aldehyde",
             "aromatic",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Whiskey lactone",
+          "smiles": "CCCCC1C(CC(=O)O1)C",
+          "source": "known",
+          "pleasantness": 69.7,
+          "classes": [
             "ester",
             "ether",
             "lactone"
+          ]
+        },
+        {
+          "molecule": "Benzyl propionate",
+          "smiles": "CCC(=O)OCC1=CC=CC=C1",
+          "source": "known",
+          "pleasantness": 67.2,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
           ]
         },
         {
@@ -183,445 +191,21 @@
           ]
         },
         {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1CCO",
-          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1CCO",
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)=O",
           "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "alcohol",
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "alcohol",
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CC",
-          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CC",
-          "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "alcohol",
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "Benzyl salicylate",
-          "smiles": "C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O",
-          "source": "known",
-          "pleasantness": 53.6,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "Phenethyl salicylate",
-          "smiles": "C1=CC=C(C=C1)CCOC(=O)C2=CC=CC=C2O",
-          "source": "known",
-          "pleasantness": 49.2,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        }
-      ],
-      "flavor_space": {
-        "map_coordinates_pca": [
-          -0.181,
-          0.208,
-          -0.167
-        ],
-        "nearest_known_flavors": [
-          "ethyl heptanoate",
-          "77-90-7",
-          "ethyl octanoate",
-          "dimethyl adipate",
-          "isobutyl heptanoate"
-        ],
-        "local_isolation_knn_dist": 0.724,
-        "novelty_percentile": 0.007,
-        "interpretation": "sits among known flavors"
-      },
-      "mixture": {
-        "perceptual_distinctiveness": 1.439,
-        "nearest_reference_flavor": "vanilla",
-        "olfactory_white": {
-          "n_components": 10,
-          "white_risk": 0.231,
-          "reading": "moderately complex"
-        },
-        "key_components": [
-          "C1CC(=O)OC2=CC=CC=C21",
-          "C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O",
-          "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1"
-        ]
-      },
-      "good_flavor_probability": 0.131,
-      "optimal_levels": {
-        "components": [
-          "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
-          "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
-          "C1CC(=O)OC2=CC=CC=C21",
-          "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1C(C)=O",
-          "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1CCO",
-          "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1CC",
-          "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CO",
-          "C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O",
-          "C1=CC=C(C=C1)CCOC(=O)C2=CC=CC=C2O"
-        ],
-        "best_proportions": [
-          0.0,
-          0.0,
-          1.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "predicted_response": 0.4608,
-        "design_r2": 1.0,
-        "n_design_points": 55,
-        "interior_optimum": false,
-        "reading": "optimum collapses to a single component: the response is effectively additive (FlavorMath.lean best-part bound). A non-degenerate ratio optimum requires a validated non-additive/synergy response, which is not yet available for real molecules.",
-        "objective": "recipe classifier P(good flavor), proportion-weighted"
-      }
-    },
-    {
-      "rank": 2,
-      "objective": 1.3876,
-      "predicted_mean_pleasantness": 64.9,
-      "composition_score": 3.2,
-      "chem_novelty": 0.646,
-      "n_denovo_components": 7,
-      "composition_top_classes": [
-        [
-          "ether",
-          1.0
-        ],
-        [
-          "aromatic",
-          1.0
-        ],
-        [
-          "ester",
-          0.9
-        ],
-        [
-          "aldehyde",
-          0.7
-        ],
-        [
-          "phenol",
-          0.3
-        ],
-        [
-          "alcohol",
-          0.2
-        ]
-      ],
-      "components": [
-        {
-          "molecule": "denovo:CCCCCCC(=O)Oc1cc(C=O)ccc1O",
-          "smiles": "CCCCCCC(=O)Oc1cc(C=O)ccc1O",
-          "source": "de-novo",
-          "pleasantness": 76.6,
+          "pleasantness": 63.2,
           "classes": [
             "aldehyde",
             "aromatic",
             "ester",
             "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "source": "de-novo",
-          "pleasantness": 68.7,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
-          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1O",
-          "source": "de-novo",
-          "pleasantness": 68.4,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "Benzyl propionate",
-          "smiles": "CCC(=O)OCC1=CC=CC=C1",
-          "source": "known",
-          "pleasantness": 67.2,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
-          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
-          "source": "de-novo",
-          "pleasantness": 66.3,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC",
-          "source": "de-novo",
-          "pleasantness": 66.0,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
+            "ketone"
           ]
         },
         {
           "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCO",
           "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "alcohol",
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CCCO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CCCO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
-          "classes": [
-            "alcohol",
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "4-Allylanisole",
-          "smiles": "COC1=CC=C(C=C1)CC=C",
-          "source": "known",
-          "pleasantness": 60.8,
-          "classes": [
-            "alkene",
-            "aromatic",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "Isoeugenyl phenylacetate",
-          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)CC2=CC=CC=C2)OC",
-          "source": "known",
-          "pleasantness": 56.2,
-          "classes": [
-            "alkene",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        }
-      ],
-      "flavor_space": {
-        "map_coordinates_pca": [
-          -0.097,
-          0.268,
-          -0.114
-        ],
-        "nearest_known_flavors": [
-          "anisyl propionate",
-          "77-90-7",
-          "dimethyl adipate",
-          "ethyl octanoate",
-          "methyl 4-methylbenzoate"
-        ],
-        "local_isolation_knn_dist": 0.784,
-        "novelty_percentile": 0.177,
-        "interpretation": "sits among known flavors"
-      },
-      "mixture": {
-        "perceptual_distinctiveness": 1.49,
-        "nearest_reference_flavor": "vanilla",
-        "olfactory_white": {
-          "n_components": 10,
-          "white_risk": 0.231,
-          "reading": "moderately complex"
-        },
-        "key_components": [
-          "COC1=CC=C(C=C1)CC=C",
-          "CCC(=O)OCC1=CC=CC=C1",
-          "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1"
-        ]
-      },
-      "good_flavor_probability": 0.362
-    },
-    {
-      "rank": 3,
-      "objective": 1.3876,
-      "predicted_mean_pleasantness": 62.7,
-      "composition_score": 3.3,
-      "chem_novelty": 0.664,
-      "n_denovo_components": 6,
-      "composition_top_classes": [
-        [
-          "ester",
-          1.0
-        ],
-        [
-          "ether",
-          1.0
-        ],
-        [
-          "aromatic",
-          1.0
-        ],
-        [
-          "aldehyde",
-          0.6
-        ],
-        [
-          "phenol",
-          0.3
-        ],
-        [
-          "alkene",
-          0.2
-        ]
-      ],
-      "components": [
-        {
-          "molecule": "Anisyl acetate",
-          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
-          "source": "known",
-          "pleasantness": 69.8,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "source": "de-novo",
-          "pleasantness": 68.7,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC=O",
-          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC=O",
-          "source": "de-novo",
-          "pleasantness": 67.8,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
-          "source": "de-novo",
-          "pleasantness": 67.7,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC",
-          "source": "de-novo",
-          "pleasantness": 67.5,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "Benzyl propionate",
-          "smiles": "CCC(=O)OCC1=CC=CC=C1",
-          "source": "known",
-          "pleasantness": 67.2,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
           "source": "de-novo",
           "pleasantness": 63.1,
           "classes": [
@@ -673,23 +257,23 @@
       ],
       "flavor_space": {
         "map_coordinates_pca": [
-          -0.408,
-          0.23,
-          -0.131
+          -0.375,
+          0.14,
+          -0.248
         ],
         "nearest_known_flavors": [
-          "1-phenylpropyl butyrate",
-          "10039-39-1",
-          "methyl benzoate",
-          "benzylisopropyl propionate",
-          "p-anisyl 2-methylpropanoate"
+          "ethyl heptanoate",
+          "dimethyl adipate",
+          "ethyl octanoate",
+          "77-90-7",
+          "triethyl citrate"
         ],
-        "local_isolation_knn_dist": 0.712,
-        "novelty_percentile": 0.007,
+        "local_isolation_knn_dist": 0.702,
+        "novelty_percentile": 0.003,
         "interpretation": "sits among known flavors"
       },
       "mixture": {
-        "perceptual_distinctiveness": 1.464,
+        "perceptual_distinctiveness": 1.486,
         "nearest_reference_flavor": "vanilla",
         "olfactory_white": {
           "n_components": 10,
@@ -697,19 +281,96 @@
           "reading": "moderately complex"
         },
         "key_components": [
-          "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "CCC(=O)OCC1=CC=CC=C1",
+          "CCCCC1C(CC(=O)O1)C",
+          "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
           "COC(=O)C1=CC=CC=C1O"
         ]
       },
-      "good_flavor_probability": 0.115
+      "good_flavor_probability": 0.23,
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.765,
+          "sour": 0.235,
+          "salty": 0.0,
+          "bitter": 0.0,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "profile_strength": 0.476,
+        "top_descriptors": [
+          [
+            "fruity",
+            0.7
+          ],
+          [
+            "sweet",
+            0.4
+          ],
+          [
+            "cognac",
+            0.4
+          ],
+          [
+            "winey",
+            0.4
+          ],
+          [
+            "floral",
+            0.2
+          ],
+          [
+            "woody",
+            0.1
+          ]
+        ],
+        "flavor_region": [
+          "plum",
+          "strawberry",
+          "chamomile",
+          "ketonic",
+          "caramellic",
+          "sour"
+        ]
+      },
+      "optimal_levels": {
+        "components": [
+          "CCOC1=C(C=CC(=C1)C=O)O",
+          "CCCCC1C(CC(=O)O1)C",
+          "CCC(=O)OCC1=CC=CC=C1",
+          "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1C(C)=O",
+          "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)=O",
+          "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCO",
+          "C=CCc1cc(C=O)ccc1C(=O)OC(=O)CCCCCC",
+          "COC(=O)C1=CC=CC=C1O",
+          "CCC=CCCOC(=O)C1=CC=CC=C1O"
+        ],
+        "best_proportions": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "predicted_response": 0.5189,
+        "design_r2": 1.0,
+        "n_design_points": 55,
+        "interior_optimum": false,
+        "reading": "optimum collapses to a single component: the response is effectively additive (FlavorMath.lean best-part bound). A non-degenerate ratio optimum requires a validated non-additive/synergy response, which is not yet available for real molecules.",
+        "objective": "recipe classifier P(good flavor), proportion-weighted"
+      }
     },
     {
-      "rank": 4,
-      "objective": 1.3768,
-      "predicted_mean_pleasantness": 62.9,
-      "composition_score": 3.2,
-      "chem_novelty": 0.67,
+      "rank": 2,
+      "objective": 1.3596,
+      "predicted_mean_pleasantness": 62.8,
+      "composition_score": 3.1,
+      "chem_novelty": 0.667,
       "n_denovo_components": 6,
       "composition_top_classes": [
         [
@@ -729,28 +390,15 @@
           0.6
         ],
         [
-          "phenol",
+          "alkene",
           0.3
         ],
         [
-          "alkene",
-          0.3
+          "alcohol",
+          0.2
         ]
       ],
       "components": [
-        {
-          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "source": "de-novo",
-          "pleasantness": 68.7,
-          "classes": [
-            "aldehyde",
-            "aromatic",
-            "ester",
-            "ether",
-            "phenol"
-          ]
-        },
         {
           "molecule": "eugenol",
           "smiles": "COC1=C(C=CC(=C1)CC=C)O",
@@ -761,6 +409,18 @@
             "aromatic",
             "ether",
             "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC",
+          "source": "de-novo",
+          "pleasantness": 67.5,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether"
           ]
         },
         {
@@ -864,23 +524,23 @@
       ],
       "flavor_space": {
         "map_coordinates_pca": [
-          -0.182,
-          0.161,
-          -0.223
+          -0.181,
+          0.214,
+          -0.272
         ],
         "nearest_known_flavors": [
-          "ethyl heptanoate",
-          "77-90-7",
-          "dimethyl adipate",
           "ethyl octanoate",
+          "dimethyl adipate",
+          "77-90-7",
+          "ethyl heptanoate",
           "allyl decanoate"
         ],
-        "local_isolation_knn_dist": 0.768,
-        "novelty_percentile": 0.073,
+        "local_isolation_knn_dist": 0.744,
+        "novelty_percentile": 0.017,
         "interpretation": "sits among known flavors"
       },
       "mixture": {
-        "perceptual_distinctiveness": 1.395,
+        "perceptual_distinctiveness": 1.427,
         "nearest_reference_flavor": "vanilla",
         "olfactory_white": {
           "n_components": 10,
@@ -889,24 +549,65 @@
         },
         "key_components": [
           "COC1=CC=C(C=C1)CC=C",
-          "CCCCCCC(=O)Oc1ccc(O)c(-c2cc(C=O)ccc2O)c1",
-          "C1CC(=O)OC2=CC=CC=C21"
+          "C1CC(=O)OC2=CC=CC=C21",
+          "COC(=O)C1=CC=CC=C1O"
         ]
       },
-      "good_flavor_probability": 0.401
+      "good_flavor_probability": 0.4,
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.687,
+          "sour": 0.25,
+          "salty": 0.0,
+          "bitter": 0.062,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "profile_strength": 0.423,
+        "top_descriptors": [
+          [
+            "sweet",
+            0.5
+          ],
+          [
+            "fruity",
+            0.5
+          ],
+          [
+            "winey",
+            0.4
+          ],
+          [
+            "cognac",
+            0.4
+          ],
+          [
+            "dry",
+            0.1
+          ],
+          [
+            "coumarinic",
+            0.1
+          ]
+        ],
+        "flavor_region": [
+          "creamy",
+          "caramellic",
+          "ketonic",
+          "milky",
+          "sour",
+          "sharp"
+        ]
+      }
     },
     {
-      "rank": 5,
-      "objective": 1.3659,
-      "predicted_mean_pleasantness": 62.5,
-      "composition_score": 3.1,
-      "chem_novelty": 0.69,
+      "rank": 3,
+      "objective": 1.344,
+      "predicted_mean_pleasantness": 61.2,
+      "composition_score": 3.3,
+      "chem_novelty": 0.593,
       "n_denovo_components": 6,
       "composition_top_classes": [
-        [
-          "ether",
-          1.0
-        ],
         [
           "aromatic",
           1.0
@@ -916,15 +617,19 @@
           0.9
         ],
         [
+          "ether",
+          0.9
+        ],
+        [
           "aldehyde",
-          0.6
+          0.7
         ],
         [
-          "alcohol",
-          0.2
+          "phenol",
+          0.4
         ],
         [
-          "alkene",
+          "ketone",
           0.2
         ]
       ],
@@ -943,10 +648,10 @@
           ]
         },
         {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1OC",
           "source": "de-novo",
-          "pleasantness": 67.7,
+          "pleasantness": 67.5,
           "classes": [
             "aldehyde",
             "aromatic",
@@ -955,21 +660,10 @@
           ]
         },
         {
-          "molecule": "Benzyl propionate",
-          "smiles": "CCC(=O)OCC1=CC=CC=C1",
-          "source": "known",
-          "pleasantness": 67.2,
-          "classes": [
-            "aromatic",
-            "ester",
-            "ether"
-          ]
-        },
-        {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC=O",
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1OC",
           "source": "de-novo",
-          "pleasantness": 66.2,
+          "pleasantness": 66.0,
           "classes": [
             "aldehyde",
             "aromatic",
@@ -990,10 +684,36 @@
           ]
         },
         {
-          "molecule": "denovo:C=CCc1cc(C=O)ccc1CC(=O)OC(=O)CCCCCC",
-          "smiles": "C=CCc1cc(C=O)ccc1CC(=O)OC(=O)CCCCCC",
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1C(C)=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1C(C)=O",
           "source": "de-novo",
           "pleasantness": 63.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "ketone"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1C(C)=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1ccc(C=O)cc1C(C)=O",
+          "source": "de-novo",
+          "pleasantness": 63.2,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "ketone"
+          ]
+        },
+        {
+          "molecule": "denovo:C=CCc1ccc(C=O)cc1CC(=O)OC(=O)CCCCCC",
+          "smiles": "C=CCc1ccc(C=O)cc1CC(=O)OC(=O)CCCCCC",
+          "source": "de-novo",
+          "pleasantness": 63.1,
           "classes": [
             "aldehyde",
             "alkene",
@@ -1003,12 +723,400 @@
           ]
         },
         {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1CCCO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
+          "molecule": "methyl salicylate",
+          "smiles": "COC(=O)C1=CC=CC=C1O",
+          "source": "known",
+          "pleasantness": 60.8,
           "classes": [
-            "alcohol",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "4-Hydroxybenzaldehyde",
+          "smiles": "C1=CC(=CC=C1C=O)O",
+          "source": "known",
+          "pleasantness": 51.8,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Phenethyl salicylate",
+          "smiles": "C1=CC=C(C=C1)CCOC(=O)C2=CC=CC=C2O",
+          "source": "known",
+          "pleasantness": 49.2,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        }
+      ],
+      "flavor_space": {
+        "map_coordinates_pca": [
+          -0.046,
+          0.497,
+          -0.141
+        ],
+        "nearest_known_flavors": [
+          "4-ethoxy-3-methoxybenzaldehyde",
+          "3,4-dimethoxybenzaldehyde",
+          "5650-43-1",
+          "nopyl acetate",
+          "3-phenylpropyl butyrate"
+        ],
+        "local_isolation_knn_dist": 0.771,
+        "novelty_percentile": 0.09,
+        "interpretation": "sits among known flavors"
+      },
+      "mixture": {
+        "perceptual_distinctiveness": 1.378,
+        "nearest_reference_flavor": "vanilla",
+        "olfactory_white": {
+          "n_components": 10,
+          "white_risk": 0.231,
+          "reading": "moderately complex"
+        },
+        "key_components": [
+          "C1=CC(=CC=C1C=O)O",
+          "C1CC(=O)OC2=CC=CC=C21",
+          "COC(=O)C1=CC=CC=C1O"
+        ]
+      },
+      "good_flavor_probability": 0.217,
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.812,
+          "sour": 0.125,
+          "salty": 0.0,
+          "bitter": 0.062,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "profile_strength": 0.421,
+        "top_descriptors": [
+          [
+            "sweet",
+            0.7
+          ],
+          [
+            "woody",
+            0.3
+          ],
+          [
+            "vanilla",
+            0.3
+          ],
+          [
+            "fruity",
+            0.3
+          ],
+          [
+            "nutty",
+            0.2
+          ],
+          [
+            "winey",
+            0.2
+          ]
+        ],
+        "flavor_region": [
+          "cherry",
+          "warm",
+          "cinnamon",
+          "aromatic",
+          "coumarinic",
+          "tea"
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "objective": 1.3295,
+      "predicted_mean_pleasantness": 60.3,
+      "composition_score": 3.1,
+      "chem_novelty": 0.654,
+      "n_denovo_components": 2,
+      "composition_top_classes": [
+        [
+          "ether",
+          1.0
+        ],
+        [
+          "ester",
+          0.9
+        ],
+        [
+          "aromatic",
+          0.7
+        ],
+        [
+          "phenol",
+          0.4
+        ],
+        [
+          "aldehyde",
+          0.3
+        ],
+        [
+          "terpenoid_like",
+          0.2
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)C=O)O",
+          "source": "known",
+          "pleasantness": 84.0,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Nopol acetate",
+          "smiles": "CC(=O)OCCC1=CCC2CC1C2(C)C",
+          "source": "known",
+          "pleasantness": 70.6,
+          "classes": [
+            "alkene",
+            "ester",
+            "ether",
+            "terpenoid_like"
+          ]
+        },
+        {
+          "molecule": "Whiskey lactone",
+          "smiles": "CCCCC1C(CC(=O)O1)C",
+          "source": "known",
+          "pleasantness": 69.7,
+          "classes": [
+            "ester",
+            "ether",
+            "lactone"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O",
+          "source": "de-novo",
+          "pleasantness": 68.3,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "smiles": "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "source": "de-novo",
+          "pleasantness": 64.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "methyl salicylate",
+          "smiles": "COC(=O)C1=CC=CC=C1O",
+          "source": "known",
+          "pleasantness": 60.8,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "phenol"
+          ]
+        },
+        {
+          "molecule": "Phenethyl propionate",
+          "smiles": "CCC(=O)OCCC1=CC=CC=C1",
+          "source": "known",
+          "pleasantness": 54.6,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Hexyl octanoate",
+          "smiles": "CCCCCCCC(=O)OCCCCCC",
+          "source": "known",
+          "pleasantness": 52.4,
+          "classes": [
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Piperonyl isobutyrate",
+          "smiles": "CC(C)C(=O)OCC1=CC2=C(C=C1)OCO2",
+          "source": "known",
+          "pleasantness": 48.3,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "terpenoid_like"
+          ]
+        },
+        {
+          "molecule": "Methyl 2-methoxybenzoate",
+          "smiles": "COC1=CC=CC=C1C(=O)OC",
+          "source": "known",
+          "pleasantness": 48.1,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        }
+      ],
+      "flavor_space": {
+        "map_coordinates_pca": [
+          -0.107,
+          0.26,
+          -0.003
+        ],
+        "nearest_known_flavors": [
+          "anisyl propionate",
+          "limonen-10-yl acetate",
+          "(-)-menthyl isobutyrate",
+          "isopropyl salicylate",
+          "carvyl-3-methylbutyrate"
+        ],
+        "local_isolation_knn_dist": 0.764,
+        "novelty_percentile": 0.06,
+        "interpretation": "sits among known flavors"
+      },
+      "mixture": {
+        "perceptual_distinctiveness": 1.41,
+        "nearest_reference_flavor": "vanilla",
+        "olfactory_white": {
+          "n_components": 10,
+          "white_risk": 0.231,
+          "reading": "moderately complex"
+        },
+        "key_components": [
+          "CCCCCCC(=O)Oc1ccc(O)c(-c2ccc(C=O)cc2)c1",
+          "CCCCCCCC(=O)OCCCCCC",
+          "CCCCCCC(=O)OC(=O)Cc1cc(C=O)ccc1O"
+        ]
+      },
+      "good_flavor_probability": 0.358,
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.923,
+          "sour": 0.077,
+          "salty": 0.0,
+          "bitter": 0.0,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "profile_strength": 0.404,
+        "top_descriptors": [
+          [
+            "herbal",
+            0.4
+          ],
+          [
+            "fruity",
+            0.4
+          ],
+          [
+            "sweet",
+            0.4
+          ],
+          [
+            "woody",
+            0.2
+          ],
+          [
+            "floral",
+            0.2
+          ],
+          [
+            "vanilla",
+            0.2
+          ]
+        ],
+        "flavor_region": [
+          "creamy",
+          "warm",
+          "mint",
+          "woody",
+          "cinnamon",
+          "musk"
+        ]
+      }
+    },
+    {
+      "rank": 5,
+      "objective": 1.2983,
+      "predicted_mean_pleasantness": 62.4,
+      "composition_score": 2.7,
+      "chem_novelty": 0.673,
+      "n_denovo_components": 3,
+      "composition_top_classes": [
+        [
+          "ester",
+          0.9
+        ],
+        [
+          "ether",
+          0.9
+        ],
+        [
+          "aromatic",
+          0.9
+        ],
+        [
+          "aldehyde",
+          0.4
+        ],
+        [
+          "alkene",
+          0.3
+        ],
+        [
+          "terpenoid_like",
+          0.2
+        ]
+      ],
+      "components": [
+        {
+          "molecule": "Allyl heptanoate",
+          "smiles": "CCCCCCC(=O)OCC=C",
+          "source": "known",
+          "pleasantness": 73.7,
+          "classes": [
+            "alkene",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Vanillin Acetate",
+          "smiles": "CC(=O)OC1=C(C=C(C=C1)C=O)OC",
+          "source": "known",
+          "pleasantness": 72.5,
+          "classes": [
             "aldehyde",
             "aromatic",
             "ester",
@@ -1016,12 +1124,22 @@
           ]
         },
         {
-          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CCCO",
-          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1CCCO",
-          "source": "de-novo",
-          "pleasantness": 63.1,
+          "molecule": "Anisyl acetate",
+          "smiles": "CC(=O)OCC1=CC=C(C=C1)OC",
+          "source": "known",
+          "pleasantness": 69.8,
           "classes": [
-            "alcohol",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 67.7,
+          "classes": [
             "aldehyde",
             "aromatic",
             "ester",
@@ -1029,20 +1147,69 @@
           ]
         },
         {
-          "molecule": "Nerolin Yara Yara",
-          "smiles": "COC1=CC2=CC=CC=C2C=C1",
-          "source": "known",
-          "pleasantness": 61.6,
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "smiles": "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O",
+          "source": "de-novo",
+          "pleasantness": 66.3,
           "classes": [
+            "aldehyde",
             "aromatic",
+            "ester",
             "ether"
           ]
         },
         {
-          "molecule": "Isoeugenyl phenylacetate",
-          "smiles": "CC=CC1=CC(=C(C=C1)OC(=O)CC2=CC=CC=C2)OC",
+          "molecule": "denovo:CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)C",
+          "smiles": "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1C(C)C",
+          "source": "de-novo",
+          "pleasantness": 63.9,
+          "classes": [
+            "aldehyde",
+            "aromatic",
+            "ester",
+            "ether",
+            "terpenoid_like"
+          ]
+        },
+        {
+          "molecule": "Eugenyl Acetate",
+          "smiles": "CC(=O)OC1=C(C=C(C=C1)CC=C)OC",
           "source": "known",
-          "pleasantness": 56.2,
+          "pleasantness": 63.9,
+          "classes": [
+            "alkene",
+            "aromatic",
+            "ester",
+            "ether"
+          ]
+        },
+        {
+          "molecule": "Methyl beta-naphthyl ketone",
+          "smiles": "CC(=O)C1=CC2=CC=CC=C2C=C1",
+          "source": "known",
+          "pleasantness": 60.7,
+          "classes": [
+            "aromatic",
+            "ketone"
+          ]
+        },
+        {
+          "molecule": "2-Phenoxyethyl isobutyrate",
+          "smiles": "CC(C)C(=O)OCCOC1=CC=CC=C1",
+          "source": "known",
+          "pleasantness": 55.1,
+          "classes": [
+            "aromatic",
+            "ester",
+            "ether",
+            "terpenoid_like"
+          ]
+        },
+        {
+          "molecule": "trans-Cinnamyl propionate",
+          "smiles": "CCC(=O)OCC=CC1=CC=CC=C1",
+          "source": "known",
+          "pleasantness": 50.8,
           "classes": [
             "alkene",
             "aromatic",
@@ -1053,23 +1220,23 @@
       ],
       "flavor_space": {
         "map_coordinates_pca": [
-          -0.273,
-          0.167,
-          -0.224
+          -0.382,
+          0.232,
+          -0.152
         ],
         "nearest_known_flavors": [
-          "dimethyl adipate",
-          "77-90-7",
-          "ethyl heptanoate",
-          "ethyl octanoate",
-          "allyl decanoate"
+          "benzylisopropyl propionate",
+          "1-phenylpropyl butyrate",
+          "10039-39-1",
+          "isopropyl benzoate",
+          "ethyl salicylate"
         ],
-        "local_isolation_knn_dist": 0.741,
-        "novelty_percentile": 0.013,
+        "local_isolation_knn_dist": 0.701,
+        "novelty_percentile": 0.003,
         "interpretation": "sits among known flavors"
       },
       "mixture": {
-        "perceptual_distinctiveness": 1.483,
+        "perceptual_distinctiveness": 1.467,
         "nearest_reference_flavor": "vanilla",
         "olfactory_white": {
           "n_components": 10,
@@ -1077,12 +1244,57 @@
           "reading": "moderately complex"
         },
         "key_components": [
-          "COC1=CC2=CC=CC=C2C=C1",
-          "C1CC(=O)OC2=CC=CC=C21",
-          "CCC(=O)OCC1=CC=CC=C1"
+          "CCCCCCC(=O)OC(=O)Cc1ccc(C=O)cc1OC=O",
+          "CC(=O)C1=CC2=CC=CC=C2C=C1",
+          "CCCCCCC(=O)OC(=O)c1cc(C=O)ccc1OC=O"
         ]
       },
-      "good_flavor_probability": 0.235
+      "good_flavor_probability": 0.254,
+      "taste_profile": {
+        "basic_tastes": {
+          "sweet": 0.882,
+          "sour": 0.118,
+          "salty": 0.0,
+          "bitter": 0.0,
+          "umami": 0.0
+        },
+        "dominant_taste": "sweet",
+        "profile_strength": 0.431,
+        "top_descriptors": [
+          [
+            "fruity",
+            0.7
+          ],
+          [
+            "floral",
+            0.4
+          ],
+          [
+            "sweet",
+            0.4
+          ],
+          [
+            "winey",
+            0.2
+          ],
+          [
+            "vanilla",
+            0.2
+          ],
+          [
+            "cognac",
+            0.2
+          ]
+        ],
+        "flavor_region": [
+          "plum",
+          "chamomile",
+          "peach",
+          "strawberry",
+          "creamy",
+          "berry"
+        ]
+      }
     }
   ]
 }

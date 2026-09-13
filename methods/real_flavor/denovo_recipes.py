@@ -34,6 +34,7 @@ from reference_flavors import REFERENCE_FLAVORS
 import flavor_geometry as fg
 import mixtures as mx
 import recipe_classifier as rc
+import taste_profile as tp
 
 _HERE = os.path.dirname(__file__)
 
@@ -140,6 +141,11 @@ def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
         clf = rc.RecipeClassifier().fit()
     except Exception:
         clf = None
+    profiler = None
+    try:
+        profiler = tp.TasteProfiler()
+    except Exception:
+        profiler = None
 
     for r in recipes_out:
         smis = [c["smiles"] for c in r["components"]]
@@ -156,6 +162,13 @@ def _mixture_analysis(recipes_out, model_ctx, optimize_top=True):
             }
             if clf is not None:
                 r["good_flavor_probability"] = round(float(clf.score(smis)), 3)
+            if profiler is not None:
+                pr = profiler.profile(smis)
+                r["taste_profile"] = {"basic_tastes": pr["basic_tastes"],
+                                      "dominant_taste": pr["dominant_taste"],
+                                      "profile_strength": pr["profile_strength"],
+                                      "top_descriptors": pr["top_descriptors"],
+                                      "flavor_region": pr["flavor_region"]}
         except Exception as e:
             r["mixture"] = {"error": f"analysis failed: {type(e).__name__}"}
 

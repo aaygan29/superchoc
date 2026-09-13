@@ -40,7 +40,18 @@ CLASS_SMARTS = {
 _PATTS = {k: Chem.MolFromSmarts(v) for k, v in CLASS_SMARTS.items()}
 
 
+_CLASSIFY_CACHE = {}
+
+
 def classify(smiles: str):
+    if smiles in _CLASSIFY_CACHE:
+        return set(_CLASSIFY_CACHE[smiles])  # fresh copy; cache holds a frozenset
+    result = _classify_uncached(smiles)
+    _CLASSIFY_CACHE[smiles] = frozenset(result)
+    return result
+
+
+def _classify_uncached(smiles: str):
     m = Chem.MolFromSmiles(smiles)
     if m is None:
         return set()
