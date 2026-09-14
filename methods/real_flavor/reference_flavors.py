@@ -20,14 +20,27 @@ to the canonical key-odorant literature:
                    - classic key-odorant associations for these PLEASANT flavors (terpenoids,
                      phenylpropanoids, green aldehydes, ionones, N-heterocycles, lactones).
 
-Inclusion principle: entries are flavors humans broadly find GOOD/pleasant, chosen to span the
-chemotypes that pleasant flavors actually use, NOT to force chemotype balance for its own sake.
-We deliberately do not add savory/pungent classes (garlic, cheese, smoke, cooked-meat) as
-positive "good flavors": those would dilute the deliciousness signal. Note that esters and
-lactones are heavily represented on purpose: the repo's own composition statistics show lactones
-and esters carry the highest pleasantness lifts (composition.py), consistent with the flavor
-chemistry of creamy/fruity notes, so their prevalence is a real feature, not a sampling bias.
-Sulfur/thiol chemistry still has representation via coffee (furfurylthiol) and cocoa.
+OPERATIONAL DEFINITION OF "DELICIOUSNESS" (the scope of this experiment). We restrict the
+positive class to the family of IMMEDIATELY PLEASANT flavors dominated by SWEET, CREAMY, FRUITY,
+FLORAL, and CITRUS notes: the dessert / beverage / confection / fragrance space (chocolate,
+vanilla, caramel, butter, the fruits, mint, floral, citrus, coffee as a roasted-sweet edge).
+These are the profiles most people find pleasant on first exposure, and their key odorants have
+relatively well-characterized, clean pleasant-receptor associations, so "good" here is a
+receptor-verifiable target, not a matter of acquired taste.
+
+We DELIBERATELY EXCLUDE savory, meaty, garlicky, alliaceous, cheesy, and smoky flavors. Many
+people genuinely find those delicious, and nothing here claims otherwise; but their pleasantness
+is more context- and culture-dependent (acquired rather than immediate), and they are dominated
+by sulfur/thiol/pungent chemistry that is harder to tie to a clean pleasant-receptor signal. So
+for THIS experiment "deliciousness" operationally means the immediately-pleasant sweet/creamy/
+fruity/floral/citrus family above, and results should be read within that scope.
+
+Consequences: esters and lactones are heavily represented on purpose. That is not a sampling
+bias, it is real flavor chemistry: the repo's own composition statistics show lactones and esters
+carry the highest pleasantness lifts (composition.py), matching the creamy/fruity core of this
+family. Sulfur/thiol chemistry still appears where it belongs in a pleasant flavor (coffee's
+furfurylthiol, cocoa) rather than as a standalone savory positive.
+
 All SMILES are RDKit-parseable and were verified before inclusion.
 """
 
