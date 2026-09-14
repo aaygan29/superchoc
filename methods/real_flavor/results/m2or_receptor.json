@@ -1,0 +1,8 @@
+{
+  "n_pairs": 2340,
+  "n_molecules": 92,
+  "n_receptors": 375,
+  "positives": 113,
+  "base_rate": 0.048,
+  "leave_molecule_out_auc": 0.89
+}
