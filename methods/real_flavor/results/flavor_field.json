@@ -1,0 +1,7 @@
+{
+  "n": 420,
+  "geometry_field_spearman": 0.493,
+  "geometry_field_r2": 0.111,
+  "ecfp_baseline_spearman": 0.501,
+  "reading": "geometry field predicts pleasantness from position, weaker than but correlated with the structure model"
+}

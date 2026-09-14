@@ -65,9 +65,16 @@ mixture labels, so not used to rank).
 - `composition.py` - chemical-class composition statistics (see COMPOSITION.md).
 - `flavor_math.py` + `FlavorMath.lean` - tastiness metric + Lean-checked theorems (see MATH.md).
 - `flavor_geometry.py` - flavor-space geometry: hyperbolicity test + locate-a-blend (see GEOMETRY.md).
+- `flavor_field.py` - goodness field over flavor space: predict pleasantness from position; find sparse-good targets (see FLAVOR_FIELD.md).
 - `lego_assembly.py` - de-novo molecule construction + PubChem novelty (see LEGO.md).
+- `geometry_gate.py` - 3D-validity gate for de-novo molecules (see GEOMETRY_GATE.md).
+- `receptor_binding.py` - structure-based molecule<->receptor co-fold via Boltz-2 (see RECEPTOR_BINDING.md).
 - `reference_flavors.py` - reference flavor key-odorant sets for novelty comparison.
-- `recipes.py` / `flavor_designer.py` / `denovo_recipes.py` - recipe generators.
+- `mixtures.py` - combo science: validated mixture-distance, Scheffe ratio optimization, OAV, omission (see MIXTURES.md).
+- `recipe_classifier.py` - recipe-level good-flavor classifier (see RECIPE_CLASSIFIER.md).
+- `taste_profile.py` - five basic tastes + chef-descriptor flavor regions + steering lever.
+- `denovo_recipes.py` - composition-guided recipe generator (feeds the analyzer).
+- `analyzer.py` / `validated_recipe.py` - the overarching analyzer and single-recipe producer (see ANALYZER.md).
 - `suite_real.py` - the single-molecule candidate-suite generator.
 - `validate_real.py` - pre-registered validation incl. a hard safety gate.
 - `test_real_flavor.py` - offline unit tests.

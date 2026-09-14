@@ -32,6 +32,7 @@ import composition as comp
 import mixtures as mx
 import recipe_classifier as rc
 import taste_profile as tp
+import flavor_field as ff
 from reference_flavors import REFERENCE_FLAVORS
 
 _HERE = os.path.dirname(__file__)
@@ -73,6 +74,10 @@ class SuperchocAnalyzer:
                         self.name[e["smiles"]] = f"denovo:{e['smiles']}"
         self.clf = rc.RecipeClassifier().fit()
         self.profiler = tp.TasteProfiler()
+        try:
+            self.field = ff.FlavorField()   # goodness field over the flavor-space metric
+        except Exception:
+            self.field = None
         self.geo = self.profiler.geo  # reuse the loaded flavor-space geometry
         self.ref_mix = {f: list(m.values()) for f, m in REFERENCE_FLAVORS.items()}
         ref_all = [s for ms in self.ref_mix.values() for s in ms]
@@ -224,10 +229,12 @@ class SuperchocAnalyzer:
                        # via nearest-molecule odor descriptors) -> the flavor "type" we build from
                        "evoked_flavor": self._evoked_flavor(s)}
                       for i, s in enumerate(combo)]
+        field_sc = self.field.superchoc_score(combo) if self.field else None
         return {
             "good_flavor_probability": round(gp, 3),
             "chemical_novelty": round(chem_nov, 3),
             "perceptual_novelty_percentile": round(perc_nov, 3),
+            "flavor_field": field_sc,  # goodness field value + sparsity + superchoc score
             "profile_strength": prof["profile_strength"],
             "taste_description": _describe(prof, nearest, chem_nov, perc_nov, gp),
             "taste_profile": {"basic_tastes": prof["basic_tastes"],
@@ -247,7 +254,9 @@ class SuperchocAnalyzer:
                "cascade_funnel": getattr(self, "_funnel", None),
                "validation": {"recipe_classifier_loo_auc": 0.69,
                               "mixture_distance_snitz_spearman": -0.49,
-                              "mixture_distance_ravia_spearman": -0.245},
+                              "mixture_distance_ravia_spearman": -0.245,
+                              "goodness_field_spearman": 0.49,
+                              "goodness_field_vs_ecfp": "0.49 vs 0.50 (position ~ structure)"},
                "note": ("Internally evaluated on validated/externally-grounded models + safety "
                         "gate. Not human-tasted; ranked hypotheses for a chemist/chef (HANDOFF.md).")}
         return out
