@@ -1,0 +1,7 @@
+{
+  "mean": 0.529,
+  "set": 0.698,
+  "additive_mean_only_spearman": 0.668,
+  "n_combos": 4000,
+  "reading": "set model (dispersion+complexity) beats additive mean-pooling on the real-label combo-pleasantness benchmark"
+}

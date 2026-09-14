@@ -81,7 +81,9 @@ survivors). `validated_recipe.py` produces one high-confidence recipe instead of
 | Recipe-level good-flavor classifier (leave-one-flavor-out, 23 pleasant chemotype-diverse flavors) | ROC-AUC **0.72** (RF 0.73); more robust than the 6-flavor 0.69, and savory/pungent classes were correctly excluded | `recipe_classifier.py` |
 | Significance of headline results (bootstrap CI + permutation p + FDR) | all 3 mixture/field results **significant** (FDR < 0.01) | `significance.py` |
 | Molecule -> odorant-receptor signal (Mainland 2015) | **1.57x** chance | `receptors.py` |
+| Molecule -> receptor activation model (M2OR, leave-molecule-out) | ROC-AUC **0.89** (92 mols x 375 human ORs) | `m2or_receptor.py` |
 | Structure-based receptor binding (Boltz-2, held-out swap) | cognate vs non-cognate AUC **0.875** | `receptor_binding.py` |
+| Combo-pleasantness benchmark (real Keller labels + literature pooling) | set **0.70** vs additive **0.67** (no direct human combo data exists) | `combo_pleasantness.py` |
 | Composition -> blend pleasantness | Spearman **0.42** | `composition.py` |
 | Food-safety toxicity screen | 380/420 pass; benzene/formaldehyde flagged | `safety.py` |
 | De-novo molecules generated | 434 safe & novel; **top-12 absent from PubChem** | `lego_assembly.py` |
@@ -136,7 +138,9 @@ superchoc/
 | file | role | doc |
 |---|---|---|
 | `receptors.py` | molecule -> odorant-receptor activation (Mainland 2015) | |
+| `m2or_receptor.py` | learned molecule -> receptor activation (M2OR, LOMO AUC 0.89) | |
 | `receptor_binding.py` | structure-based molecule<->receptor co-fold (Boltz-2) | RECEPTOR_BINDING |
+| `combo_pleasantness.py` | mixture-pleasantness benchmark (real labels + literature pooling) | |
 
 **Flavor-space math**
 | file | role | doc |

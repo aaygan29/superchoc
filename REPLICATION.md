@@ -95,6 +95,8 @@ python flavor_field.py              # goodness field over flavor space, CV vs EC
 python mixtures.py                  # mixture perceptual-distance validation (Snitz + Ravia)
 python recipe_classifier.py         # leave-one-flavor-out AUC over 27 diverse flavors
 python significance.py              # bootstrap CIs + permutation p-values + FDR
+python m2or_receptor.py             # molecule->receptor activation model (M2OR), leave-molecule-out AUC
+python combo_pleasantness.py        # mixture-pleasantness benchmark (real labels + literature pooling)
 python geometry_gate.py             # 3D-validity gate: known-good vs invalid vs de-novo
 python lego_assembly.py             # de-novo molecules + geometry gate + PubChem novelty
 python validate_receptor_binding.py # Boltz-2 receptor-specificity swap (needs credits)
