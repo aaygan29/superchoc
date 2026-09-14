@@ -1,6 +1,6 @@
 # Cross-disciplinary integration
 
-Wintermute's Conjecture 4 sits at the intersection of several fields. Progress needs their
+Conjecture 4 sits at the intersection of several fields. Progress needs their
 methods wired together, not treated separately. This maps how each discipline's results
 feed the pipeline, and how the repo pulls from them continuously ("online"). Extends
 [LITERATURE.md](LITERATURE.md); biomedical citations retrieved via PubMed (DOIs below).
@@ -57,4 +57,4 @@ Two senses, both implemented:
 - Closing the loop to the therapeutic-GPCR side: does a mixture/OR model transfer to
   drug-target GPCR affinity prediction?
 
-_Conjecture: Jake Wintermute. Neuroscience/neuropsychology citations via PubMed._
+_Conjecture: from a recent essay on biological challenges for AI (not the author's own). Neuroscience/neuropsychology citations via PubMed._

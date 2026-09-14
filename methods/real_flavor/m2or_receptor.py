@@ -3,7 +3,7 @@
 Upgrades the sparse nearest-neighbour receptor layer (receptors.py, ~1.6x chance) to a learned
 predictor: given a molecule and a human odorant receptor (its amino-acid sequence), predict
 whether the molecule ACTIVATES that receptor. This is the biologically correct middle of
-Wintermute's chain (molecule -> receptor activation -> percept).
+the molecule -> receptor activation -> percept chain.
 
 Data: M2OR (Lalis et al. 2024, Nucleic Acids Research; github.com/chemosim-lab/M2OR), the curated
 odorant-receptor--molecule database. We use the human subset with a binarized Responsive label and

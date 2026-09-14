@@ -1,6 +1,6 @@
 """Receptor layer: molecule -> odorant-receptor activation (the missing middle in the chain).
 
-Wintermute's chain is molecule -> receptor activation profile -> flavor. Everything else in
+The molecule -> receptor activation -> flavor chain is the backbone. Everything else in
 this repo learns structure->percept directly; this module grounds the intermediate on REAL
 data: Mainland et al. 2015, a human odorant-receptor screen (via Pyrfume), which gives
 confirmed OR-ligand activations with EC50.

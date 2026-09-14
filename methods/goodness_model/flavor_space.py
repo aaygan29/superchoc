@@ -58,7 +58,7 @@ class FlavorSpace:
                             percentile: float = 88.0, seed: int = 12345):
         """A 'chocolate' combo: excellent but deliberately NOT the maximum.
 
-        Wintermute's conjecture is precisely that chocolate is not the peak of delight,
+        the conjecture's conjecture is precisely that chocolate is not the peak of delight,
         so we define chocolate as a high-percentile random combo (default 88th), not the
         best-of-N. The target is then to find NOVEL combos that beat this very-good-but-
         not-maximal reference, which is the conjecture's actual claim."""

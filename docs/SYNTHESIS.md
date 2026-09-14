@@ -1,7 +1,7 @@
-# Synthesis: can existing work be bridged into progress on Wintermute's Conjecture 4?
+# Synthesis: can existing work be bridged into progress on Conjecture 4?
 
-Conjecture and framing: **Jake Wintermute**, *Strange and Marvelous Challenges for
-Biological AI* (Sept 2026), via [American Wetware](https://americanwetware.com/). This
+Conjecture and framing: **a recent essay on biological challenges for AI**, *Strange and Marvelous Challenges for
+Biological AI* (Sept 2026), . This
 document is my assessment of whether the existing literature and AI-biotech tooling can
 be composed, computationally, into meaningful progress on his three criteria, and a
 concrete in-silico plan. It builds on [LITERATURE.md](LITERATURE.md) and
@@ -38,7 +38,7 @@ right now:
 - **OR = GPCR.** Odor receptors are GPCRs, so a structure to OR-activation model (Ji et
   al. 2025 show XGBoost + docking + mutagenesis localizing odorant binding to TM3/5/6) is
   the same machinery as therapeutic GPCR modeling. Progress on flavor is progress on
-  pharmacology, exactly as Wintermute argues.
+  pharmacology, exactly as the source essay argues.
 - **Cheap, safe design cycles.** Flavor panels replace clinical trials, so the
   design-test-learn loop can iterate fast. This is where an online experimental-design
   method matters (see [methods/active_flavor_search](../methods/active_flavor_search/)):
@@ -86,9 +86,9 @@ chocolate. Only a human panel closes that, and the design keeps that step explic
 
 A synthesis is possible and relevant. The highest-value, most novel contribution is not a
 new model but the **OR-to-therapeutic-GPCR bridge** made concrete by GPCRdb 2025, plus an
-**online design loop** that makes the cheap-panel advantage Wintermute highlights actually
+**online design loop** that makes the cheap-panel advantage the source essay highlights actually
 pay off. Everything downstream must be measured against the fixed benchmarks in
 GROUND_TRUTH.md, not asserted.
 
-_Conjecture: Jake Wintermute. Biomedical literature retrieved via PubMed and named public
+_Conjecture: from a recent essay on biological challenges for AI (not the author's own). Biomedical literature retrieved via PubMed and named public
 databases; see LITERATURE.md for DOIs._

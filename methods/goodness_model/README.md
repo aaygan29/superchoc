@@ -1,6 +1,6 @@
 # Goodness model + combo generator
 
-The two-part engine behind Wintermute's Criteria 1 and 2: a machine-learning model that
+The two-part engine behind the conjecture's Criteria 1 and 2: a machine-learning model that
 **learns which molecular embeddings taste good**, and a generator that **composes novel
 molecule combinations** predicted to be good, producing a ranked, lab-testable suite of
 "super-chocolate" candidates.
@@ -78,5 +78,5 @@ chef can source and taste.
 - `test_goodness.py` - unit tests.
 - `results/` - committed validation JSON and an example suite.
 
-_Conjecture and framing: Jake Wintermute (see repo README). Cross-disciplinary citations
+_Conjecture and framing: from a recent essay on biological challenges for AI (not the author's own). (see repo README). Cross-disciplinary citations
 via PubMed; DOIs above. Method, generator, and validation: mine._

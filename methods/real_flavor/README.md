@@ -88,5 +88,5 @@ The combo score assumes additivity; real mixtures are not additive, which is why
 mixture model exists and why the top of the ranking should be treated as hypotheses. Nothing
 here is a safety clearance. See [HANDOFF.md](HANDOFF.md).
 
-_Conjecture and framing: Jake Wintermute (see repo README). Data: Keller 2016 via Pyrfume
+_Conjecture and framing: from a recent essay on biological challenges for AI (not the author's own). (see repo README). Data: Keller 2016 via Pyrfume
 (Castro et al. 2024). Methods, safety screen, and analysis: mine._

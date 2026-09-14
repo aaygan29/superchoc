@@ -1,17 +1,15 @@
 # superchoc
 
 **A computational instrument for designing novel, safe, pleasant flavor combinations, built
-toward Jake Wintermute's Conjecture 4 ("Superchocolate exists in flavor space").**
+toward Conjecture 4 ("Superchocolate exists in flavor space").**
 
-The conjecture and framing are **Jake Wintermute's**, from *"Strange and Marvelous Challenges
-for Biological AI"* (Sept 2026), via American Wetware
-([Substack](https://americanwetware.substack.com/); author
-[LinkedIn](https://www.linkedin.com/in/jake-wintermute/)). His claim, briefly: chocolate is a
-very high-dimensional flavor (hundreds of odorants across ~30 taste and ~400 odor receptors),
-flavor space is vast and mostly unexplored, so exceptional unexperienced flavors likely exist;
-and because odor receptors are GPCRs (the target of ~36% of approved drugs), solving flavor
-design may advance drug design. **The ideas are his; the implementation and analysis here are
-the author's.** Read his article for the full argument.
+The conjecture and framing are **not the author's own**: they come from a recent essay on
+biological challenges for AI (2026). The claim, briefly: chocolate is a very high-dimensional
+flavor (hundreds of odorants across ~30 taste and ~400 odor receptors), flavor space is vast and
+mostly unexplored, so exceptional unexperienced flavors likely exist; and because odor receptors
+are GPCRs (the target of ~36% of approved drugs), solving flavor design may advance drug design.
+**The conjecture and framing are the essay's; the implementation and analysis here are the
+author's.**
 
 ---
 
@@ -104,7 +102,7 @@ and maximally good.
 superchoc/
   README.md            <- you are here
   REPLICATION.md       <- exact steps + methodology to reproduce everything
-  ROADMAP.md           <- Wintermute's 3 success criteria, decomposed
+  ROADMAP.md           <- the conjecture's 3 success criteria, decomposed
   requirements.txt     <- Python deps
   paper/               <- superchoc_v1_older_article-class.{tex,pdf}: an OLDER article-class draft
                           (the current NeurIPS-template submission lives in the submission bundle)

@@ -1,7 +1,7 @@
 """Structure-based receptor-interaction layer: co-fold a flavor molecule against a real
 odorant/taste receptor and read out a binding signal (Boltz-2).
 
-Motivation. Wintermute's chain is molecule -> receptor activation -> percept, and receptors.py
+Motivation. The molecule -> receptor activation -> percept chain is the backbone, and receptors.py
 grounds the middle only through a sparse *structural nearest-neighbour* to Mainland 2015
 confirmed OR-ligand pairs (a ~1.6x-chance signal). That is the weakest quantitative link in
 the pipeline: it never looks at the receptor's structure, only at ligand-ligand similarity.

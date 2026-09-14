@@ -1,6 +1,6 @@
 # Structure-based receptor-interaction layer (Boltz-2 co-folding)
 
-Wintermute's chain is molecule -> receptor activation -> percept. In this repo `receptors.py`
+the molecule-to-receptor-to-percept chain is molecule -> receptor activation -> percept. In this repo `receptors.py`
 grounds the middle only through a sparse *structural nearest-neighbour* to Mainland 2015
 confirmed OR-ligand pairs (a ~1.6x-chance signal that never looks at the receptor's structure).
 `receptor_binding.py` upgrades that to a genuine **structure-based** interaction score: it

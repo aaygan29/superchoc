@@ -1,6 +1,6 @@
 # Online active flavor search
 
-A method for the expensive question in Wintermute's Conjecture 4: flavor space is huge,
+A method for the expensive question in Conjecture 4: flavor space is huge,
 human panels are cheap-but-not-free, so **which molecule do you taste next?** This is an
 online (sequential) experimental-design loop: it keeps a model of deliciousness over the
 flavor embedding and picks each next query to make the most progress per panel cycle.
@@ -67,4 +67,4 @@ pleasantness) for in-silico cycles, or a blinded human panel rating for real one
 embedding becomes a POM/GNN embedding of real molecules (see
 [../../docs/GROUND_TRUTH.md](../../docs/GROUND_TRUTH.md)). The loop is unchanged.
 
-_Conjecture and framing: Jake Wintermute (see repo README). Method and validation: mine._
+_Conjecture and framing: from a recent essay on biological challenges for AI (not the author's own). (see repo README). Method and validation: mine._

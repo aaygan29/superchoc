@@ -1,8 +1,7 @@
 # Replication guide
 
 Every step needed to reproduce the results in this repository, and the methodology behind
-them, so anyone can rerun, check, or extend the work. Conjecture and framing are Jake
-Wintermute's (see [README](README.md)); the methods and analysis here are the author's.
+them, so anyone can rerun, check, or extend the work. Conjecture and framing are the source essay's (see [README](README.md)); the methods and analysis here are the author's.
 
 ## Environment
 
