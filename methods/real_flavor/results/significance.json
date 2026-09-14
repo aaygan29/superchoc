@@ -1,0 +1,42 @@
+{
+  "tests": [
+    {
+      "test": "mixture_distance_vs_similarity_snitz2013",
+      "n": 360,
+      "spearman": -0.492,
+      "ci95": [
+        -0.578,
+        -0.4
+      ],
+      "perm_p": 0.0002,
+      "fdr_bh": 0.0003,
+      "significant_fdr_0.05": true
+    },
+    {
+      "test": "mixture_distance_vs_similarity_ravia2020",
+      "n": 195,
+      "spearman": -0.245,
+      "ci95": [
+        -0.393,
+        -0.089
+      ],
+      "perm_p": 0.0012,
+      "fdr_bh": 0.0012,
+      "significant_fdr_0.05": true
+    },
+    {
+      "test": "goodness_field_cv_vs_pleasantness",
+      "n": 420,
+      "spearman": 0.493,
+      "ci95": [
+        0.416,
+        0.559
+      ],
+      "perm_p": 0.0002,
+      "fdr_bh": 0.0003,
+      "significant_fdr_0.05": true
+    }
+  ],
+  "method": "percentile bootstrap CI + label-permutation p + Benjamini-Hochberg FDR",
+  "caveat": "Snitz/Ravia mixture pairs share component molecules (not fully independent); the permutation test is a first-order check, not a molecule-level exact test."
+}

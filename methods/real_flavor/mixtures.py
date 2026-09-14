@@ -119,6 +119,53 @@ class MixtureSpace:
 # --------------------------------------------------------------------------------------------
 # Externally-validated check: does the angle distance predict Snitz's human similarity ratings?
 # --------------------------------------------------------------------------------------------
+def snitz_vectors():
+    """(angle_distance, human_similarity) over Snitz's 360 mixture pairs (for significance tests)."""
+    import pyrfume
+    mol = pyrfume.load_data("snitz_2013/molecules.csv")
+    cid2smi = {int(c): r["IsomericSMILES"] for c, r in mol.iterrows()
+               if isinstance(r["IsomericSMILES"], str)}
+    beh = pyrfume.load_data("snitz_2013/behavior.csv")
+    space = MixtureSpace([s for s in cid2smi.values() if Chem.MolFromSmiles(s) is not None])
+
+    def cids(cell):
+        return [cid2smi[int(t)] for t in str(cell).split(",")
+                if t.strip().isdigit() and int(t.strip()) in cid2smi]
+    d, s = [], []
+    for _, r in beh.iterrows():
+        A, B = cids(r["StimulusA"]), cids(r["StimulusB"])
+        dd = space.distance(A, B) if (A and B) else None
+        if dd is not None:
+            d.append(dd); s.append(float(r["Similarity"]))
+    return np.array(d), np.array(s)
+
+
+def ravia_vectors():
+    """(angle_distance, human_similarity) over Ravia's 195 mixture pairs (for significance tests)."""
+    import re
+    import pyrfume
+    st = pyrfume.load_data("ravia_2020/stimuli.csv")
+    mol = pyrfume.load_data("ravia_2020/molecules.csv")
+    cid2smi = {int(c): r["IsomericSMILES"] for c, r in mol.iterrows()
+               if isinstance(r["IsomericSMILES"], str)}
+    b2 = pyrfume.load_data("ravia_2020/behavior_2.csv").reset_index()
+    space = MixtureSpace([s for s in cid2smi.values() if Chem.MolFromSmiles(s) is not None])
+
+    def stim(sid):
+        if sid not in st.index:
+            return []
+        return [cid2smi[int(t)] for t in re.split(r"[;,]", str(st.loc[sid, "CID"]))
+                if t.strip().isdigit() and int(t.strip()) in cid2smi
+                and Chem.MolFromSmiles(cid2smi[int(t.strip())]) is not None]
+    d, s = [], []
+    for _, r in b2.iterrows():
+        A, B = stim(r["Stimulus 1"]), stim(r["Stimulus 2"])
+        dd = space.distance(A, B) if (A and B) else None
+        if dd is not None:
+            d.append(dd); s.append(float(r["RatedSimilarity"]))
+    return np.array(d), np.array(s)
+
+
 def validate_snitz():
     import pyrfume
     from scipy.stats import spearmanr, pearsonr

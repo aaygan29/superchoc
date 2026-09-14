@@ -12,8 +12,11 @@ Wintermute's (see [README](README.md)); the methods and analysis here are the au
 - No GPU required. All results below run on a laptop CPU in minutes.
 
 ```bash
-pip install numpy scikit-learn scipy rdkit
+pip install numpy scikit-learn scipy rdkit pyrfume
 ```
+The real-data pipeline (Method 3) additionally needs `pyrfume` (Keller/Mainland/Leffingwell/
+Snitz/Ravia archives). The Boltz-2 receptor step needs the `boltz-api` CLI + credits (optional).
+Lean 4 is optional (only to re-check the metric theorems).
 
 Everything is seeded; results are deterministic given the seeds stated.
 
@@ -76,6 +79,44 @@ oracle (population ranking corr 0.86; the model under-promises its picks by 0.05
    predicted goodness, true-oracle goodness, novelty, and "beats chocolate" flag.
 7. **Validation.** Pre-registered checks (learnable model, beat random, beat chocolate,
    two Goodhart controls, novelty) over 8 seeds. Ships only if all pass.
+
+## Method 3: the real-data flavor pipeline (`methods/real_flavor/`)
+
+The main pipeline. Real molecules and human labels (via Pyrfume), a validated flavor-space
+metric, de-novo generation, combo science, a recipe-level classifier, and one overarching
+analyzer. All commands are deterministic (seeded).
+
+```bash
+cd methods/real_flavor
+python analyzer.py                  # THE analyzer: ranked novel good-taste recipes + superchocolate
+python validated_recipe.py          # one high-confidence strong-profile recipe (full package)
+python validate_real.py             # pleasantness CV + mixture + safety gate + novelty
+python flavor_field.py              # goodness field over flavor space, CV vs ECFP baseline
+python mixtures.py                  # mixture perceptual-distance validation (Snitz + Ravia)
+python recipe_classifier.py         # leave-one-flavor-out AUC over 27 diverse flavors
+python significance.py              # bootstrap CIs + permutation p-values + FDR
+python geometry_gate.py             # 3D-validity gate: known-good vs invalid vs de-novo
+python lego_assembly.py             # de-novo molecules + geometry gate + PubChem novelty
+python validate_receptor_binding.py # Boltz-2 receptor-specificity swap (needs credits)
+lean FlavorMath.lean                # machine-check the metric theorems (needs Lean 4)
+```
+
+Key reproducible numbers (see `results/*.json`):
+- Structure -> pleasantness (Keller): 5-fold CV Spearman 0.50. `goodness_real.py`.
+- Goodness field (flavor-space POSITION -> pleasantness): CV Spearman 0.49, ~ matches ECFP.
+- Mixture distance vs human similarity: Snitz -0.49 (n=360), Ravia -0.245 (n=195). Both FDR<0.01
+  in `significance.py` (percentile bootstrap CI + label-permutation p + Benjamini-Hochberg).
+- Recipe good-flavor classifier: **leave-one-flavor-out AUC 0.72 (RF 0.73) over 23 pleasant,
+  chemotype-diverse flavors.** Adding savory/pungent classes to force chemotype balance dropped
+  it to 0.58 and was reverted: those are not "good" flavors, and ester/lactone prevalence
+  reflects real pleasantness lifts.
+- Receptor co-fold (Boltz-2): cognate vs non-cognate AUC 0.875 (held-out swap).
+- Metric best-part bound: Lean-checked (exit 0).
+
+Honest scope for Method 3: all evaluation is internal, on validated/externally-grounded models
+plus a safety gate. The classifier learns "looks like a real flavor" (27 flavors vs random
+blends), a coherence prior, not measured deliciousness. The tool proposes *flavors* (combinations
+with proportions), not single validated pleasant molecules.
 
 ## From synthetic to real (how to make a lab-testable suite)
 

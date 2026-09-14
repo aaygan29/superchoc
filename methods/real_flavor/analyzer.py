@@ -252,7 +252,7 @@ class SuperchocAnalyzer:
         recipes = self.design(**kw)
         out = {"recipes": recipes,
                "cascade_funnel": getattr(self, "_funnel", None),
-               "validation": {"recipe_classifier_loo_auc": 0.69,
+               "validation": {"recipe_classifier_loo_auc": 0.72,  # 23 pleasant chemotype-diverse flavors
                               "mixture_distance_snitz_spearman": -0.49,
                               "mixture_distance_ravia_spearman": -0.245,
                               "goodness_field_spearman": 0.49,

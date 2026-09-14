@@ -27,6 +27,13 @@ Everything is **internal, in-silico evaluation** on validated or externally-grou
 a safety gate. Nothing here is a wet-lab result; the outputs are ranked **hypotheses for a
 chemist or molecular gastronomist**, not recipes cleared to eat (see `HANDOFF.md`).
 
+**What the tool actually proposes.** The unit of proposal is a **flavor**, i.e. a *combination*
+of molecules (a recipe with proportions), not a claim that any single molecule is a pleasant
+new odorant. Per-molecule pleasantness predictions are *building-block* signals used to assemble
+and rank combinations; the novelty and good-taste claims live at the recipe level. De-novo
+molecules in particular are structural building blocks with predicted (extrapolated) properties,
+not validated pleasant compounds on their own.
+
 ### Start here
 ```bash
 pip install -r requirements.txt          # numpy, scikit-learn, scipy, rdkit, pyrfume
@@ -71,7 +78,8 @@ survivors). `validated_recipe.py` produces one high-confidence recipe instead of
 | Mixture perceptual-distance vs human ratings (Snitz 2013) | Spearman **-0.49** on 360 pairs | `mixtures.py` |
 | Mixture perceptual-distance vs human ratings (Ravia 2020) | Spearman **-0.245** on 195 pairs | `mixtures.py` |
 | Learned non-additive mixture vs mean-pool (synthetic oracle) | Spearman **0.82 vs 0.25** | `mixture_model.py` |
-| Recipe-level good-flavor classifier (leave-one-flavor-out) | ROC-AUC **0.69** (unseen flavor) | `recipe_classifier.py` |
+| Recipe-level good-flavor classifier (leave-one-flavor-out, 23 pleasant chemotype-diverse flavors) | ROC-AUC **0.72** (RF 0.73); more robust than the 6-flavor 0.69, and savory/pungent classes were correctly excluded | `recipe_classifier.py` |
+| Significance of headline results (bootstrap CI + permutation p + FDR) | all 3 mixture/field results **significant** (FDR < 0.01) | `significance.py` |
 | Molecule -> odorant-receptor signal (Mainland 2015) | **1.57x** chance | `receptors.py` |
 | Structure-based receptor binding (Boltz-2, held-out swap) | cognate vs non-cognate AUC **0.875** | `receptor_binding.py` |
 | Composition -> blend pleasantness | Spearman **0.42** | `composition.py` |
@@ -155,6 +163,8 @@ superchoc/
 | `validate_real.py` | real pleasantness CV + mixture + safety gate + novelty |
 | `validate_receptor_binding.py` | Boltz-2 receptor-specificity swap test (needs Boltz credits) |
 | `suite_real.py` | end-to-end suite over the real-data pipeline |
+| `significance.py` | bootstrap CIs + permutation p-values + FDR for the headline results |
+| `reference_flavors.py` | 23 pleasant, chemotype-diverse reference flavors (literature key-odorant sets) |
 | `test_real_flavor.py` | unit tests |
 | `results/` | committed JSON/markdown artifact for every result above |
 

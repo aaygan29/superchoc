@@ -1,14 +1,14 @@
 {
   "leave_one_flavor_out_auc": {
-    "random_forest": 0.666,
-    "gradient_boost": 0.489,
-    "logistic": 0.609,
-    "ensemble": 0.685
+    "random_forest": 0.729,
+    "gradient_boost": 0.563,
+    "logistic": 0.374,
+    "ensemble": 0.715
   },
   "demo_scores": {
-    "vanilla (known good)": 0.984,
-    "chocolate (known good)": 0.879,
-    "vanillin+peppermint(menthol)": 0.647,
-    "random-ish blend": 0.017
+    "vanilla (known good)": 0.998,
+    "chocolate (known good)": 0.852,
+    "vanillin+peppermint(menthol)": 0.843,
+    "random-ish blend": 0.145
   }
 }

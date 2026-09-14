@@ -62,9 +62,44 @@ built for flavor is the same model class used for drug design.
 - Evaluation harness with pre-registered baselines and blinded panels, so "as delicious
   as chocolate" and "world-beating" are measured, not asserted.
 
-## Open questions
+## Progress against this roadmap (current build)
 
-- How additive is flavor space? How far do single-molecule receptor profiles predict
-  mixture percepts?
-- What is the right deliciousness objective that does not collapse under optimization?
-- How much does the flavor GPCR model actually transfer to therapeutic GPCR targets?
+**Criterion 1 (forward model).**
+- Structure -> percept: pleasantness predicted from structure (Keller, CV Spearman 0.50) and,
+  strikingly, from flavor-space *position* alone (goodness field, 0.49). `goodness_real.py`,
+  `flavor_field.py`.
+- Structure -> receptor: real molecule<->OR signal at 1.57x chance (Mainland NN), plus a
+  structure-based Boltz-2 co-fold that separates cognate from non-cognate ligands (AUC 0.875).
+  `receptors.py`, `receptor_binding.py`. (A full molecule->OR model, e.g. M2OR, is the next step.)
+- Receptor/percept -> descriptors: Leffingwell odor descriptors + five basic tastes + geometric
+  flavor regions. `flavor_profile.py`, `taste_profile.py`.
+- Mixtures, not additivity: mixture perceptual-distance metric validated on real human ratings
+  (Snitz -0.49, Ravia -0.245, both FDR-significant); learned non-additive vs mean-pool on a
+  synthetic oracle (0.82 vs 0.25); omission testing and an olfactory-white guardrail. `mixtures.py`.
+
+**Criterion 2 (inverse model).**
+- Objective: a recipe-level good-flavor classifier over 23 pleasant, chemotype-diverse flavors,
+  benchmarked leave-one-flavor-out (AUC 0.72, RF 0.73). Note: adding savory/pungent classes to
+  force chemotype balance HURT it (0.58), so the flavor set stays inside genuinely pleasant
+  flavors; ester/lactone prevalence reflects real pleasantness lifts, not bias. `recipe_classifier.py`.
+- Generative search: de-novo molecules (`lego_assembly.py`) gated for 3D validity
+  (`geometry_gate.py`) and safety (`safety.py`), assembled into ranked recipes with optimized
+  ratios by the overarching `analyzer.py`; sparse-yet-good regions of the hyperbolic space are
+  the superchocolate targets (`flavor_field.superchoc_score`).
+- Safety/feasibility filter: in place. Human-in-the-loop panels: not yet (the honest gap).
+
+**Criterion 3 (GPCR transfer).** Only the shared receptor-binding machinery (Boltz-2) exists;
+therapeutic-GPCR benchmarking is future work.
+
+## Open questions (updated with what we have learned)
+
+- How additive is flavor space? Ratio optimization collapses to a single component under any
+  additive objective (the Lean best-part bound); genuine blends require a validated non-additive
+  response, which we approximate with the classifier but have not validated on human combo data.
+- What is the right deliciousness objective? The current classifier learns "looks like a real
+  flavor" (known flavors vs random), a coherence prior, NOT measured deliciousness. Cross-chemotype
+  generalization (AUC 0.58) shows it partly keys on chemotype familiarity. Real human
+  combo-pleasantness data is the missing ground truth.
+- Chemical novelty is not perceptual novelty: de-novo-heavy recipes are chemically novel but
+  perceptually familiar and score lower on good-flavor. The tool measures this tension explicitly.
+- How much does the flavor GPCR model transfer to therapeutic targets? Untested.
