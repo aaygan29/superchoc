@@ -162,9 +162,12 @@ def cofold(receptor, smiles, use_cache=True, timeout=1800):
     metrics = _parse_metrics(run_dir)
     result = {"receptor": receptor, "uniprot": r["uniprot"], "smiles": smiles,
               "metrics": metrics, "cached": False,
+              # returned for live debugging only; NOT persisted (CLI output contains absolute
+              # local paths that would leak identity into committed/anonymized artifacts)
               "stdout_tail": p.stdout[-400:], "stderr_tail": p.stderr[-400:]}
-    if metrics:  # only cache real successes
-        cache_file.write_text(json.dumps(result, indent=2))
+    if metrics:  # only cache real successes; persist just the identity-safe fields
+        persist = {k: result[k] for k in ("receptor", "uniprot", "smiles", "metrics", "cached")}
+        cache_file.write_text(json.dumps(persist, indent=2))
     return result
 
 

@@ -13,7 +13,5 @@
     "complex_pde": 0.5056787133216858,
     "complex_ipde": 4.631815433502197
   },
-  "cached": false,
-  "stdout_tail": "/Users/user/Desktop/Research/projects/AI/superchoc/methods/real_flavor/results/boltz/_runs/OR5AN1__52abcfd1908b5e1f/OR5AN1__52abcfd1908b5e1f\n",
-  "stderr_tail": ""
+  "cached": false
 }

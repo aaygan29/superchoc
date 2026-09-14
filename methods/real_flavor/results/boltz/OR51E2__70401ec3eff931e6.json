@@ -13,7 +13,5 @@
     "complex_pde": 0.4206036329269409,
     "complex_ipde": 1.6886634826660156
   },
-  "cached": false,
-  "stdout_tail": "",
-  "stderr_tail": "Run directory /Users/user/Desktop/Research/projects/AI/superchoc/methods/real_flavor/results/boltz/_runs/OR51E2__70401ec3eff931e6/OR51E2__70401ec3eff931e6 already contains .boltz-run.json; use download-results to resume it or choose a different --name/--run-dir\n"
+  "cached": false
 }
