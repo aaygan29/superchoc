@@ -34,9 +34,9 @@ not validated pleasant compounds on their own.
 
 ### Start here
 ```bash
-pip install -r requirements.txt          # numpy, scikit-learn, scipy, rdkit, pyrfume
+pip install -r requirements.txt          # numpy, scikit-learn, scipy, rdkit, pyrfume, selfies
 cd methods/real_flavor
-python analyzer.py                        # THE analyzer: ranked novel good-taste recipes + a superchocolate
+python analyzer.py                        # THE analyzer: ranked novel candidate recipes (predicted, untasted)
 ```
 `analyzer.py` (`SuperchocAnalyzer`) is the single overarching entry point. It ingests chemical
 structures, per-molecule predictions, known reference flavors, and the geometric flavor-space
@@ -52,7 +52,7 @@ survivors). `validated_recipe.py` produces one high-confidence recipe instead of
 1. **Predict** how pleasant a molecule is from its structure (`goodness_real`, real Keller labels).
 2. **Place** it in flavor space and predict pleasantness from *where it lands* (`flavor_geometry`
    + `flavor_field`): flavor space is a low-dimensional, empirically hyperbolic metric space, and
-   "good" is a smooth field over it.
+   "good" varies with position by rank (Spearman 0.49), though position predicts magnitude weakly (R2 0.11).
 3. **Explain** it through odorant-receptor activation (`receptors`, `receptor_binding`) and odor
    descriptors / the five basic tastes (`flavor_profile`, `taste_profile`).
 4. **Generate** new molecules de novo (`lego_assembly`), gated for 3D validity (`geometry_gate`)
@@ -72,13 +72,13 @@ survivors). `validated_recipe.py` produces one high-confidence recipe instead of
 | Result | Value | Where |
 |---|---|---|
 | Structure -> human pleasantness (Keller 2016) | random 5-fold CV Spearman **0.50**, R2 0.26; Butina-cluster split **0.41**/0.22; scaffold split **0.30** (the extrapolation number) | `goodness_real.py`, audit `results/newslate/audit_claims.json` |
-| Flavor-space *position* -> pleasantness (goodness field) | Spearman **0.49** (~ matches ECFP 0.50) | `flavor_field.py` |
+| Flavor-space *position* -> pleasantness (goodness field) | Spearman **0.49** (~ matches ECFP 0.50) but R2 only **0.11** (position carries rank, not magnitude) | `flavor_field.py` |
 | Flavor space is hyperbolic (Poincare vs Euclidean, 3D) | Spearman **0.59 vs 0.27** | `flavor_geometry.py` |
 | Flavor-space tree-likeness (Gromov delta vs shuffled) | real **0.0188 < 0.0205** | `flavor_geometry.py` |
 | Mixture perceptual-distance vs human ratings (Snitz 2013) | Spearman **-0.49** on 360 pairs | `mixtures.py` |
 | Mixture perceptual-distance vs human ratings (Ravia 2020) | Spearman **-0.245** on 195 pairs | `mixtures.py` |
 | Learned non-additive mixture vs mean-pool (synthetic oracle) | Spearman **0.82 vs 0.25** — but this gap is *built into* the oracle (an additive oracle gives 0.84 vs 0.82); on clean held-out real data (Snitz<->Ravia transfer) the set-vs-meanpool advantage is **within the CI of zero** (e.g. +0.03 [-0.06, 0.12]). The non-additive advantage is **not supported on real data.** | `mixture_model.py`, audit `results/newslate/real_mixture_eval.json` |
-| Recipe-level good-flavor classifier (leave-one-flavor-out, 23 pleasant chemotype-diverse flavors) | ROC-AUC **0.72** (RF 0.73); more robust than the 6-flavor 0.69, and savory/pungent classes were correctly excluded | `recipe_classifier.py` |
+| Recipe-level good-flavor classifier (leave-one-flavor-out, 23 pleasant chemotype-diverse flavors) | ROC-AUC RF **0.73**, ensemble **0.72** (learns "looks like a real flavor" vs random blends, not deliciousness) | `recipe_classifier.py` |
 | Significance of headline results (bootstrap CI + permutation p + FDR) | all 3 mixture/field results **significant** (FDR < 0.01) | `significance.py` |
 | Molecule -> odorant-receptor signal (Mainland 2015) | **1.57x** chance = 9.1% NN-shared-receptor vs 5.8% chance on only **n=22 pairs** (2 hits, one mutual pair; binomial p=0.37, CI reaches chance). A weak, data-limited signal: **diagnostic only, dropped as a usable receptor-in-J term** (M2OR-vs-pleasantness Spearman 0.14, p=0.42) | `receptors.py`, audit `audit_claims.json` |
 | Molecule -> receptor activation model (M2OR, leave-molecule-out) | ROC-AUC **0.89** (92 mols x 375 human ORs) | `m2or_receptor.py` |
@@ -88,6 +88,7 @@ survivors). `validated_recipe.py` produces one high-confidence recipe instead of
 | Food-safety toxicity screen | 380/420 pass; benzene/formaldehyde flagged | `safety.py` |
 | De-novo molecules generated | 434 safe & novel; **top-12 absent from PubChem** (database novelty only; SA score ~2.2 does not establish a synthetic route, and PubChem absence is not synthetic feasibility) | `lego_assembly.py`, audit `generator_baselines.json` |
 | Guided vs unguided generation (honesty check) | guided top-40 scores +12.4 under the ranking model but only **+1.2** under an independent descriptor GBM (predictor corr 0.27): most of the guided gain is **selection on the predictor itself** | audit `generator_baselines.json` |
+| Alternative generator: genetic algorithm vs BRICS (same criteria, independent model) | GA top-40 **53.4** vs BRICS **46.4** pleasantness and more novel (Tanimoto 0.34 vs 0.39), but harder to make (SA **4.26** vs 2.38; 35% fail SA<=4.5). Neither dominates | `newslate/ga_generator.py` |
 | 3D geometry gate (de-novo validity) | **10/10** real pass, **4/4** invalid rejected | `geometry_gate.py` |
 | Metric best-part bound (Lean) | Lean exits 0, but the theorems formalize only the elementary list-maximum bound over `Nat` (no weights, no convexity, no real-valued T(R)): a **definitional footnote, not a results-table result** | `FlavorMath.lean` |
 | Online active search vs random screening | +0.074, 25/25 seeds (synthetic) | `methods/active_flavor_search/` |
