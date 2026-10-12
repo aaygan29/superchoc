@@ -1,0 +1,192 @@
+{
+  "split_info": {
+    "n": 420,
+    "n_butina_clusters_sim>=0.4": 146,
+    "largest_butina_cluster": 62,
+    "n_generic_scaffolds": 36,
+    "frac_acyclic_empty_scaffold": 0.4738095238095238
+  },
+  "pleasantness_cv": {
+    "random_kfold": {
+      "spearman_per_seed": [
+        0.5009027027145813,
+        0.475435889449721,
+        0.4821049184162834
+      ],
+      "spearman_mean": 0.4861478368601952,
+      "spearman_ci95_seed0_boot": [
+        0.4208960743214267,
+        0.5766879930192385
+      ],
+      "r2_per_seed": [
+        0.2646217737085612,
+        0.26581104664772903,
+        0.2580455517048854
+      ],
+      "r2_mean": 0.2628261240203919,
+      "mean_max_tanimoto_test_to_train": 0.583945128194314,
+      "median_max_tanimoto_test_to_train": 0.5454545454545454
+    },
+    "butina_groupkfold": {
+      "spearman_per_seed": [
+        0.442898199797115,
+        0.419864820885632,
+        0.3562772545257977
+      ],
+      "spearman_mean": 0.40634675840284823,
+      "spearman_ci95_seed0_boot": [
+        0.36613698814425044,
+        0.5204254024362638
+      ],
+      "r2_per_seed": [
+        0.25487588287740126,
+        0.24459977388978582,
+        0.17116951809779668
+      ],
+      "r2_mean": 0.22354839162166126,
+      "mean_max_tanimoto_test_to_train": 0.47157355875794654,
+      "median_max_tanimoto_test_to_train": 0.4696691176470588
+    },
+    "scaffold_groupkfold": {
+      "spearman_per_seed": [
+        0.2999602035669674,
+        0.3316434153027052,
+        0.27340663363979806
+      ],
+      "spearman_mean": 0.3016700841698235,
+      "spearman_ci95_seed0_boot": [
+        0.21573302704950523,
+        0.3892694979035498
+      ],
+      "r2_per_seed": [
+        0.11124440226051657,
+        0.14518786711285536,
+        0.11091660272027737
+      ],
+      "r2_mean": 0.12244962403121644,
+      "mean_max_tanimoto_test_to_train": 0.3586108887739148,
+      "median_max_tanimoto_test_to_train": 0.3333333333333333
+    },
+    "repo_code_split_type": "goodness_real.cross_validate uses sklearn KFold(shuffle=True): RANDOM over molecules, no similarity awareness"
+  },
+  "random_cv_spearman_by_max_train_similarity": [
+    {
+      "max_sim_bin": [
+        0,
+        0.3
+      ],
+      "n": 32,
+      "spearman": 0.3192815249266862
+    },
+    {
+      "max_sim_bin": [
+        0.3,
+        0.4
+      ],
+      "n": 45,
+      "spearman": 0.4206851119894598
+    },
+    {
+      "max_sim_bin": [
+        0.4,
+        0.5
+      ],
+      "n": 83,
+      "spearman": 0.5488253475231283
+    },
+    {
+      "max_sim_bin": [
+        0.5,
+        0.7
+      ],
+      "n": 152,
+      "spearman": 0.4182573691728347
+    },
+    {
+      "max_sim_bin": [
+        0.7,
+        1.01
+      ],
+      "n": 108,
+      "spearman": 0.5086601949141004
+    }
+  ],
+  "receptor_claim": {
+    "n_pairs": 22,
+    "n_molecules": 22,
+    "n_distinct_genes": 19,
+    "repo_validate_leave_one_out": {
+      "n_pairs": 22,
+      "nn_shared_or_rate": 0.091,
+      "chance_rate": 0.058,
+      "lift": 1.57
+    },
+    "repo_nn_shared_rate_absolute": 0.091,
+    "repo_chance_absolute": 0.058,
+    "repo_lift": 1.57,
+    "nn_hit_rate_ci95": [
+      0.0,
+      0.22727272727272727
+    ],
+    "frac_of_queries_whose_NN_is_the_same_molecule_in_another_row": 0.0,
+    "leave_molecule_out_nn_shared_rate": 0.09090909090909091,
+    "leave_molecule_out_chance": 0.012987012987012986,
+    "leave_molecule_out_lift": 7.000000000000001,
+    "leave_molecule_out_mean_nn_tanimoto": 0.35703961264672696,
+    "top_gene_freq": [
+      [
+        "OR1C1",
+        2
+      ],
+      [
+        "OR10G4 A9V/M134V/V195E/R235G/K295Q",
+        2
+      ],
+      [
+        "OR10G7",
+        2
+      ],
+      [
+        "OR10J5",
+        1
+      ],
+      [
+        "OR14A2",
+        1
+      ]
+    ]
+  },
+  "lean": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "theorem_statements": [
+      "theorem le_max2_left (a b : Nat) : a \u2264 max2 a b := by",
+      "theorem le_max2_right (a b : Nat) : b \u2264 max2 a b := by",
+      "theorem le_listMax (xs : List Nat) : \u2200 x \u2208 xs, x \u2264 listMax xs := by",
+      "theorem blend_not_better_than_best (xs : List Nat) (x : Nat) (hx : x \u2208 xs) :",
+      "theorem listMax_le_of_all_le (xs : List Nat) (h : \u2200 x \u2208 xs, x \u2264 100) :",
+      "theorem composition_bounded_by_best_class (classScores : List Nat) (s : Nat)"
+    ],
+    "mentions_weights_or_convex": false,
+    "reading": "The checked theorems state only that every element of a list of Nat is <= the list max (listMax is defined by iterated max). That is the definition of max. Nothing in the file formalizes weights, convexity, or the real-valued tastiness T(R)=sum w_i p_i; the 'convex combination <= max' step is prose. It is a definitional fact for a footnote, not a result."
+  },
+  "concentration_keller2016": {
+    "1/1000_vs_1/10": {
+      "n_molecules": 134,
+      "spearman": 0.634267138994018,
+      "mean_abs_change_pts": 8.179437273667663,
+      "frac_abs_change_ge_10pts": 0.291044776119403,
+      "frac_sign_flip_vs_mean45.9": 0.3283582089552239,
+      "sd_of_pleasantness_at_1/1000": 11.163720790096576
+    },
+    "1/1000_vs_1/100000": {
+      "n_molecules": 288,
+      "spearman": 0.6786992103129516,
+      "mean_abs_change_pts": 8.141023217998002,
+      "frac_abs_change_ge_10pts": 0.2986111111111111,
+      "frac_sign_flip_vs_mean45.9": 0.2986111111111111,
+      "sd_of_pleasantness_at_1/1000": 13.970807566558925
+    }
+  }
+}

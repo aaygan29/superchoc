@@ -1,0 +1,23 @@
+{
+  "_comment": "Machine-readable specification of the multi-objective search actually implemented (see J_SPEC.md). Every number here is read by jspec.py; nothing is a free parameter elsewhere.",
+  "objective": "J(R) = w_taste*T(R) + w_comp*C(R) + w_novel*N(R) + w_mix*M(R)",
+  "weights": {"taste": 1.0, "composition": 0.15, "novelty": 0.4, "mixture": 0.4},
+  "weights_note": "taste/composition/novelty are the legacy values in denovo_recipes.compose(); w_mix=0.4 was fixed a priori equal to w_novel and NOT tuned.",
+  "terms": {
+    "T": "mean over components of predicted pleasantness / 100. Predictor: RandomForestRegressor(300 trees, seed 0) on ECFP4 (r=2, 2048 bits) trained on Keller 2016 (n=420). taste_source='oof': known molecules use 5-fold out-of-fold predictions (KFold shuffle seed 0), de novo molecules use the full-data model. taste_source='insample_legacy': all molecules use the full-data model (legacy behaviour; known molecules are then predicted in-sample).",
+    "C": "mean over components of (#favoured classes - #avoided classes) from composition.py SMARTS classes. favour/avoid = top-5 positive / bottom-5 negative mean-pleasantness lift of the 15 classes over all 420 Keller molecules (min n=5 per class).",
+    "N": "min over the 6 reference flavors f of (1 - mean over components i of max over odorants r in f of Tanimoto_ECFP4(i, r)). Hard constraint N >= 0.5 on every accepted recipe.",
+    "M": "learned non-additive mixture term: (100 - max over the 6 reference flavors f of s_hat(R,f)) / 100, where s_hat is the predicted human similarity of blend R to the reference-flavor mixture f from set_RF: RandomForestRegressor(300 trees, min_samples_leaf=2, seed 0) trained on ALL Snitz 2013 + Ravia 2020 human similarity pairs (n=555) with features [angle(mean), |d mean|, |d std|, |d min|, |d max|] over 13 z-scored RDKit descriptors. Higher M = predicted perceptually more distinct from every reference flavor."
+  },
+  "pool": {"known": "Keller 2016 molecules with safety.screen verdict OK", "denovo": "first 40 safe candidates of results/lego_denovo.json (in file order)", "eligible": "safety verdict OK"},
+  "initialisation": "per restart: sample n_components distinct eligible molecules uniformly; resample up to 100 times until N >= nov_min; if still infeasible the last sample is kept (legacy behaviour; counted and reported as infeasible_init)",
+  "optimiser": {"type": "stochastic first-improvement 1-swap hill climbing, independent restarts", "n_restarts": 5, "proposals_per_restart": 500, "n_components": 10, "nov_min": 0.5,
+    "proposal": "pick a uniformly random eligible molecule v and a uniformly random slot k; swap if v not already in the recipe",
+    "accept": "N(candidate) >= nov_min and J(candidate) > J(current) strictly",
+    "stopping_rule": "fixed budget of 500 proposals per restart; no early stopping, no temperature, no tolerance",
+    "dedupe": "restarts converging to the same molecule set are collapsed, so fewer than 5 recipes may be returned",
+    "ranking": "recipes sorted by final J, descending",
+    "proportions": "equal during search; Scheffe ratio optimisation (mixtures.optimize_ratios) is a separate post-hoc step on the top recipe only and is not part of J"
+  },
+  "rng": "numpy default_rng(seed); call order per proposal: choice(eligible) first, then integers(n_components) (matches legacy code evaluation order)"
+}

@@ -1,0 +1,13 @@
+{
+  "m2or_molecules": 92,
+  "m2or_receptors": 375,
+  "n_tested_pairs": 2340,
+  "m2or_molecules_with_keller_pleasantness_label": 38,
+  "m2or_molecules_with_zero_responsive_receptors": 18,
+  "spearman_n_responsive_receptors_vs_pleasantness": {
+    "rho": 0.13543755817651607,
+    "p": 0.41750971262491166,
+    "n": 38
+  },
+  "verdict": "The receptor layer cannot enter J as a validated term: (1) the only receptor-to-percept evidence available is the overlap above; (2) the 1.57x NN-shared-receptor statistic is a ligand-similarity check on 22 pairs (2 hits = 1 mutual pair), not a score; (3) the M2OR model scores (molecule, receptor) activation, and J would need an unvalidated map from activation profile to pleasantness. Any weight on it would be arbitrary, so the receptor claim is dropped from the contribution list."
+}

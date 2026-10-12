@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local virtual environment (numpy-1.x pinned stack; recreate via requirements.txt)
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store

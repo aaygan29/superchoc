@@ -1,0 +1,27 @@
+{
+  "molecules_snitz": 86,
+  "molecules_ravia": 86,
+  "molecules_shared_between_datasets": 42,
+  "frac_ravia_test_molecules_seen_in_snitz_train": 0.4883720930232558,
+  "frac_snitz_test_molecules_seen_in_ravia_train": 0.4883720930232558,
+  "Snitz_LMO_frac_of_test_pair_molecules_also_in_train_pairs": {
+    "mean": 0.9953488372093023,
+    "per_fold": [
+      0.9767441860465116,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "Ravia_LMO_frac_of_test_pair_molecules_also_in_train_pairs": {
+    "mean": 0.969767441860465,
+    "per_fold": [
+      0.9651162790697675,
+      0.9534883720930233,
+      0.9767441860465116,
+      0.9883720930232558,
+      0.9651162790697675
+    ]
+  }
+}
