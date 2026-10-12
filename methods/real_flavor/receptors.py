@@ -12,6 +12,13 @@ a full molecule->400-OR model (that needs a larger resource like M2OR). It provi
   - predict_receptors(smiles): structural nearest-neighbour inference of likely OR
     activation, validated leave-one-out against chance.
 
+HONEST SCOPE (objective self-audit, results/NEWSLATE_findings.md section (f)): the NN-shared-
+receptor "1.57x chance" is 9.1% vs 5.8% on only n=22 confirmed pairs (2 hits, one mutual
+creosol/vanillin pair; binomial p=0.37, rate CI 0 to 22.7%). It is a weak, data-limited signal.
+The measured receptor->pleasantness map is null on the 38-molecule overlap with Keller
+(Spearman 0.14, p=0.42), so this layer CANNOT enter the search objective as a validated term.
+It is kept as diagnostic context only, not scored into J.
+
 Refs: Mainland et al. 2015 (Nat Neurosci); receptor-response-predicts-percept: Lee/Qian
 2023 (POM). Retrieved via Pyrfume.
 """

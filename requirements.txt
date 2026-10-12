@@ -3,4 +3,6 @@ scipy>=1.10
 scikit-learn>=1.2
 rdkit>=2023.3
 pyrfume>=0.18
+tqdm>=4.60
+selfies>=2.1              # genetic-algorithm generator baseline (newslate/ga_generator.py)
 # Optional: Lean 4 (via elan) to machine-check methods/real_flavor/FlavorMath.lean

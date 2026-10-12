@@ -1,0 +1,90 @@
+{
+  "method": "SELFIES genetic algorithm (evolutionary) vs BRICS enumeration",
+  "ga_config": {
+    "pop": 120,
+    "generations": 40,
+    "p_mut": 0.9,
+    "elite": 0.15,
+    "seed": 0,
+    "alphabet_size": 18,
+    "n_seeds": 120
+  },
+  "criteria": {
+    "q75_keller_pleasantness": 53.678690344062154,
+    "novel": "max ECFP4 Tanimoto to Keller < 0.5",
+    "safe": "safety.screen OK",
+    "SA_pass": "<= 4.5"
+  },
+  "modelB_random_cv_spearman": 0.5480837168828646,
+  "ga_n_feasible_unique": 1214,
+  "ga_all_feasible": {
+    "n": 1214,
+    "pred_pleasantness_A": 49.08198492395434,
+    "pred_pleasantness_B_indep": 46.48246427831114,
+    "mean_max_tanimoto_to_keller": 0.2672094604348072,
+    "mean_SA": 4.138286367611096,
+    "median_SA": 4.045949613808564,
+    "frac_SA_gt_6": 0.047775947281713346,
+    "frac_SA_le_4.5": 0.6622734761120264,
+    "frac_joint_pass": 0.16062602965403625,
+    "frac_pass_pleasant_A": 0.22817133443163098,
+    "frac_pass_novel": 1.0
+  },
+  "ga_guided_top40_by_predA": {
+    "n": 40,
+    "pred_pleasantness_A": 60.9404681265357,
+    "pred_pleasantness_B_indep": 53.35402904311756,
+    "mean_max_tanimoto_to_keller": 0.3398494681905161,
+    "mean_SA": 4.261337408882265,
+    "median_SA": 4.1740885637251095,
+    "frac_SA_gt_6": 0.0,
+    "frac_SA_le_4.5": 0.65,
+    "frac_joint_pass": 0.65,
+    "frac_pass_pleasant_A": 1.0,
+    "frac_pass_novel": 1.0
+  },
+  "ga_top40_example_smiles": [
+    "CCCCCC1CCC2COC(=O)OC12",
+    "CCCCCC1CC23OC(=O)COC2OC1C3C",
+    "CCCCC1CCC2COC(=O)OC12",
+    "CCCCCC1CC(CCC(C)C2CC(C3C=CC=CO3)O2)C(=O)O1",
+    "CCCCCC1CCC2CC3=C(CCOC(=O)COC12)OC(=O)C3",
+    "CCCCC1CCC2CC3(OCC(=O)O3)C(C)OC12",
+    "CCCCCC1CCC2(C)OC(=O)C12",
+    "CCCCCC1CCC2COC(=O)CC12",
+    "CCCCCC1CCC(C)C12OCC(=O)O2",
+    "CCCCCC1CC(=N)c2oc(=O)oc21"
+  ],
+  "brics_guided_top40_by_predA": {
+    "n": 40,
+    "pred_pleasantness_A": 64.8657877143439,
+    "pred_pleasantness_B_indep": 46.357677784624386,
+    "mean_max_tanimoto_to_keller": 0.3910365950526381,
+    "mean_SA": 2.3830509450233386,
+    "median_SA": 2.396669453429035,
+    "frac_SA_gt_6": 0.0,
+    "frac_SA_le_4.5": 1.0,
+    "frac_joint_pass": 0.975,
+    "frac_pass_pleasant_A": 1.0,
+    "frac_pass_novel": 0.975
+  },
+  "brics_all_candidates": {
+    "n": 434,
+    "pred_pleasantness_A": 52.48398702217175,
+    "pred_pleasantness_B_indep": 45.01961955827808,
+    "mean_max_tanimoto_to_keller": 0.40778443884895754,
+    "mean_SA": 2.2099037523598093,
+    "median_SA": 2.220580929127766,
+    "frac_SA_gt_6": 0.0,
+    "frac_SA_le_4.5": 1.0,
+    "frac_joint_pass": 0.2511520737327189,
+    "frac_pass_pleasant_A": 0.2626728110599078,
+    "frac_pass_novel": 0.923963133640553
+  },
+  "headline_independent_modelB": {
+    "ga_top40": 53.35402904311756,
+    "brics_top40": 46.357677784624386,
+    "ga_minus_brics": 6.996351258493178,
+    "note": "positive = GA finds more pleasant molecules than BRICS under a model it did NOT optimise"
+  }
+}

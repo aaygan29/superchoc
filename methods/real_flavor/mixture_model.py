@@ -5,14 +5,20 @@ synergy; Duchamp-Viret et al. 2003). So mean-pooling component features throws a
 the interaction signal that determines whether a mixture is good. A learned,
 permutation-invariant set model that also sees the spread of components can capture it.
 
-We prove this on a controlled non-additive oracle: a mixture's true goodness is the latent
+We illustrate this on a controlled non-additive oracle: a mixture's true goodness is the latent
 value of the mean embedding, SUPPRESSED when the components are incoherent (high spread).
-A mean-pool model cannot see the spread; a set model (mean + std + min + max pooling) can.
-If the set model beats the mean-pool baseline on held-out mixtures, the learned mixture
-model is doing real work.
+A mean-pool model cannot see the spread; a set model (mean + std + min + max pooling) can, so
+the set model beats mean-pool there (0.82 vs 0.25).
 
-Real-data channel: swap the oracle for real mixture-perception labels (e.g. Snitz 2013 /
-Bushdid 2014 via Pyrfume) and the component features for ECFP4; the model is unchanged.
+HONEST SCOPE (objective self-audit, results/NEWSLATE_findings.md section (d)): this oracle result
+ONLY demonstrates the oracle is non-additive. The gap is built in by construction: an ADDITIVE
+oracle (suppression=0) inverts it (mean-pool 0.84, set 0.82). On clean held-out REAL human
+mixture data (Snitz 2013 n=360, Ravia 2020 n=195, molecule-disjoint transfer), the set-vs-
+mean-pool advantage is within the 95% CI of zero (e.g. +0.03 [-0.06, 0.12]), and a size-only
+baseline recovers much of the signal. The non-additive advantage is therefore NOT supported on
+real data, and this model must not be presented as beating additive pooling on real mixtures.
+The human mixture datasets carry similarity ratings, not pleasantness labels, so this model
+reads perceptual distinctiveness, not goodness.
 """
 
 from __future__ import annotations
