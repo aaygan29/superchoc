@@ -50,6 +50,17 @@ Status log: partial results written as computed. Sections marked PENDING are not
   descriptor GBM (unguided draw sd 0.73). Correlation of the two predictors on the 434 candidates is 0.27. Most of the guided gain is selection on the predictor itself.
 - Re-seeded unguided BRICS (8 seeds): predicted pleasantness 43.1 vs 52.5 for the pipeline's enumeration, joint-pass 0.14 vs 0.25 (unguided same enumeration) vs 0.975 guided (selected on the criterion, circular).
 
+## (g2) Alternative generation method: genetic algorithm (ga_generator.json)
+- A SELFIES genetic algorithm (evolutionary optimiser over molecular graphs; pop 120, 40 generations) is run as a DIFFERENT method class to one-shot BRICS enumeration,
+  under the SAME criteria and SAME scorers as (g). It found 1214 unique novel+safe molecules.
+- Fair comparison on the INDEPENDENT descriptor model B (neither generator optimised it; avoids the circularity in (g)):
+  GA top-40 pred_B = 53.4 vs BRICS guided top-40 pred_B = 46.4, GA minus BRICS = +7.0. GA top-40 is also MORE novel (mean max-Tanimoto to Keller 0.34 vs 0.39).
+  So BRICS is not uniquely good: an off-the-shelf GA finds molecules an independent model rates as more pleasant and more novel.
+- Cost: GA molecules are HARDER to synthesize. Mean SA 4.26 (GA top-40) vs 2.38 (BRICS top-40); 35% of GA top-40 fail the SA<=4.5 bar that BRICS meets 100% of the time
+  (4.8% of all GA feasibles exceed SA 6). Neither method dominates: BRICS = trivially synthesizable but less novel; GA = more pleasant+novel under an independent model but less synthesizable.
+- Verdict: the reviewer gap (no comparison to an alternative generator) is closed. The result does not flatter the pipeline: the GA is competitive-to-better on pleasantness and novelty,
+  which argues the BRICS choice is a convenience, not a demonstrated advantage. Both are predicted-only; neither is wet-lab validated.
+
 ## (b) Wiring M into J (generation_analysis.json, 110 runs over results/newslate/generation_raw.json)
 - M is now in J (jspec.py, J_spec.json: J = w_t*T + w_c*C + w_n*N + w_mix*M, w_mix=0.4 fixed a priori, not tuned).
   A code bug that had stopped this step from ever running was fixed (analyze_generation.py imported rdFingerprintGenerator from `rdkit` instead of `rdkit.Chem`).

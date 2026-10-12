@@ -133,11 +133,16 @@ the results honestly, including where they refute the pipeline's own earlier cla
 **Known gaps still open.** (a) *Concentration.* Olfactory response is concentration-dependent;
 in the Keller data, pleasantness shifts ~8 points between dilutions and flips sign for ~30% of
 molecules, yet `J` uses equal proportions and no dose. A concentration-aware mixture model needs
-dose-response labels per component, which the two Keller dilutions cannot fit. (b) *Alternative
-generators.* The de-novo candidates are compared against unguided and re-seeded BRICS baselines
-(`generator_baselines.py`), but not against a different generation method class (e.g. a learned
-generative model); PubChem absence and an SA score of ~2.2 establish database novelty and nominal
-ease, not a synthetic route. Both are honest limits, not claimed as solved.
+dose-response labels per component, which the two Keller dilutions cannot fit. PubChem absence and
+an SA score of ~2.2 establish database novelty and nominal ease, not a verified synthetic route.
+
+**Alternative generator (now compared).** A SELFIES genetic algorithm (evolutionary search over
+molecular graphs, `newslate/ga_generator.py`) is run as a different method class under the same
+pleasantness/novelty/SA criteria. On the *independent* descriptor model (neither generator
+optimised it), the GA's top-40 scores 53.4 vs BRICS's 46.4 and is more novel (Tanimoto 0.34 vs
+0.39), but its molecules are harder to make (SA 4.26 vs 2.38; 35% fail the SA≤4.5 bar BRICS always
+meets). Neither method dominates, and the BRICS choice is a convenience rather than a demonstrated
+advantage. Both are predicted-only; neither is wet-lab validated.
 
 Scope: this is an independent, self-funded project on public data, with no laboratory, no
 synthesis capacity, and no human sensory panel. Physically constructing these molecules and
