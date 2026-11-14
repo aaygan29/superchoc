@@ -1,29 +1,27 @@
-"""FROZEN prediction set for a prospective tasting study that replicates Ma 2021's binary-mixture protocol.
+"""FROZEN prediction set (v2 re-freeze after review) for a prospective tasting study replicating Ma 2021's binary-mixture protocol.
 
 PROSPECTIVE (post-registration; not part of PREREGISTRATION.md). Produces, in one deterministic run:
-  data/candidates/scored_pairs.csv            every cocoa-anchored pair of eligible pool molecules, scored
-  data/candidates/FROZEN_PREDICTIONS.csv      40 selected pairs + 4 Ma anchor mixtures (anchors are scale links,
-                                              NOT prospective hypotheses)
-  data/candidates/FROZEN_PREDICTIONS.sha256   sha256 of the CSV above
-  results/prospective.json                    counts, settings, choices, code sha256
+  data/candidates/scored_pairs.csv                    every cocoa-anchored pair of eligible pool molecules, scored
+  data/candidates/FROZEN_PREDICTIONS.csv              40 selected pairs + 8 Ma anchor mixtures (anchors are a descriptive
+                                                      scale check, NOT prospective hypotheses)
+  data/candidates/FROZEN_COMPONENT_PREDICTIONS.csv    one row per molecule used in the 40 pairs (component-level hypothesis)
+  data/candidates/FROZEN_PREDICTIONS.sha256           "<sha256>  <filename>" for each of the two frozen CSVs
+  results/prospective.json                            counts, settings, choices, code sha256, revision note
 
 Design (every choice below is recorded in results/prospective.json):
-  1. Model: the registered four-family component ensemble (`build_component_ensemble`, seed 0, Keller-rank scale,
-     equal-weight mean mixture rule), trained on Keller with every Ma 2021 molecule AND every pool.csv molecule
-     (eligible or not) removed, matched by CID and stereo-stripped canonical SMILES. Zero overlap is asserted,
-     so every prospective component is unseen.
+  1. Model: the registered four-family component ensemble (`_ensemble_from_features`, seed 0, equal-weight mean mixture
+     rule), trained on Keller with every Ma 2021 molecule AND every pool.csv molecule (eligible or not) removed,
+     matched by CID and stereo-stripped canonical SMILES. Zero overlap is asserted, so every prospective component is
+     unseen. Rank scale: ECDF of each family's in-sample training predictions (not Keller label ranks).
   2. Pairs: all unordered pairs of ELIGIBLE pool molecules with at least one role == cocoa_key.
      `score_pairs` takes tuples of component indices of any length (pairs now; ternaries later), sharded via joblib.
-  3. Conformal: split-conformal on all 198 Ma mixtures, scored by the SAME model as step 1 (it already excludes
-     every Ma molecule), nonconformity score and rank scale exactly as exploratory.py (mid-rank ECDF of observed
-     / predicted values against the calibration set; score |obs rank - pred rank|), alpha = 0.2. Call: liked if the
-     interval lies wholly above the Ma-median threshold on that scale, disliked if wholly at or below, else abstain.
+  3. No conformal intervals and no liked/disliked calls: calibration on Ma is not exchangeable with the cocoa set.
   4. Selection (deterministic): 5 equal-count quintiles of the full scored set by ensemble prediction, 8 per
      quintile, round-robin over quintiles; within a quintile the next pick minimises the summed prior use of its two
      molecules, then maximises component dissimilarity (1 - ECFP4 Tanimoto), then pair_id. No molecule more than
-     3 times across the 40. Plus 4 Ma anchors at Ma-observed pleasantness quintiles 1, 2, 4, 5: the mixture whose
-     observed value is nearest the median observed value of that quintile, among mixtures with both components
-     purchasable (in pool.csv, excluded only for being in Ma) when any exist, else among all.
+     3 times across the 40. Plus 8 Ma anchors at Ma-observed pleasantness deciles 1, 2, 3, 4, 7, 8, 9, 10: the mixture
+     whose observed value is nearest the median observed value of that decile (nearest decile centre), among mixtures
+     with both components purchasable (in pool.csv, excluded only for being in Ma) when any exist, else among all.
 
 Run (repo root):  OMP_NUM_THREADS=1 PYTHONPATH=methods .venv/bin/python -m chocolate_anchor.prospective
 """
@@ -42,7 +40,6 @@ import pandas as pd
 from joblib import Parallel, delayed
 
 from chocolate_anchor import mixture_hedonics as mh
-from chocolate_anchor.exploratory import conformal_quantile, ecdf_rank
 
 _HERE = Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
@@ -51,15 +48,14 @@ CANDIDATES_DIR = _ROOT / "data" / "candidates"
 RESULTS_DIR = _HERE / "results"  # alongside the other chocolate_anchor result files
 
 LABEL = "PROSPECTIVE (post-registration; not part of PREREGISTRATION.md)"
-ALPHA = 0.2
 SEED = 0
 N_PER_QUINTILE = 8
 N_QUINTILES = 5
 MAX_USES_PER_MOLECULE = 3
-ANCHOR_QUINTILES = (1, 2, 4, 5)
+N_ANCHOR_BINS = 10
+ANCHOR_DECILES = (1, 2, 3, 4, 7, 8, 9, 10)
 DECIMALS = 6
 PURCHASABLE_EXCLUSION = "in Ma 2021 data set (test data)"  # excluded only because it is a test molecule
-CALLS = ("liked", "disliked", "abstain")
 
 
 # ======================================================================================
@@ -112,33 +108,6 @@ def score_pairs(comp: ComponentTable, pairs: Sequence[Sequence[int]], n_jobs: in
 
 
 # ======================================================================================
-# conformal calibration on all Ma mixtures
-# ======================================================================================
-@dataclass(frozen=True)
-class Calibration:
-    cal_obs: np.ndarray
-    cal_pred: np.ndarray
-    liked_value: float
-    threshold_rank: float
-    q_hat: float
-
-    def interval_and_call(self, pred: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-        """(pred rank, lower, upper, call) for ensemble mixture predictions, on the calibration rank scale."""
-        r = ecdf_rank(self.cal_pred, pred)
-        lo, hi = r - self.q_hat, r + self.q_hat
-        call = np.where(lo > self.threshold_rank, "liked", np.where(hi <= self.threshold_rank, "disliked", "abstain"))
-        return r, lo, hi, call
-
-
-def calibrate(obs: np.ndarray, pred: np.ndarray, alpha: float = ALPHA) -> Calibration:
-    """exploratory.conformal_rep, calibration half only, with the whole Ma set as the calibration set."""
-    liked_value = float(np.median(obs))
-    t = float(ecdf_rank(obs, np.array([liked_value]))[0])
-    scores = np.abs(ecdf_rank(obs, obs) - ecdf_rank(pred, pred))
-    return Calibration(obs, pred, liked_value, t, conformal_quantile(scores, alpha))
-
-
-# ======================================================================================
 # selection
 # ======================================================================================
 def quintile_of_rank(pred: np.ndarray, pair_ids: Sequence[str]) -> np.ndarray:
@@ -172,13 +141,13 @@ def select_pairs(quintile: np.ndarray, comp_idx: np.ndarray, dissimilarity: np.n
 
 
 def select_anchors(obs: np.ndarray, purchasable: np.ndarray, mixture_ids: Sequence[str]) -> list[tuple[int, int, bool]]:
-    """(row index, quintile 1..5, both_purchasable) of the Ma mixture nearest the median observed value of each
-    anchor quintile; both-purchasable rows preferred when any exist in that quintile."""
+    """(row index, decile 1..10, both_purchasable) of the Ma mixture nearest the median observed value of each
+    anchor decile; both-purchasable rows preferred when any exist in that decile."""
     order = np.lexsort((np.asarray(mixture_ids), obs))
     q = np.empty(len(obs), dtype=int)
-    q[order] = (np.arange(len(obs)) * N_QUINTILES) // len(obs) + 1
+    q[order] = (np.arange(len(obs)) * N_ANCHOR_BINS) // len(obs) + 1
     out = []
-    for k in ANCHOR_QUINTILES:
+    for k in ANCHOR_DECILES:
         members = np.flatnonzero(q == k)
         centre = float(np.median(obs[members]))
         pool = members[purchasable[members]] if purchasable[members].any() else members
@@ -220,13 +189,12 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
     n_ma_in_keller = mh.load_keller_training([], []).y.shape[0] - mh.load_keller_training(ma.cid, ma.stripped).y.shape[0]
     n_pool_extra = mh.load_keller_training(ma.cid, ma.stripped).y.shape[0] - len(tr.y)
 
-    # ---- conformal calibration on all Ma mixtures
+    # ---- Ma component predictions (anchor rows only)
     ma_comp = ens.predict(ma.mols)
     t = mix.table
     a, b = t.a_idx.to_numpy(), t.b_idx.to_numpy()
     obs = t.pleasantness_mix.to_numpy()
     ma_pred = mh.mixture_rule(ma_comp.ensemble[a], ma_comp.ensemble[b])
-    cal = calibrate(obs, ma_pred)
 
     # ---- pool components and pairs
     elig = pt[pt.eligible].reset_index(drop=True)
@@ -241,7 +209,6 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
     pairs = [(i, j) for i in range(n) for j in range(i + 1, n) if is_key[i] or is_key[j]]
     scores = score_pairs(comp, pairs, n_jobs=n_jobs, shard_size=shard_size)
     pidx = np.array(pairs)
-    r, lo, hi, call = cal.interval_and_call(scores[:, 0])
 
     def pair_frame(ia: np.ndarray, ib: np.ndarray) -> pd.DataFrame:
         # order each pair by CID so names/cids/smiles columns are canonical
@@ -254,7 +221,7 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
             "cid_a": col("cid", ia), "cid_b": col("cid", ib),
             "smiles_a": col("smiles", ia), "smiles_b": col("smiles", ib),
             "role_a": col("role", ia), "role_b": col("role", ib),
-            "anchor": False, "ma_mixture_id": "", "anchor_quintile": 0,
+            "anchor": False, "ma_mixture_id": "", "anchor_decile": 0,
             "max_tanimoto_train_a": sim_train[ia], "max_tanimoto_train_b": sim_train[ib],
             "component_tanimoto": sim_pool[ia, ib],
         })
@@ -264,8 +231,6 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
     for j, f in enumerate(mh.FAMILIES):
         sp[f"pred_{f}"] = scores[:, 1 + j]
     sp["pred_ensemble"] = scores[:, 0]
-    sp["pred_rank_calibration_scale"] = r
-    sp["conformal_lower"], sp["conformal_upper"], sp["call"] = lo, hi, call
     quint = quintile_of_rank(sp.pred_ensemble.to_numpy(), sp.pair_id.tolist())
     sp["prediction_quintile"] = quint + 1
     assert sp.pair_id.is_unique
@@ -290,18 +255,16 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
         role = lambda c: pool_by_cid.role[c] if c in pool_by_cid.index else "ma_only"  # noqa: E731
         fam = lambda j: (ma_comp.family_rank[ia, j] + ma_comp.family_rank[ib, j]) / 2.0  # noqa: E731
         pe = float(ma_pred[row])
-        rr, l_, h_, c_ = cal.interval_and_call(np.array([pe]))
         rec = {
             "pair_id": f"anchor_{t.mixture_id[row]}", "name_a": ma.name[ia], "name_b": ma.name[ib],
             "cid_a": cid_a, "cid_b": cid_b, "smiles_a": ma.smiles[ia], "smiles_b": ma.smiles[ib],
             "role_a": role(cid_a), "role_b": role(cid_b), "anchor": True, "ma_mixture_id": t.mixture_id[row],
-            "anchor_quintile": k,
+            "anchor_decile": k,
             "max_tanimoto_train_a": float(mh.tanimoto_matrix(mh.featurize([ma.mols[ia]]).ecfp, tr.features.ecfp).max()),
             "max_tanimoto_train_b": float(mh.tanimoto_matrix(mh.featurize([ma.mols[ib]]).ecfp, tr.features.ecfp).max()),
             "component_tanimoto": float(mh.tanimoto_matrix(mh.featurize([ma.mols[ia]]).ecfp, mh.featurize([ma.mols[ib]]).ecfp)[0, 0]),
             **{f"pred_{f}": float(fam(j)) for j, f in enumerate(mh.FAMILIES)},
-            "pred_ensemble": pe, "pred_rank_calibration_scale": float(rr[0]),
-            "conformal_lower": float(l_[0]), "conformal_upper": float(h_[0]), "call": str(c_[0]),
+            "pred_ensemble": pe,
             "prediction_quintile": 0, "selection_order": 0,
         }
         a_rows.append(rec)
@@ -315,8 +278,20 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
     fz_path = candidates_dir / "FROZEN_PREDICTIONS.csv"
     _round(sp.assign(selected=sp.pair_id.isin(sel.pair_id))).to_csv(sp_path, index=False)
     _round(frozen).to_csv(fz_path, index=False)
-    digest = _sha256_file(fz_path)
-    (candidates_dir / "FROZEN_PREDICTIONS.sha256").write_text(f"{digest}  FROZEN_PREDICTIONS.csv\n")
+    # component-level hypothesis: one row per molecule used in the 40 test pairs
+    used = sorted(set(sel.cid_a) | set(sel.cid_b))
+    pos = {int(c): i for i, c in enumerate(elig.cid)}
+    ix = np.array([pos[int(c)] for c in used])
+    comp_df = pd.DataFrame({
+        "cid": used, "name": elig.name.to_numpy()[ix], "smiles": elig.smiles.to_numpy()[ix],
+        **{f"pred_{f}": comp.family[ix, j] for j, f in enumerate(mh.FAMILIES)},
+        "pred_ensemble": comp.ensemble[ix], "max_tanimoto_train": sim_train[ix],
+    })
+    cp_path = candidates_dir / "FROZEN_COMPONENT_PREDICTIONS.csv"
+    _round(comp_df).to_csv(cp_path, index=False)
+    digest, comp_digest = _sha256_file(fz_path), _sha256_file(cp_path)
+    (candidates_dir / "FROZEN_PREDICTIONS.sha256").write_text(
+        f"{digest}  {fz_path.name}\n{comp_digest}  {cp_path.name}\n")
 
     uses = pd.concat([sel.cid_a, sel.cid_b]).value_counts()
     result = {
@@ -325,9 +300,6 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
             "eligible_pool_molecules": n, "eligible_cocoa_key": int(is_key.sum()), "eligible_partner": int((~is_key).sum()),
             "pairs_scored": len(sp), "frozen_rows": len(frozen), "prospective_pairs": len(sel), "anchors": len(anc),
             "molecules_in_selected_40": int(len(uses)), "max_uses_of_a_molecule": int(uses.max()),
-            "calls_among_selected_40": {c: int((sel.call == c).sum()) for c in CALLS},
-            "calls_among_all_scored": {c: int((sp.call == c).sum()) for c in CALLS},
-            "calls_among_anchors": {c: int((anc.call == c).sum()) for c in CALLS},
             "selected_per_prediction_quintile": {int(k): int(v) for k, v in sel.prediction_quintile.value_counts().sort_index().items()},
             "anchors_both_purchasable": [bool(x[2]) for x in anchors],
         },
@@ -339,29 +311,27 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
             "ma_molecules": len(ma.cid), "pool_molecules_all_rows": len(pt),
             "leakage_assertion": "zero Keller-training molecules share a CID or canonical stereo-stripped SMILES with any Ma or pool.csv molecule",
         },
-        "conformal": {"alpha": ALPHA, "n_calibration_mixtures": len(obs), "q_hat_rank_scale": cal.q_hat,
-                      "ma_median_pleasantness_threshold": cal.liked_value, "threshold_on_rank_scale": cal.threshold_rank,
-                      "calibration_model": "the same model as the predictions (trained without every Ma and pool molecule)",
-                      "score": "|ECDF(observed; cal observed) - ECDF(predicted; cal predicted)|, mid-rank, exactly exploratory.py",
-                      "call_rule": "liked: lower > threshold; disliked: upper <= threshold; else abstain"},
+        "revision": "v2 re-freeze after review, nothing tasted: conformal intervals and three-way calls dropped, 8 anchors at "
+                    "Ma deciles instead of 4 at quintiles, beta-damascenone made ineligible, component predictions frozen. "
+                    "Old FROZEN_PREDICTIONS.csv hash 7c8eebdc41303cc12ce3a638de860a19e4ce91d2168cea1198d85644897139ab superseded.",
         "settings": {"seed_models": SEED, "families": list(mh.FAMILIES), "mixture_rule": "equal-weight mean of component rank-scale values",
                      "pair_rule": "unordered pairs of eligible pool molecules, at least one role == cocoa_key",
                      "score_pairs": {"n_jobs": n_jobs, "shard_size": shard_size},
                      "selection": {"quintiles": N_QUINTILES, "per_quintile": N_PER_QUINTILE, "max_uses_per_molecule": MAX_USES_PER_MOLECULE,
                                    "quintile_definition": "rank by ensemble prediction (ties by pair_id), position*5//n",
                                    "greedy": "round-robin over quintiles; each pick minimises summed prior uses of its two molecules, then maximises 1 - ECFP4 Tanimoto of the pair, then pair_id",
-                                   "anchor_quintiles_of_ma_observed": list(ANCHOR_QUINTILES),
-                                   "anchor_rule": "mixture nearest the median observed value of the quintile, both components purchasable preferred",
+                                   "anchor_deciles_of_ma_observed": list(ANCHOR_DECILES),
+                                   "anchor_rule": "mixture nearest the median observed value of the decile, both components purchasable preferred; descriptive scale check only",
                                    "purchasable": f"pool row with exclusion_reason == {PURCHASABLE_EXCLUSION!r}"},
                      "csv_float_decimals": DECIMALS},
         "frozen_predictions_sha256": digest,
+        "frozen_component_predictions_sha256": comp_digest,
         "code": {"prospective_py_sha256": _sha256_file(_HERE / "prospective.py"),
                  "mixture_hedonics_py_sha256": _sha256_file(_HERE / "mixture_hedonics.py"),
                  "exploratory_py_sha256": _sha256_file(_HERE / "exploratory.py"),
                  "pool_csv_sha256": _sha256_file(POOL_CSV), "git_head": _git("rev-parse", "HEAD")},
         "interpretations": [
-            "Step 3 'a model with Ma molecules excluded but otherwise the same as in step 1' read as the step-1 model itself, which already excludes every Ma molecule; calibration and prediction share one model.",
-            "Anchors are scored by the same model with their conformal call computed on the calibration scale; they are in the calibration set, so their intervals are in-sample.",
+            "Anchors are scored by the same model as the pool pairs; the model never saw any Ma molecule, so anchor predictions are out-of-sample.",
             "Anchor 'eligible-for-purchase' = in pool.csv and excluded solely for being a Ma test molecule (myrcene, FDA-delisted, is therefore not purchasable).",
         ],
     }
@@ -371,7 +341,8 @@ def run(candidates_dir: Path = CANDIDATES_DIR, results_dir: Path = RESULTS_DIR, 
 
 def main() -> None:
     r = run()
-    print(json.dumps({k: r[k] for k in ("counts", "training", "frozen_predictions_sha256")}, indent=2))
+    print(json.dumps({k: r[k] for k in ("counts", "training", "frozen_predictions_sha256",
+                                                        "frozen_component_predictions_sha256")}, indent=2))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,123 @@
+{
+  "label": "EXPLORATORY (post-registration; not part of PREREGISTRATION.md)",
+  "n_mixtures": 198,
+  "training_registered": 376,
+  "training_prospective_model": 358,
+  "bootstrap": {
+    "n": 10000,
+    "seed": 20261113,
+    "unit": "molecule (mixture kept iff both components drawn)"
+  },
+  "a_baselines": {
+    "descriptors": [
+      "MolWt",
+      "MolLogP",
+      "TPSA",
+      "NumHDonors",
+      "NumHAcceptors",
+      "NumRotatableBonds",
+      "RingCount",
+      "n_S_atoms"
+    ],
+    "ensemble": {
+      "estimate": 0.4895830313957801,
+      "ci95": [
+        0.26925777235377985,
+        0.6471603831227233
+      ],
+      "n_nan_resamples": 0
+    },
+    "ridge": {
+      "estimate": 0.3853245403635746,
+      "ci95": [
+        0.09644595050077205,
+        0.5978582667135118
+      ],
+      "n_nan_resamples": 0,
+      "ensemble_minus_ridge": {
+        "estimate": 0.10425849103220547,
+        "ci95": [
+          -0.030989893676972934,
+          0.2507570570439653
+        ]
+      }
+    },
+    "rf8": {
+      "estimate": 0.3804578167791974,
+      "ci95": [
+        0.0674090581941442,
+        0.6225545376387565
+      ],
+      "n_nan_resamples": 0,
+      "ensemble_minus_rf8": {
+        "estimate": 0.1091252146165827,
+        "ci95": [
+          -0.05218081531003839,
+          0.27842190726591703
+        ]
+      }
+    }
+  },
+  "b_near_duplicate": {
+    "max_tanimoto_to_training_median": 0.5931712962962963,
+    "tanimoto_lt_0.9": {
+      "n_mixtures": 166,
+      "estimate": 0.5094839199835635,
+      "ci95": [
+        0.2684394763016686,
+        0.6684912563814863
+      ],
+      "n_nan_resamples": 0
+    },
+    "tanimoto_lt_0.7": {
+      "n_mixtures": 113,
+      "estimate": 0.5326959386253277,
+      "ci95": [
+        0.2816838083878979,
+        0.6925722126301074
+      ],
+      "n_nan_resamples": 0
+    }
+  },
+  "c_prospective_model_on_ma": {
+    "estimate": 0.4553083929114865,
+    "ci95": [
+      0.22496786294802884,
+      0.6223671270405405
+    ],
+    "n_nan_resamples": 0,
+    "spearman_with_registered_model_mixture_predictions": 0.9592696401227186
+  },
+  "d_p1_cluster_inference": {
+    "n_pairs": 40,
+    "n_molecules": 48,
+    "n_sims": 2000,
+    "n_boot_per_sim": 1000,
+    "design_matched_reliability_30_raters": 0.9090288704322558,
+    "spearman_critical_p05": 0.2647279549718574,
+    "scenarios": {
+      "0.49": {
+        "true_rho": 0.49,
+        "latent_rho": 0.5139338719749905,
+        "mean_observed_rho": 0.46383461538461546,
+        "p_permutation_alone": 0.8955,
+        "p_permutation_and_cluster_lb": 0.7415
+      },
+      "0.3": {
+        "true_rho": 0.3,
+        "latent_rho": 0.31465339100509626,
+        "mean_observed_rho": 0.2826865853658537,
+        "p_permutation_alone": 0.5485,
+        "p_permutation_and_cluster_lb": 0.311
+      },
+      "0.0": {
+        "true_rho": 0.0,
+        "latent_rho": 0.0,
+        "mean_observed_rho": -0.0026928705440900577,
+        "p_permutation_alone": 0.0775,
+        "p_permutation_and_cluster_lb": 0.019
+      }
+    },
+    "assumptions": "Gaussian copula; true rho is the expected Spearman with a 30-rater panel (disattenuated by design-matched reliability); molecule-level latents induce the shared-molecule correlation; permutation p<0.05 is approximated by the Monte-Carlo critical value for n=40; 1000 bootstrap resamples per simulated study."
+  }
+}

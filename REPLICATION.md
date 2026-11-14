@@ -15,8 +15,11 @@ Data is fetched from the pyrfume archive on first use (`keller_2016`, `ma_2021`,
 
 ## 1. The pre-registered analysis
 
-Plan: `methods/chocolate_anchor/PREREGISTRATION.md`, commit `61a9465` (pushed to GitHub
-before the analysis ran). To check the plan was not changed afterwards:
+Plan: `methods/chocolate_anchor/PREREGISTRATION.md`, commit `61a9465`. GitHub's activity log
+(`gh api repos/aaygan29/superchoc/activity`) shows it on the remote from 01:29:49 UTC on
+2026-11-14, before any analysis output; the analysis code came later and is not part of the
+registration. To check the plan's text was not changed afterwards (only a dated note was
+appended):
 
 ```bash
 git log --follow --format='%h %ci' -- methods/chocolate_anchor/PREREGISTRATION.md
@@ -44,7 +47,7 @@ python -m chocolate_anchor.discrimination        # triangle-test model on Bushdi
 ```bash
 python -m chocolate_anchor.candidate_pool        # offline from data/candidates/evidence.json; --refresh re-fetches
 python -m chocolate_anchor.prospective           # scores all pairs, writes FROZEN_PREDICTIONS.csv
-shasum -a 256 data/candidates/FROZEN_PREDICTIONS.csv   # must match FROZEN_PREDICTIONS.sha256
+(cd data/candidates && shasum -a 256 -c FROZEN_PREDICTIONS.sha256)
 ```
 
 ## Version 1

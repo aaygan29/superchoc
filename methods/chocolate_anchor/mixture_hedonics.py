@@ -148,7 +148,10 @@ def fit_families(train: Features, y: np.ndarray, rf_n_jobs: int = 1) -> FittedFa
 
 
 def to_rank_scale(sorted_train_preds: np.ndarray, preds: np.ndarray) -> np.ndarray:
-    """Empirical-CDF (mid-rank) of `preds` against one family's Keller-training predictions, in [0, 1]."""
+    """Empirical-CDF (mid-rank) of `preds` against `sorted_train_preds`, in [0, 1]. The reference is one family's
+    IN-SAMPLE predictions on its own training molecules (see `_ensemble_from_features`), not the Keller labels' ranks:
+    RF/kNN in-sample predictions are wider than their out-of-sample ones, so the families' scales are monotone
+    transforms of their raw outputs but are not equally calibrated, and the equal-weight mean weights them unevenly."""
     n = len(sorted_train_preds)
     lo = np.searchsorted(sorted_train_preds, preds, side="left")
     hi = np.searchsorted(sorted_train_preds, preds, side="right")
@@ -158,7 +161,7 @@ def to_rank_scale(sorted_train_preds: np.ndarray, preds: np.ndarray) -> np.ndarr
 @dataclass(frozen=True)
 class ComponentEnsemble:
     families: FittedFamilies
-    sorted_train_preds: tuple[np.ndarray, ...]  # per family, sorted in-sample training predictions
+    sorted_train_preds: tuple[np.ndarray, ...]  # per family, sorted IN-SAMPLE predictions on the training molecules (rank-scale reference)
     keller_median: float  # median of Keller training labels (0-100 scale)
     train_cids: np.ndarray
     n_train: int
@@ -181,7 +184,7 @@ class ComponentEnsemble:
 @dataclass(frozen=True)
 class ComponentPrediction:
     raw: np.ndarray  # (n, 4) Keller-scale predictions
-    family_rank: np.ndarray  # (n, 4) Keller-rank scale, FAMILIES order
+    family_rank: np.ndarray  # (n, 4) ECDF of each family's in-sample training predictions (NOT Keller label ranks), FAMILIES order
     ensemble: np.ndarray  # (n,) mean of the four rank-scale values
     agreement: np.ndarray  # (n,) bool: all four families on the same side of the Keller median
 

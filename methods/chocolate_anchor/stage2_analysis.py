@@ -1,8 +1,9 @@
 """Fixed Stage 2 analysis for PROTOCOL.md. Run only on real panel data.
 
 Input: a CSV of individual ratings with columns
-    pair_id (int, from FROZEN_PREDICTIONS.csv), rater (str), stimulus ('mixture' | 'a' | 'b'),
-    pleasantness (float, 0-10), duplicate (int, 0 or 1; 1 marks the repeated anchor presentation)
+    rater (str), stimulus ('pair' | 'molecule'), stimulus_id (str: pair_id from
+    FROZEN_PREDICTIONS.csv, or the cid from FROZEN_COMPONENT_PREDICTIONS.csv),
+    pleasantness (float)
 Run:  PYTHONPATH=methods python -m chocolate_anchor.stage2_analysis ratings.csv
 """
 
@@ -15,89 +16,76 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest, spearmanr
+from scipy.stats import spearmanr
+
+from chocolate_anchor.robustness import cluster_bootstrap_lower_bound
 
 ROOT = Path(__file__).resolve().parents[2]
-FROZEN = ROOT / "data/candidates/FROZEN_PREDICTIONS.csv"
-FROZEN_SHA256 = "7c8eebdc41303cc12ce3a638de860a19e4ce91d2168cea1198d85644897139ab"
-MA_MEDIAN = 4.97
-N_PERMUTATIONS = 10_000  # PROTOCOL.md P1
+CANDIDATES = ROOT / "data/candidates"
+FROZEN_SHA256 = {
+    "FROZEN_PREDICTIONS.csv": "b0d9035759410da49bb590f8a0c43d06a17f6fe6797c2570176ddb7eb0e7f9dc",
+    "FROZEN_COMPONENT_PREDICTIONS.csv": "833236be0aabedd343d181e2c48fc9e677c70350d9db4a0ce0dc149be6e024f9",
+}
+N_PERMUTATIONS = 10_000  # PROTOCOL.md P1, P2
 PERMUTATION_SEED = 20261114
-MIN_ANCHOR_SPEARMAN = 0.8
-MIN_PAIRS = 30
+BOOT_LEVEL = 0.95  # one-sided lower bound, PROTOCOL.md P1
+ALPHA = 0.05
 FAMILIES = ("pred_rf_ecfp", "pred_rf_desc", "pred_hgb_desc", "pred_knn_tanimoto")
 
 
-def load_frozen() -> pd.DataFrame:
-    digest = hashlib.sha256(FROZEN.read_bytes()).hexdigest()
-    if digest != FROZEN_SHA256:
-        raise RuntimeError(f"frozen predictions changed: sha256 {digest} != {FROZEN_SHA256}")
-    return pd.read_csv(FROZEN)
+def load_frozen(name: str) -> pd.DataFrame:
+    path = CANDIDATES / name
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    if digest != FROZEN_SHA256[name]:
+        raise RuntimeError(f"{name} changed: sha256 {digest} != {FROZEN_SHA256[name]}")
+    return pd.read_csv(path)
 
 
-def excluded_raters(ratings: pd.DataFrame, anchor_ids: set[int]) -> set[str]:
-    """Raters whose duplicate anchor ratings correlate below 0 with their first ratings."""
-    mix = ratings[(ratings.stimulus == "mixture") & ratings.pair_id.isin(anchor_ids)]
-    out: set[str] = set()
-    for rater, g in mix.groupby("rater"):
-        wide = g.pivot_table(index="pair_id", columns="duplicate", values="pleasantness")
-        if 0 not in wide or 1 not in wide or wide.dropna().shape[0] < 3:
-            raise ValueError(f"rater {rater} lacks the duplicated anchor presentations")
-        w = wide.dropna()
-        if spearmanr(w[0], w[1]).statistic < 0:
-            out.add(str(rater))
-    return out
-
-
-def permutation_p_greater(x: np.ndarray, y: np.ndarray, n: int, seed: int) -> float:
+def permutation_p_greater(x: np.ndarray, y: np.ndarray) -> float:
     observed = spearmanr(x, y).statistic
-    rng = np.random.default_rng(seed)
-    null = np.array([spearmanr(x, rng.permutation(y)).statistic for _ in range(n)])
-    return float((1 + np.sum(null >= observed)) / (n + 1))
+    rng = np.random.default_rng(PERMUTATION_SEED)
+    null = np.array([spearmanr(x, rng.permutation(y)).statistic for _ in range(N_PERMUTATIONS)])
+    return float((1 + np.sum(null >= observed)) / (N_PERMUTATIONS + 1))
+
+
+def panel_means(ratings: pd.DataFrame, stimulus: str) -> pd.Series:
+    sub = ratings[ratings.stimulus == stimulus].assign(stimulus_id=lambda d: d.stimulus_id.astype(str))
+    return sub.groupby("stimulus_id").pleasantness.mean().rename("observed")
 
 
 def analyse(ratings: pd.DataFrame) -> dict:
-    frozen = load_frozen()
-    anchors = frozen[frozen.anchor]
-    tests = frozen[~frozen.anchor]
-    dropped = excluded_raters(ratings, set(anchors.pair_id))
-    kept = ratings[~ratings.rater.astype(str).isin(dropped) & (ratings.duplicate == 0)]
+    pairs = load_frozen("FROZEN_PREDICTIONS.csv")
+    molecules = load_frozen("FROZEN_COMPONENT_PREDICTIONS.csv")
+    pair_means = panel_means(ratings, "pair")
+    result: dict = {"frozen_sha256": FROZEN_SHA256}
 
-    means = kept[kept.stimulus == "mixture"].groupby("pair_id").pleasantness.mean()
-    test_obs = tests.set_index("pair_id").join(means.rename("observed"), how="inner")
-    result: dict = {"frozen_sha256": FROZEN_SHA256, "raters_excluded": sorted(dropped),
-                    "n_test_pairs_rated": int(len(test_obs))}
-    if len(test_obs) < MIN_PAIRS:
-        result["status"] = f"underpowered: {len(test_obs)} < {MIN_PAIRS} pairs"
-        return result
+    tests = pairs[~pairs.anchor].set_index("pair_id").join(pair_means, how="inner")
+    x, y = tests.pred_ensemble.to_numpy(), tests.observed.to_numpy()
+    p_perm = permutation_p_greater(x, y)
+    lower = cluster_bootstrap_lower_bound(x, y, tests.cid_a.to_numpy(), tests.cid_b.to_numpy(), level=BOOT_LEVEL)
+    result["P1"] = {"n_pairs": int(len(tests)), "spearman": float(spearmanr(x, y).statistic),
+                    "permutation_p_one_sided": p_perm, "cluster_bootstrap_lower_bound": lower,
+                    "supported": bool(p_perm < ALPHA and lower > 0)}
 
-    x, y = test_obs.pred_ensemble.to_numpy(), test_obs.observed.to_numpy()
-    result["P1"] = {"spearman": float(spearmanr(x, y).statistic),
-                    "p_one_sided": permutation_p_greater(x, y, N_PERMUTATIONS, PERMUTATION_SEED)}
-    result["P1"]["significant"] = result["P1"]["p_one_sided"] < 0.05
+    mol = molecules.assign(cid=molecules.cid.astype(str)).set_index("cid").join(panel_means(ratings, "molecule"), how="inner")
+    mx, my = mol.pred_ensemble.to_numpy(), mol.observed.to_numpy()
+    p2 = permutation_p_greater(mx, my)
+    result["P2"] = {"n_molecules": int(len(mol)), "spearman": float(spearmanr(mx, my).statistic),
+                    "permutation_p_one_sided": p2, "supported": bool(p2 < ALPHA)}
 
-    anchor_obs = anchors.set_index("pair_id").join(means.rename("observed"), how="inner")
+    anchors = pairs[pairs.anchor].set_index("pair_id").join(pair_means, how="inner")
     ma = pd.read_csv(ROOT / "data/hedonics/mixture_pleasantness_ma2021.csv").set_index("mixture_id")
-    anchor_obs["ma_observed"] = ma.loc[anchor_obs.ma_mixture_id, "pleasantness_mix"].to_numpy()
-    link_rho = float(spearmanr(anchor_obs.observed, anchor_obs.ma_observed).statistic)
-    if len(anchor_obs) < 4 or link_rho < MIN_ANCHOR_SPEARMAN:
-        result["P2"] = {"status": "not evaluable: scale linking unreliable", "anchor_spearman": link_rho}
-    else:
-        b, a = np.polyfit(anchor_obs.ma_observed, anchor_obs.observed, 1)
-        threshold = a + b * MA_MEDIAN
-        disliked = test_obs[test_obs.call == "disliked"]
-        below = int((disliked.observed < threshold).sum())
-        result["P2"] = {"anchor_spearman": link_rho, "linked_threshold": float(threshold),
-                        "n_disliked_calls": int(len(disliked)), "n_below": below,
-                        "p_one_sided": float(binomtest(below, len(disliked), 0.5, alternative="greater").pvalue)}
-
-    result["P3_families"] = {f: float(spearmanr(test_obs[f], y).statistic) for f in FAMILIES}
+    ma_obs = ma.loc[anchors.ma_mixture_id, "pleasantness_mix"].to_numpy()
+    result["descriptive"] = {
+        "families_P1_spearman": {f: float(spearmanr(tests[f], y).statistic) for f in FAMILIES},
+        "anchors_spearman_with_ma": float(spearmanr(anchors.observed, ma_obs).statistic),
+        "n_anchors": int(len(anchors)),
+    }
     return result
 
 
 def main() -> None:
-    ratings = pd.read_csv(sys.argv[1])
-    print(json.dumps(analyse(ratings), indent=2))
+    print(json.dumps(analyse(pd.read_csv(sys.argv[1])), indent=2))
 
 
 if __name__ == "__main__":

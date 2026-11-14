@@ -8,35 +8,38 @@ from chocolate_anchor import stage2_analysis as S
 
 
 def simulate(signal: float, n_raters: int = 30, seed: int = 0) -> pd.DataFrame:
-    frozen = S.load_frozen()
+    pairs = S.load_frozen("FROZEN_PREDICTIONS.csv")
+    molecules = S.load_frozen("FROZEN_COMPONENT_PREDICTIONS.csv")
     ma = pd.read_csv(S.ROOT / "data/hedonics/mixture_pleasantness_ma2021.csv").set_index("mixture_id")
     rng = np.random.default_rng(seed)
     rows = []
-    for _, r in frozen.iterrows():
-        if r.anchor:
-            truth = ma.loc[r.ma_mixture_id, "pleasantness_mix"]
-        else:
-            truth = 5 + signal * 4 * (r.pred_ensemble - 0.4) + rng.normal(0, 0.6)
+
+    def add(kind: str, sid: str, truth: float) -> None:
         for rater in range(n_raters):
-            reps = (0, 1) if r.anchor else (0,)
-            for dup in reps:
-                rows.append({"pair_id": r.pair_id, "rater": f"r{rater}", "stimulus": "mixture",
-                             "pleasantness": truth + rng.normal(0, 1.5), "duplicate": dup})
+            rows.append({"rater": f"r{rater}", "stimulus": kind, "stimulus_id": sid,
+                         "pleasantness": truth + rng.normal(0, 1.5)})
+
+    for _, r in pairs.iterrows():
+        truth = (ma.loc[r.ma_mixture_id, "pleasantness_mix"] if r.anchor
+                 else 5 + signal * 4 * (r.pred_ensemble - 0.4) + rng.normal(0, 0.6))
+        add("pair", str(r.pair_id), truth)
+    for _, r in molecules.iterrows():
+        add("molecule", str(r.cid), 5 + signal * 4 * (r.pred_ensemble - 0.4) + rng.normal(0, 0.6))
     return pd.DataFrame(rows)
 
 
-def test_detects_signal_and_links_scale():
+def test_detects_strong_signal():
     out = S.analyse(simulate(signal=1.0))
-    assert out["P1"]["significant"]
-    assert out["P2"]["anchor_spearman"] >= S.MIN_ANCHOR_SPEARMAN
+    assert out["P1"]["supported"] and out["P2"]["supported"]
+    assert out["descriptive"]["anchors_spearman_with_ma"] > 0.8
 
 
-def test_null_signal_rarely_significant():
-    sig = [S.analyse(simulate(signal=0.0, seed=s))["P1"]["significant"] for s in range(5)]
-    assert sum(sig) <= 1
+def test_null_rarely_supported():
+    supported = [S.analyse(simulate(signal=0.0, seed=s))["P1"]["supported"] for s in range(5)]
+    assert sum(supported) <= 1
 
 
 def test_rejects_changed_frozen_file(monkeypatch):
-    monkeypatch.setattr(S, "FROZEN_SHA256", "0" * 64)
+    monkeypatch.setitem(S.FROZEN_SHA256, "FROZEN_PREDICTIONS.csv", "0" * 64)
     with pytest.raises(RuntimeError):
-        S.load_frozen()
+        S.load_frozen("FROZEN_PREDICTIONS.csv")

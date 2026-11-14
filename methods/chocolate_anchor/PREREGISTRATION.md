@@ -92,3 +92,20 @@ stage would not claim predictive power for liking.
 ## Deviations
 
 (none yet)
+
+### Added 2026-11-14, after the analysis (the plan above is unchanged)
+
+- **What the registration covers.** This file was committed at `61a9465` and was on GitHub
+  from 01:29:49 UTC (GitHub activity log: creation of branch `chocolate-anchor` at a
+  descendant commit), before any analysis output existed. The analysis *code*
+  (`mixture_hedonics.py`) was written after that and is not part of the registration. The
+  plan fixes the data, models, hypotheses and tests; the code's implementation choices are
+  listed as interpretations below.
+- **Interpretations of the plan.** Eleven are listed, with reasons, in
+  `RESULTS_MIXTURE_HEDONICS.md` ("Deviations / interpretations"). The one that changes a
+  verdict is H3: the plan's two criteria (confident AUROC > abstained AUROC; confident-subset
+  CI lower bound > 0.5) are both met, so **under the registered text H3 is supported**. The
+  analysis code added a p-value for Holm correction, defined after registration as the
+  larger of two bootstrap probabilities (p = 0.42), under which H3 is not supported. Both
+  readings are reported; the gap the criteria rest on is 0.02 (95% CI -0.20 to 0.26), so no
+  claim is made that disagreement-based abstention helps.

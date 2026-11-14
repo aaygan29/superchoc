@@ -54,7 +54,7 @@ def test_every_eligible_row_has_regulatory_evidence(pool):
 
 def test_unverified_rows_are_ineligible(pool):
     unv = pool[pool.regulatory_basis == ""]
-    assert unv.exclusion_reason.str.contains("regulatory status unverified").all()
+    assert unv.exclusion_reason.str.contains("regulatory status unverified|regulatory evidence only via parent CAS").all()
     assert not (unv.eligible.astype(str) == "True").any()
 
 
@@ -88,3 +88,16 @@ def test_ineligible_rows_state_a_reason(pool):
     inel = pool[pool.eligible.astype(str) != "True"]
     assert (inel.exclusion_reason != "").all()
     assert (pool[pool.eligible.astype(str) == "True"].exclusion_reason == "").all()
+
+
+def test_eligible_needs_fema_page_or_eu_row_in_evidence(pool, evidence):
+    """The rule is enforced against the raw evidence, not against the CSV's own columns."""
+    for _, r in pool[pool.eligible.astype(str) == "True"].iterrows():
+        e = evidence["molecules"][r.cas]
+        assert e["fema"]["found"] or e["eu"], r["name"]
+
+
+def test_beta_damascenone_ineligible_via_parent_cas_only(pool):
+    r = pool[pool.cas == "23726-93-4"].iloc[0]
+    assert str(r.eligible) != "True"
+    assert "regulatory evidence only via parent CAS / PubChem annotation" in r.exclusion_reason

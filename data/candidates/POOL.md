@@ -6,8 +6,8 @@ are in `evidence.json` (2026-11-13). Tests: `test_candidate_pool.py` (offline).
 | role | rows | eligible | ineligible |
 |---|---|---|---|
 | cocoa_key (OAV>=1 in >=1 cocoa/chocolate source in cocoa_key_odorants.csv) | 31 | 18 | 13 |
-| partner | 47 | 31 | 16 |
-| total | 78 | 49 | 29 |
+| partner | 47 | 30 | 17 |
+| total | 78 | 48 | 30 |
 Pool sources: 35 cocoa-file odorants + 29 GRAS-threshold-file molecules (22 overlap = 42 distinct), plus 36
 added confectionery odorants (25 eligible). All matrices in the cocoa file are cocoa/chocolate/nib/liquor
 materials, so any OAV>=1 counts. `oav_max` and `oav_sources` give the maximum and the source keys.
@@ -25,7 +25,7 @@ materials, so any OAV>=1 counts. `oav_max` and `oav_sources` give the maximum an
    fetched from `http://publications.europa.eu/resource/celex/32012R0872` (eur-lex.europa.eu itself
    serves a bot challenge). Matched by CAS; FL number and "Restrictions of Use" column recorded.
    This is the text as adopted in 2012, NOT the current consolidated list (not retrievable here), so
-   later EU amendments/delistings are not applied. 47 of 49 eligible rows also have an EU FL number.
+   later EU amendments/delistings are not applied. 47 of 48 eligible rows also have an EU FL number.
 3. FDA delisting: seven substances parsed from Federal Register 83 FR 50490 (2018-10-09, Food Additive
    Regulations; Synthetic Flavoring Agents and Adjuvants): https://www.federalregister.gov/documents/2018/10/09/2018-21807/food-additive-regulations-synthetic-flavoring-agents-and-adjuvants
    CAS set: benzophenone, ethyl acrylate, eugenyl methyl ether, myrcene, pulegone, pyridine, styrene
@@ -36,9 +36,9 @@ materials, so any OAV>=1 counts. `oav_max` and `oav_sources` give the maximum an
    9 eligible rows) is not an exclusion; TOXIC/INVALID is.
 
 ## Unverified / weak
-- beta-damascenone (CAS 23726-93-4): the FEMA library entry (FEMA 3420) lists only the parent CAS
-  23696-85-7; accepted via crosswalk because PubChem's FEMA annotation on the exact trans-isomer CID
-  also says 3420. EU FL 07.108 exists under the parent CAS only (not in the CSV column). Weakest verification in the pool.
+- beta-damascenone (CAS 23726-93-4): INELIGIBLE ("regulatory evidence only via parent CAS / PubChem annotation").
+  The FEMA library entry (FEMA 3420) lists only the parent CAS 23696-85-7 and PubChem's annotation on the exact
+  CID also says 3420, but there is no FEMA page for this CAS and no EU row for it, so the pool's own rule excludes it.
 - 2-acetyl-1-pyrroline (FEMA 4249): FEMA only, no EU FL in the 2012 annex; it is unstable and hard to
   purchase as a clean standard, so check supplier availability before use.
 - Purchasability and EU Annex III maximum levels were not checked (only the Union List restriction column).

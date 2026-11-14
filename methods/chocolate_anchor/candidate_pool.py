@@ -10,7 +10,8 @@ Eligibility is conservative: a molecule is eligible only if
   3. it is not in the Ma 2021 data set (those mixtures are our test data);
   4. safety.screen is not TOXIC/INVALID;
   5. the Union List row carries no "Restrictions of Use".
-Anything unverifiable is ineligible ("regulatory status unverified"); nothing is assumed.
+Anything unverifiable is ineligible ("regulatory status unverified"); nothing is assumed. A FEMA page found only by
+name (page lists a parent CAS) and matched to PubChem's FEMA annotation is not a verification either.
 
 GRAS/Union-List status covers use as a flavouring at customary levels. It is not a statement
 that a panel stimulus is safe at any concentration.
@@ -311,12 +312,12 @@ def build_rows(ev: dict, universe: list[Molecule]) -> list[dict]:
             evid.append(f"FEMA library page (CAS match) {e['fema']['url']} FEMA {fema_no}"
                         + (f"; {e['fema']['cfr']}" if e["fema"]["cfr"] else ""))
         elif alt is not None:
-            # Library entry found by name lists a parent CAS (e.g. isomer-unspecified); accepted only
-            # because PubChem's FEMA annotation on this exact CID carries the same FEMA number.
-            fema_no = alt["fema_number"]
-            basis.append("FEMA GRAS")
-            evid.append(f"FEMA library page (found by name; page CAS {', '.join(alt['cas_listed'])} differs from "
-                        f"{m.cas}) {alt['url']} FEMA {fema_no}, confirmed by PubChem annotation on CID {cid}")
+            # Library entry found by name lists a parent CAS (e.g. isomer-unspecified) and PubChem's FEMA annotation
+            # on this exact CID carries the same number. Recorded as evidence, but it is NOT a verification: the
+            # rule needs a FEMA page listing this CAS or an EU row for it.
+            evid.append(f"parent-CAS/annotation only (not accepted): FEMA library page found by name (page CAS "
+                        f"{', '.join(alt['cas_listed'])} differs from {m.cas}) {alt['url']} FEMA {alt['fema_number']}, "
+                        f"matching PubChem annotation on CID {cid}")
         if pc.get("pubchem_fema"):
             evid.append(f"PubChem annotation {', '.join(pc['pubchem_fema'])} ({pc['pubchem_url']})")
             if fema_no != "" and not any(str(fema_no) in x for x in pc["pubchem_fema"]):
@@ -334,7 +335,8 @@ def build_rows(ev: dict, universe: list[Molecule]) -> list[dict]:
         if in_ma:
             reasons.append("in Ma 2021 data set (test data)")
         if not verified:
-            reasons.append("regulatory status unverified")
+            reasons.append("regulatory evidence only via parent CAS / PubChem annotation" if alt is not None
+                           else "regulatory status unverified")
         hz = screen(canon)
         if hz["verdict"] in ("TOXIC", "INVALID"):
             reasons.append(f"hazard screen {hz['verdict']}")
