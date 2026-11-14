@@ -1,0 +1,336 @@
+{
+  "n": {
+    "ma_molecules_total": 72,
+    "ma_molecules_used": 72,
+    "ma_mixtures_total_unique_pairs": 198,
+    "ma_mixtures_used": 198,
+    "keller_1_1000_molecules": 420,
+    "keller_training_after_exclusion": 376,
+    "median_of_mixture_ratings": 4.9745,
+    "n_liked": 99
+  },
+  "exclusions": {
+    "ma_molecules_no_valid_structure": [],
+    "ma_mixtures_excluded": [],
+    "keller_removed_for_leakage": {
+      "by_cid": 42,
+      "by_stripped_smiles": 44,
+      "total_union": 44
+    },
+    "keller_invalid_smiles": 0,
+    "leakage_assertion": "zero Keller-training molecules share a CID or canonical stereo-stripped SMILES with any Ma molecule"
+  },
+  "H1": {
+    "estimate": 0.6402868447211949,
+    "ci95": [
+      0.4719090707858596,
+      0.762906453996958
+    ],
+    "n_boot_undefined": 0,
+    "permutation_p": 0.000999000999000999,
+    "criterion_met": true,
+    "p_raw": 0.000999000999000999,
+    "p_holm": 0.002997002997002997,
+    "supported": true
+  },
+  "H2": {
+    "estimate": 0.48956351750415383,
+    "ci95": [
+      0.26925777235377985,
+      0.6471603831227233
+    ],
+    "n_boot_undefined": 0,
+    "permutation_p": 0.000999000999000999,
+    "criterion_met": true,
+    "p_raw": 0.000999000999000999,
+    "p_holm": 0.002997002997002997,
+    "supported": true
+  },
+  "H3": {
+    "auroc_confident": {
+      "estimate": 0.6858465608465608,
+      "ci95": [
+        0.5208241959064329,
+        0.8666666666666667
+      ],
+      "n_boot_undefined": 0
+    },
+    "auroc_abstained": {
+      "estimate": 0.6665051679586563,
+      "ci95": [
+        0.48683682803264855,
+        0.8244076236263735
+      ],
+      "n_boot_undefined": 0
+    },
+    "n_confident": 83,
+    "n_abstained": 115,
+    "difference_conf_minus_abst": {
+      "estimate": 0.019341392887904485,
+      "ci95": [
+        -0.20451005362893948,
+        0.25664535984848474
+      ],
+      "n_boot_valid": 10000
+    },
+    "bootstrap_p": 0.4173582641735826,
+    "criterion_met": true,
+    "p_raw": 0.4173582641735826,
+    "p_holm": 0.4173582641735826,
+    "supported": false
+  },
+  "H3_auroc_all_mixtures": {
+    "estimate": 0.71038669523518,
+    "ci95": [
+      0.6005660255304468,
+      0.8112965340179717
+    ],
+    "n_boot_undefined": 0
+  },
+  "A1_per_family": {
+    "rf_ecfp": {
+      "mixture_spearman": {
+        "estimate": 0.3502489435122278,
+        "ci95": [
+          0.18976135005306424,
+          0.5000525138917552
+        ],
+        "n_boot_undefined": 0
+      },
+      "component_spearman": {
+        "estimate": 0.5656323737106974,
+        "ci95": [
+          0.3828471614083485,
+          0.7053760038394444
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "rf_desc": {
+      "mixture_spearman": {
+        "estimate": 0.4287211140545827,
+        "ci95": [
+          0.14828097490044667,
+          0.6370988467584511
+        ],
+        "n_boot_undefined": 0
+      },
+      "component_spearman": {
+        "estimate": 0.5932381964963177,
+        "ci95": [
+          0.39370265059362497,
+          0.7458256100148677
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "hgb_desc": {
+      "mixture_spearman": {
+        "estimate": 0.4834033797021605,
+        "ci95": [
+          0.2087840875848822,
+          0.6792212008604244
+        ],
+        "n_boot_undefined": 0
+      },
+      "component_spearman": {
+        "estimate": 0.6353921442815464,
+        "ci95": [
+          0.447772949805212,
+          0.773550577689217
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "knn_tanimoto": {
+      "mixture_spearman": {
+        "estimate": 0.4509343455806135,
+        "ci95": [
+          0.2669285103284504,
+          0.594156191811195
+        ],
+        "n_boot_undefined": 0
+      },
+      "component_spearman": {
+        "estimate": 0.5983372039879583,
+        "ci95": [
+          0.4248941313210733,
+          0.7305453912276478
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "ensemble": {
+      "mixture_spearman": {
+        "estimate": 0.48956351750415383,
+        "ci95": [
+          0.26925777235377985,
+          0.6471603831227233
+        ],
+        "n_boot_undefined": 0
+      },
+      "component_spearman": {
+        "estimate": 0.6402868447211949,
+        "ci95": [
+          0.4719090707858596,
+          0.762906453996958
+        ],
+        "n_boot_undefined": 0
+      }
+    }
+  },
+  "A2_baselines": {
+    "baseline_mw": {
+      "mixture_spearman": {
+        "estimate": 0.1255165568803797,
+        "ci95": [
+          -0.07508680117732107,
+          0.34255127488876874
+        ],
+        "n_boot_undefined": 0
+      },
+      "difference_ensemble_minus_this": {
+        "estimate": 0.3640469606237742,
+        "ci95": [
+          0.14672289318217285,
+          0.5441462211737929
+        ]
+      },
+      "component_spearman": {
+        "estimate": 0.2803837676829304,
+        "ci95": [
+          0.060710817873555166,
+          0.4738580712053883
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "baseline_heavy_atoms": {
+      "mixture_spearman": {
+        "estimate": 0.16196341174199272,
+        "ci95": [
+          -0.048102181688607304,
+          0.382260055595698
+        ],
+        "n_boot_undefined": 0
+      },
+      "difference_ensemble_minus_this": {
+        "estimate": 0.32760010576216114,
+        "ci95": [
+          0.1367220250294003,
+          0.48450650651797617
+        ]
+      },
+      "component_spearman": {
+        "estimate": 0.34461943361851827,
+        "ci95": [
+          0.1241322843696534,
+          0.5339520194281596
+        ],
+        "n_boot_undefined": 0
+      }
+    },
+    "baseline_constant": {
+      "mixture_spearman": null,
+      "auroc": 0.5,
+      "note": "constant predictor: rank correlation undefined, AUROC 0.5 by construction"
+    }
+  },
+  "A3_oracle_measured_components": {
+    "mixture_spearman": {
+      "estimate": 0.8967529938027052,
+      "ci95": [
+        0.8277811340732886,
+        0.9375549557151254
+      ],
+      "n_boot_undefined": 0
+    },
+    "difference_ensemble_minus_this": {
+      "estimate": -0.4071894762985514,
+      "ci95": [
+        -0.6156594664671124,
+        -0.24674170011455024
+      ]
+    },
+    "pearson": 0.914113401199318
+  },
+  "A4_intensity_weighted_predicted_components": {
+    "mixture_spearman": {
+      "estimate": 0.5182445670039044,
+      "ci95": [
+        0.2835753614061269,
+        0.6800833419184095
+      ],
+      "n_boot_undefined": 0
+    },
+    "difference_ensemble_minus_this": {
+      "estimate": -0.028681049499750588,
+      "ci95": [
+        -0.05364814926955199,
+        0.006538742281856709
+      ]
+    }
+  },
+  "A5_applicability_domain": {
+    "n_in_domain": 151,
+    "n_out_of_domain": 47,
+    "in_domain": {
+      "estimate": 0.49158797230868373,
+      "ci95": [
+        0.20428355237366203,
+        0.680607686802825
+      ],
+      "n_boot_undefined": 0
+    },
+    "out_of_domain": {
+      "estimate": 0.4114246068455134,
+      "ci95": [
+        -0.13636363636363638,
+        0.78796992481203
+      ],
+      "n_boot_undefined": 48
+    },
+    "n_molecules_max_tanimoto_ge_0.4": 63,
+    "max_tanimoto_median": 0.5931712962962963
+  },
+  "A6_scale_check": {
+    "keller_scale": "0-100 (untrained raters), training labels mean 45.2 sd 12.7 range [5.0, 83.9]",
+    "ma_scale": "0-10 (trained panel), mixture panel means mean 4.91 sd 0.99 range [2.05, 6.77]",
+    "note": "only rank statistics (Spearman, AUROC) are used for claims"
+  },
+  "settings": {
+    "seed_models": 0,
+    "bootstrap_n": 10000,
+    "bootstrap_seed": 20261113,
+    "permutations": 1000,
+    "permutation_seeds": "default_rng(1000000 + i) for permutation i",
+    "alpha": 0.05,
+    "domain_tanimoto": 0.4,
+    "keller_median_labels": 45.77428571428571
+  },
+  "deviations_interpretations": [
+    "H1/H2 p-values for Holm: both come from the same label-permutation test (one-sided, (1+#null>=obs)/(1+n_perm)); the plan specifies the permutation test only for H2, and gives no p-value for H1 or H3.",
+    "H3 p-value for Holm: bootstrap one-sided, max of P(AUROC_confident<=0.5) and P(AUROC_confident-AUROC_abstained<=0) (intersection of the two stated conditions), (1+#)/(1+B). Verdict = pre-registered criterion AND Holm-adjusted p < 0.05.",
+    "Bootstrap: percentile CIs. Molecules resampled with replacement; for mixtures a mixture is kept once iff both components were drawn (not weighted by multiplicity); H1 keeps drawn molecules with multiplicity. Resamples with an undefined statistic (e.g. one class only) are dropped and counted (n_boot_undefined).",
+    "Rank normalisation: each family's value is the mid-rank empirical CDF of that family's in-sample Keller-training predictions, in [0,1].",
+    "'Keller-median' for the abstention rule: median of the Keller training labels (0-100 scale); each family's raw prediction is compared with it. A mixture is confident iff all four families agree on the side for component A and for component B (the two components need not lie on the same side). Ties (prediction == median) count as below.",
+    "'Liked' = strictly above the median of the 198 observed mixture ratings.",
+    "Duplicate pairs: the pre-computed 198-row Ma table (panel means over raters and repetitions) is used as given; H1 per-molecule observed value = mean of the per-mixture panel-mean alone ratings over all mixtures containing the molecule (A and B slots).",
+    "Component identity is by CID; the one component named with a CAS string (CID 61592, ethyl 3-(methylthio)propionate) is resolved via pyrfume molecules.csv by CID. Ma SMILES (isomeric) are used for prediction; stereo-stripped canonical SMILES only for leakage matching.",
+    "RDKit descriptors: inf set to NaN, then NaN -> training-set column median (the plan says NaN only). HistGradientBoosting given random_state=0 (no effect with defaults). Keller 1/1000 table is built by real_data.build_keller_pleasantness; molecules whose Keller SMILES RDKit cannot parse would be dropped and counted.",
+    "A4 weights: panel-mean perceived intensity of each component in the mixture (behavior.csv IAmix/IBmix, mean over all rater rows of a pair, zeros included as recorded), linear (not squared) weights.",
+    "A2: molecular weight (Ma molecules.csv) and heavy-atom count used directly as the score (no sign flipping), mixture value = mean of the two components; ensemble-minus-baseline difference CIs are from the same bootstrap resamples. Constant baseline has undefined rank correlation (reported AUROC 0.5).",
+    "A5: 'in domain' = both components have max ECFP4 Tanimoto to the (Ma-excluded) Keller training set >= 0.4; otherwise out-of-domain. Descriptive; no permutation test.",
+    "A3 oracle uses the per-mixture measured alone-ratings of that row (PA, PB), not molecule-averaged values.",
+    "The permutation test retrains all four families per permutation (seed 0 models, Keller labels shuffled with default_rng(1000000+i)); the rank-normalisation is refit on the permuted-model training predictions.",
+    "Joblib parallelism is used for bootstrap and permutations; results do not depend on n_jobs (resamples drawn up front, per-permutation seeds)."
+  ],
+  "code": {
+    "git_head": "7886a7713965c9ef8a47de4623bc14cbf795662f",
+    "git_branch": "chocolate-anchor",
+    "working_tree_dirty_for_analysis_files": true,
+    "mixture_hedonics_py_sha256": "0daf8277ffd1d520eada038580abcd7d33d0dca90ded9f05a436944a505c17cf",
+    "preregistration_commit": "61a9465"
+  },
+  "runtime_seconds": 992.9489779472351
+}

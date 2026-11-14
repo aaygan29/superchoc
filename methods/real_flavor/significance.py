@@ -75,7 +75,6 @@ def _entry(name, a, b, effect_name="spearman", n_boot=2000, n_perm=5000, seed=0)
 
 def run(n_boot=2000, n_perm=5000, seed=0):
     import mixtures as mx
-    import flavor_field as ff
 
     entries = []
 
@@ -85,18 +84,6 @@ def run(n_boot=2000, n_perm=5000, seed=0):
                           n_boot=n_boot, n_perm=n_perm, seed=seed))
     dr, sr = mx.ravia_vectors()
     entries.append(_entry("mixture_distance_vs_similarity_ravia2020", dr, sr,
-                          n_boot=n_boot, n_perm=n_perm, seed=seed))
-
-    # 3. Goodness field: cross-validated predicted pleasantness vs truth
-    field = ff.FlavorField()
-    from sklearn.model_selection import KFold
-    from sklearn.kernel_ridge import KernelRidge
-    kf = KFold(n_splits=5, shuffle=True, random_state=seed)
-    preds = np.zeros_like(field.y)
-    for tr, te in kf.split(field.X):
-        m = KernelRidge(alpha=field.alpha, kernel="rbf", gamma=field.gamma).fit(field.X[tr], field.y[tr])
-        preds[te] = m.predict(field.X[te])
-    entries.append(_entry("goodness_field_cv_vs_pleasantness", preds, field.y,
                           n_boot=n_boot, n_perm=n_perm, seed=seed))
 
     # FDR across the family

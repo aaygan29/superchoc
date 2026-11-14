@@ -46,18 +46,10 @@ threshold values.
 indistinct "olfactory white"; Laing showed humans resolve at most ~3-4. More components is not
 more novel; this penalizes over-complex recipes.
 
-## Wired into the pipeline
-
-`denovo_recipes.compose()` attaches a `mixture` field to every recipe (perceptual
-distinctiveness vs each known reference flavor + nearest flavor, olfactory-white risk, omission
-key-components) and derives `optimal_levels` for the top recipe via Scheffe optimization, with
-the honest interior-vs-additive reading. Artifact: `results/denovo_recipes.json`.
-
 ## Reproduce
 
 ```bash
 python mixtures.py          # Snitz validation + machinery demos
-python denovo_recipes.py    # recipes now carry the combo analysis + optimal levels
 ```
 
 Refs: Snitz 2013 (PLoS Comput Biol) doi:10.1371/journal.pcbi.1003184; Ravia 2020 (Nature)
