@@ -1,0 +1,107 @@
+{
+  "label": "PROSPECTIVE (post-registration; not part of PREREGISTRATION.md)",
+  "counts": {
+    "eligible_pool_molecules": 49,
+    "eligible_cocoa_key": 18,
+    "eligible_partner": 31,
+    "pairs_scored": 711,
+    "frozen_rows": 44,
+    "prospective_pairs": 40,
+    "anchors": 4,
+    "molecules_in_selected_40": 49,
+    "max_uses_of_a_molecule": 3,
+    "calls_among_selected_40": {
+      "liked": 0,
+      "disliked": 20,
+      "abstain": 20
+    },
+    "calls_among_all_scored": {
+      "liked": 8,
+      "disliked": 331,
+      "abstain": 372
+    },
+    "calls_among_anchors": {
+      "liked": 1,
+      "disliked": 0,
+      "abstain": 3
+    },
+    "selected_per_prediction_quintile": {
+      "1": 8,
+      "2": 8,
+      "3": 8,
+      "4": 8,
+      "5": 8
+    },
+    "anchors_both_purchasable": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "training": {
+    "keller_1_1000_after_all_exclusions": 358,
+    "removed_by_cid": 57,
+    "removed_by_stripped_smiles": 62,
+    "removed_total_union": 62,
+    "removed_for_ma_alone": 44,
+    "removed_additionally_for_pool": 18,
+    "ma_molecules": 72,
+    "pool_molecules_all_rows": 78,
+    "leakage_assertion": "zero Keller-training molecules share a CID or canonical stereo-stripped SMILES with any Ma or pool.csv molecule"
+  },
+  "conformal": {
+    "alpha": 0.2,
+    "n_calibration_mixtures": 198,
+    "q_hat_rank_scale": 0.393939393939394,
+    "ma_median_pleasantness_threshold": 4.9745,
+    "threshold_on_rank_scale": 0.5,
+    "calibration_model": "the same model as the predictions (trained without every Ma and pool molecule)",
+    "score": "|ECDF(observed; cal observed) - ECDF(predicted; cal predicted)|, mid-rank, exactly exploratory.py",
+    "call_rule": "liked: lower > threshold; disliked: upper <= threshold; else abstain"
+  },
+  "settings": {
+    "seed_models": 0,
+    "families": [
+      "rf_ecfp",
+      "rf_desc",
+      "hgb_desc",
+      "knn_tanimoto"
+    ],
+    "mixture_rule": "equal-weight mean of component rank-scale values",
+    "pair_rule": "unordered pairs of eligible pool molecules, at least one role == cocoa_key",
+    "score_pairs": {
+      "n_jobs": -1,
+      "shard_size": 64
+    },
+    "selection": {
+      "quintiles": 5,
+      "per_quintile": 8,
+      "max_uses_per_molecule": 3,
+      "quintile_definition": "rank by ensemble prediction (ties by pair_id), position*5//n",
+      "greedy": "round-robin over quintiles; each pick minimises summed prior uses of its two molecules, then maximises 1 - ECFP4 Tanimoto of the pair, then pair_id",
+      "anchor_quintiles_of_ma_observed": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "anchor_rule": "mixture nearest the median observed value of the quintile, both components purchasable preferred",
+      "purchasable": "pool row with exclusion_reason == 'in Ma 2021 data set (test data)'"
+    },
+    "csv_float_decimals": 6
+  },
+  "frozen_predictions_sha256": "7c8eebdc41303cc12ce3a638de860a19e4ce91d2168cea1198d85644897139ab",
+  "code": {
+    "prospective_py_sha256": "09477fe0e1f87809c2e24aa98386931020c934c0b530f06d905b0deb8f43ebdb",
+    "mixture_hedonics_py_sha256": "0daf8277ffd1d520eada038580abcd7d33d0dca90ded9f05a436944a505c17cf",
+    "exploratory_py_sha256": "8eef18c350f9a3ad2222caf5f133d7417e9fc83b3d2e82abdc2b4245dd70337f",
+    "pool_csv_sha256": "75d483f56d56713158d0b9d1c5158e2f59d1c43ed127bec368defac68d55a73d",
+    "git_head": "cc52413d7ddc6abe7f3be4a284438f5aaa4dd6c2"
+  },
+  "interpretations": [
+    "Step 3 'a model with Ma molecules excluded but otherwise the same as in step 1' read as the step-1 model itself, which already excludes every Ma molecule; calibration and prediction share one model.",
+    "Anchors are scored by the same model with their conformal call computed on the calibration scale; they are in the calibration set, so their intervals are in-sample.",
+    "Anchor 'eligible-for-purchase' = in pool.csv and excluded solely for being a Ma test molecule (myrcene, FDA-delisted, is therefore not purchasable)."
+  ]
+}
