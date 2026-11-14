@@ -148,3 +148,7 @@ Version 1 built a broad pipeline (hyperbolic flavor geometry, receptor layers, d
 molecules, recipe classifiers). Its own self-audit and a later module-by-module audit found
 most of those claims unsupported, so they were removed: see `docs/REMOVED.md`, and tag
 `v1-archive` to run them.
+
+## Licence
+
+Code: MIT (`LICENSE`). Data files keep their sources' terms; see `data/README.md`.
