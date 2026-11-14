@@ -11,3 +11,4 @@ env/
 # OS
 .DS_Store
 .venv/
+docs/literature/raw/
