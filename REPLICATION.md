@@ -39,6 +39,7 @@ components; the permutation test retrains on shuffled training labels.
 
 ```bash
 python -m chocolate_anchor.exploratory           # noise ceiling, conformal abstention, power
+python -m chocolate_anchor.robustness            # baselines, near-duplicates, P1 rule power (post-registration)
 python -m chocolate_anchor.discrimination        # triangle-test model on Bushdid 2014
 ```
 
