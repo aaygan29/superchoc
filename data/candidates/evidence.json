@@ -1,0 +1,2433 @@
+{
+ "checked_on": "2026-11-13",
+ "fda_delisted_2018": {
+  "100-42-5": "styrene",
+  "110-86-1": "pyridine",
+  "119-61-9": "benzophenone",
+  "123-35-3": "myrcene",
+  "140-88-5": "ethyl acrylate",
+  "89-82-7": "pulegone",
+  "93-15-2": "eugenyl methyl ether"
+ },
+ "molecules": {
+  "100-52-7": {
+   "eu": [
+    {
+     "fl_no": "05.013",
+     "footnote": "",
+     "name": "Benzaldehyde",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "100-52-7"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2127,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/benzaldehyde"
+   },
+   "pubchem": {
+    "cid": 240,
+    "pubchem_fema": [
+     "2127"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/240",
+    "smiles": "C1=CC=C(C=C1)C=O",
+    "title": "Benzaldehyde"
+   }
+  },
+  "101-97-3": {
+   "eu": [
+    {
+     "fl_no": "09.784",
+     "footnote": "",
+     "name": "Ethyl phenylacetate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "101-97-3"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2452,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-phenylacetate"
+   },
+   "pubchem": {
+    "cid": 7590,
+    "pubchem_fema": [
+     "2452"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7590",
+    "smiles": "CCOC(=O)CC1=CC=CC=C1",
+    "title": "Ethyl phenylacetate"
+   }
+  },
+  "103-36-6": {
+   "eu": [
+    {
+     "fl_no": "09.730",
+     "footnote": "",
+     "name": "Ethyl cinnamate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "103-36-6"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2430,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-cinnamate"
+   },
+   "pubchem": {
+    "cid": 637758,
+    "pubchem_fema": [
+     "2430"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/637758",
+    "smiles": "CCOC(=O)/C=C/C1=CC=CC=C1",
+    "title": "Ethyl Cinnamate"
+   }
+  },
+  "103-45-7": {
+   "eu": [
+    {
+     "fl_no": "09.031",
+     "footnote": "",
+     "name": "Phenethyl acetate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "103-45-7"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2857,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/phenethyl-acetate"
+   },
+   "pubchem": {
+    "cid": 7654,
+    "pubchem_fema": [
+     "2857"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7654",
+    "smiles": "CC(=O)OCCC1=CC=CC=C1",
+    "title": "2-Phenylethyl Acetate"
+   }
+  },
+  "103-82-2": {
+   "eu": [
+    {
+     "fl_no": "08.038",
+     "footnote": "",
+     "name": "Phenylacetic acid",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "103-82-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2878,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/phenylacetic-acid"
+   },
+   "pubchem": {
+    "cid": 999,
+    "pubchem_fema": [
+     "2878"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/999",
+    "smiles": "C1=CC=C(C=C1)CC(=O)O",
+    "title": "Phenylacetic Acid"
+   }
+  },
+  "104-55-2": {
+   "eu": [
+    {
+     "fl_no": "05.014",
+     "footnote": "",
+     "name": "Cinnamaldehyde",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "14371-10-9",
+     "104-55-2"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2286,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/cinnamaldehyde"
+   },
+   "pubchem": {
+    "cid": 637511,
+    "pubchem_fema": [
+     "2286"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/637511",
+    "smiles": "C1=CC=C(C=C1)/C=C/C=O",
+    "title": "Cinnamaldehyde"
+   }
+  },
+  "104-61-0": {
+   "eu": [
+    {
+     "fl_no": "10.001",
+     "footnote": "",
+     "name": "Nonano-1,4-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "104-61-0"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2781,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/gamma-nonalactone"
+   },
+   "pubchem": {
+    "cid": 7710,
+    "pubchem_fema": [
+     "2781"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7710",
+    "smiles": "CCCCCC1CCC(=O)O1",
+    "title": "Gamma-Nonalactone"
+   }
+  },
+  "104-67-6": {
+   "eu": [
+    {
+     "fl_no": "10.002",
+     "footnote": "",
+     "name": "Undecano-1,4-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "104-67-6"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 3091,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/gamma-undecalactone"
+   },
+   "pubchem": {
+    "cid": 7714,
+    "pubchem_fema": [
+     "3091"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7714",
+    "smiles": "CCCCCCCC1CCC(=O)O1",
+    "title": "Gamma-undecalactone"
+   }
+  },
+  "105-54-4": {
+   "eu": [
+    {
+     "fl_no": "09.039",
+     "footnote": "",
+     "name": "Ethyl butyrate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "105-54-4"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2427,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-butyrate"
+   },
+   "pubchem": {
+    "cid": 7762,
+    "pubchem_fema": [
+     "2427"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7762",
+    "smiles": "CCCC(=O)OCC",
+    "title": "Ethyl butyrate"
+   }
+  },
+  "106-24-1": {
+   "eu": [
+    {
+     "fl_no": "02.012",
+     "footnote": "",
+     "name": "Geraniol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "106-24-1"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2507,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/geraniol"
+   },
+   "pubchem": {
+    "cid": 637566,
+    "pubchem_fema": [
+     "2507"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/637566",
+    "smiles": "CC(=CCC/C(=C/CO)/C)C",
+    "title": "Geraniol"
+   }
+  },
+  "106-32-1": {
+   "eu": [
+    {
+     "fl_no": "09.111",
+     "footnote": "",
+     "name": "Ethyl octanoate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "106-32-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2449,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-octanoate"
+   },
+   "pubchem": {
+    "cid": 7799,
+    "pubchem_fema": [
+     "2449"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7799",
+    "smiles": "CCCCCCCC(=O)OCC",
+    "title": "Ethyl octanoate"
+   }
+  },
+  "106-44-5": {
+   "eu": [
+    {
+     "fl_no": "04.028",
+     "footnote": "",
+     "name": "4-Methylphenol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "106-44-5"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2337,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/p-cresol"
+   },
+   "pubchem": {
+    "cid": 2879,
+    "pubchem_fema": [
+     "2337"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2879",
+    "smiles": "CC1=CC=C(C=C1)O",
+    "title": "P-Cresol"
+   }
+  },
+  "107-92-6": {
+   "eu": [
+    {
+     "fl_no": "08.005",
+     "footnote": "",
+     "name": "Butyric acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "107-92-6"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2221,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/butyric-acid"
+   },
+   "pubchem": {
+    "cid": 264,
+    "pubchem_fema": [
+     "2221"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/264",
+    "smiles": "CCCC(=O)O",
+    "title": "Butyric Acid"
+   }
+  },
+  "108-64-5": {
+   "eu": [
+    {
+     "fl_no": "09.447",
+     "footnote": "",
+     "name": "Ethyl isovalerate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "108-64-5"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2463,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-isovalerate"
+   },
+   "pubchem": {
+    "cid": 7945,
+    "pubchem_fema": [
+     "2463"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7945",
+    "smiles": "CCOC(=O)CC(C)C",
+    "title": "Ethyl isovalerate"
+   }
+  },
+  "110-43-0": {
+   "eu": [
+    {
+     "fl_no": "07.002",
+     "footnote": "",
+     "name": "Heptan-2-one",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "110-43-0"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2544,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-heptanone"
+   },
+   "pubchem": {
+    "cid": 8051,
+    "pubchem_fema": [
+     "2544"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8051",
+    "smiles": "CCCCCC(=O)C",
+    "title": "2-Heptanone"
+   }
+  },
+  "110-86-1": {
+   "eu": [],
+   "fema": {
+    "cas_listed": [
+     "110-86-1"
+    ],
+    "cfr": "",
+    "fema_number": 2966,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/pyridine"
+   },
+   "pubchem": {
+    "cid": 1049,
+    "pubchem_fema": [
+     "2966"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1049",
+    "smiles": "C1=CC=NC=C1",
+    "title": "Pyridine"
+   }
+  },
+  "116-53-0": {
+   "eu": [
+    {
+     "fl_no": "08.046",
+     "footnote": "",
+     "name": "2-Methylbutyric acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "116-53-0"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2695,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-methylbutyric-acid"
+   },
+   "pubchem": {
+    "cid": 8314,
+    "pubchem_fema": [
+     "2695"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8314",
+    "smiles": "CCC(C)C(=O)O",
+    "title": "2-Methylbutanoic Acid"
+   }
+  },
+  "118-71-8": {
+   "eu": [
+    {
+     "fl_no": "07.014",
+     "footnote": "2",
+     "name": "Maltol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "118-71-8"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2656,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/maltol"
+   },
+   "pubchem": {
+    "cid": 8369,
+    "pubchem_fema": [
+     "2656"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8369",
+    "smiles": "CC1=C(C(=O)C=CO1)O",
+    "title": "Maltol"
+   }
+  },
+  "121-32-4": {
+   "eu": [
+    {
+     "fl_no": "05.019",
+     "footnote": "",
+     "name": "Ethyl vanillin",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "121-32-4"
+    ],
+    "cfr": "",
+    "fema_number": 2464,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-vanillin"
+   },
+   "pubchem": {
+    "cid": 8467,
+    "pubchem_fema": [
+     "2464"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8467",
+    "smiles": "CCOC1=C(C=CC(=C1)C=O)O",
+    "title": "Ethylvanillin"
+   }
+  },
+  "121-33-5": {
+   "eu": [
+    {
+     "fl_no": "05.018",
+     "footnote": "",
+     "name": "Vanillin",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "121-33-5"
+    ],
+    "cfr": "",
+    "fema_number": 3107,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/vanillin"
+   },
+   "pubchem": {
+    "cid": 1183,
+    "pubchem_fema": [
+     "3107"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1183",
+    "smiles": "COC1=C(C=CC(=C1)C=O)O",
+    "title": "Vanillin"
+   }
+  },
+  "122-78-1": {
+   "eu": [
+    {
+     "fl_no": "05.030",
+     "footnote": "",
+     "name": "Phenylacetaldehyde",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "122-78-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2874,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/phenylacetaldehyde"
+   },
+   "pubchem": {
+    "cid": 998,
+    "pubchem_fema": [
+     "2874"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/998",
+    "smiles": "C1=CC=C(C=C1)CC=O",
+    "title": "Phenylacetaldehyde"
+   }
+  },
+  "123-32-0": {
+   "eu": [
+    {
+     "fl_no": "14.020",
+     "footnote": "",
+     "name": "2,5-Dimethylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "123-32-0"
+    ],
+    "cfr": "",
+    "fema_number": 3272,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/25-dimethylpyrazine"
+   },
+   "pubchem": {
+    "cid": 31252,
+    "pubchem_fema": [
+     "3272"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31252",
+    "smiles": "CC1=CN=C(C=N1)C",
+    "title": "2,5-Dimethylpyrazine"
+   }
+  },
+  "123-35-3": {
+   "eu": [
+    {
+     "fl_no": "01.008",
+     "footnote": "4",
+     "name": "Myrcene",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "123-35-3"
+    ],
+    "cfr": "",
+    "fema_number": 2762,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/myrcene"
+   },
+   "pubchem": {
+    "cid": 31253,
+    "pubchem_fema": [
+     "2762"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31253",
+    "smiles": "CC(=CCCC(=C)C=C)C",
+    "title": "Myrcene"
+   }
+  },
+  "123-66-0": {
+   "eu": [
+    {
+     "fl_no": "09.060",
+     "footnote": "",
+     "name": "Ethyl hexanoate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "123-66-0"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2439,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-hexanoate"
+   },
+   "pubchem": {
+    "cid": 31265,
+    "pubchem_fema": [
+     "2439"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31265",
+    "smiles": "CCCCCC(=O)OCC",
+    "title": "Ethyl hexanoate"
+   }
+  },
+  "123-92-2": {
+   "eu": [
+    {
+     "fl_no": "09.024",
+     "footnote": "",
+     "name": "Isopentyl acetate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "628-63-7",
+     "123-92-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2055,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/isoamyl-acetate"
+   },
+   "pubchem": {
+    "cid": 31276,
+    "pubchem_fema": [
+     "2055"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31276",
+    "smiles": "CC(C)CCOC(=O)C",
+    "title": "Isoamyl Acetate"
+   }
+  },
+  "124-19-6": {
+   "eu": [
+    {
+     "fl_no": "05.025",
+     "footnote": "",
+     "name": "Nonanal",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "124-19-6"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2782,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/nonanal"
+   },
+   "pubchem": {
+    "cid": 31289,
+    "pubchem_fema": [
+     "2782"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31289",
+    "smiles": "CCCCCCCCC=O",
+    "title": "Nonanal"
+   }
+  },
+  "127-41-3": {
+   "eu": [
+    {
+     "fl_no": "07.007",
+     "footnote": "2",
+     "name": "alpha-Ionone",
+     "reference": "JECFA/ EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "127-41-3"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2594,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/alpha-ionone"
+   },
+   "pubchem": {
+    "cid": 5282108,
+    "pubchem_fema": [
+     "2594"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5282108",
+    "smiles": "CC1=CCCC(C1/C=C/C(=O)C)(C)C",
+    "title": "Alpha-Ionone"
+   }
+  },
+  "13360-65-1": {
+   "eu": [
+    {
+     "fl_no": "14.111",
+     "footnote": "",
+     "name": "3-Ethyl-2,5-dimethylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "13360-65-1",
+     "27043-05-6",
+     "13925-07-0"
+    ],
+    "cfr": "",
+    "fema_number": 3149,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-ethyl-35-6-dimethylpyrazine"
+   },
+   "pubchem": {
+    "cid": 25916,
+    "pubchem_fema": [],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/25916",
+    "smiles": "CCC1=NC(=CN=C1C)C",
+    "title": "3-Ethyl-2,5-dimethylpyrazine"
+   }
+  },
+  "134-20-3": {
+   "eu": [
+    {
+     "fl_no": "09.715",
+     "footnote": "",
+     "name": "Methyl anthranilate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "134-20-3"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2682,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/methyl-anthranilate"
+   },
+   "pubchem": {
+    "cid": 8635,
+    "pubchem_fema": [
+     "2682"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8635",
+    "smiles": "COC(=O)C1=CC=CC=C1N",
+    "title": "Methyl Anthranilate"
+   }
+  },
+  "13925-07-0": {
+   "eu": [
+    {
+     "fl_no": "14.024",
+     "footnote": "",
+     "name": "2-Ethyl-3,5-dimethylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "13360-65-1",
+     "27043-05-6",
+     "13925-07-0"
+    ],
+    "cfr": "",
+    "fema_number": 3149,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-ethyl-35-6-dimethylpyrazine"
+   },
+   "pubchem": {
+    "cid": 26334,
+    "pubchem_fema": [
+     "3149",
+     "3150"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/26334",
+    "smiles": "CCC1=NC=C(N=C1C)C",
+    "title": "2-Ethyl-3,5-dimethylpyrazine"
+   }
+  },
+  "140-11-4": {
+   "eu": [
+    {
+     "fl_no": "09.014",
+     "footnote": "",
+     "name": "Benzyl acetate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "140-11-4"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2135,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/benzyl-acetate"
+   },
+   "pubchem": {
+    "cid": 8785,
+    "pubchem_fema": [
+     "2135"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8785",
+    "smiles": "CC(=O)OCC1=CC=CC=C1",
+    "title": "Benzyl acetate"
+   }
+  },
+  "142-62-1": {
+   "eu": [
+    {
+     "fl_no": "08.009",
+     "footnote": "",
+     "name": "Hexanoic acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "142-62-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2559,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/hexanoic-acid"
+   },
+   "pubchem": {
+    "cid": 8892,
+    "pubchem_fema": [
+     "2559"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8892",
+    "smiles": "CCCCCC(=O)O",
+    "title": "Hexanoic Acid"
+   }
+  },
+  "142-92-7": {
+   "eu": [
+    {
+     "fl_no": "09.006",
+     "footnote": "",
+     "name": "Hexyl acetate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "142-92-7"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2565,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/hexyl-acetate"
+   },
+   "pubchem": {
+    "cid": 8908,
+    "pubchem_fema": [
+     "2565"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/8908",
+    "smiles": "CCCCCCOC(=O)C",
+    "title": "Hexyl Acetate"
+   }
+  },
+  "14667-55-1": {
+   "eu": [
+    {
+     "fl_no": "14.019",
+     "footnote": "",
+     "name": "2,3,5-Trimethylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "14667-55-1"
+    ],
+    "cfr": "",
+    "fema_number": 3244,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/235-trimethylpyrazine"
+   },
+   "pubchem": {
+    "cid": 26808,
+    "pubchem_fema": [
+     "3244"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/26808",
+    "smiles": "CC1=CN=C(C(=N1)C)C",
+    "title": "Trimethylpyrazine"
+   }
+  },
+  "14901-07-6": {
+   "eu": [
+    {
+     "fl_no": "07.008",
+     "footnote": "2",
+     "name": "beta-Ionone",
+     "reference": "JECFA/EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "79-77-6",
+     "14901-07-6"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2595,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/beta-ionone"
+   },
+   "pubchem": {
+    "cid": 26955,
+    "pubchem_fema": [
+     "2595"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/26955",
+    "smiles": "CC1=C(C(CCC1)(C)C)C=CC(=O)C",
+    "title": "4-(2,6,6-Trimethyl-1-cyclohexen-1-yl)-3-buten-2-one"
+   }
+  },
+  "16409-43-1": {
+   "eu": [
+    {
+     "fl_no": "13.037",
+     "footnote": "",
+     "name": "2-(2-Methylprop-1-enyl)-4-methyltetrahydropyran",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "16409-43-1",
+     "3033-23-6"
+    ],
+    "cfr": "",
+    "fema_number": 3236,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/tetrahydro-4-methyl-2-2-methylpropen-1-ylpyran"
+   },
+   "pubchem": {
+    "cid": 27866,
+    "pubchem_fema": [
+     "3236"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/27866",
+    "smiles": "CC1CCOC(C1)C=C(C)C",
+    "title": "Rose oxide"
+   }
+  },
+  "18138-04-0": {
+   "eu": [
+    {
+     "fl_no": "14.056",
+     "footnote": "",
+     "name": "2,3-Diethyl-5-methylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "18138-04-0"
+    ],
+    "cfr": "",
+    "fema_number": 3336,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/23-diethyl-5-methylpyrazine"
+   },
+   "pubchem": {
+    "cid": 28905,
+    "pubchem_fema": [
+     "3336"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/28905",
+    "smiles": "CCC1=NC=C(N=C1CC)C",
+    "title": "2,3-Diethyl-5-Methylpyrazine"
+   }
+  },
+  "2021-28-5": {
+   "eu": [
+    {
+     "fl_no": "09.747",
+     "footnote": "",
+     "name": "Ethyl 3-phenylpropionate",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "2021-28-5"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2455,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-3-phenylpropionate"
+   },
+   "pubchem": {
+    "cid": 16237,
+    "pubchem_fema": [
+     "2455"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/16237",
+    "smiles": "CCOC(=O)CCC1=CC=CC=C1",
+    "title": "Ethyl 3-phenylpropionate"
+   }
+  },
+  "22047-25-2": {
+   "eu": [
+    {
+     "fl_no": "14.032",
+     "footnote": "",
+     "name": "Acetylpyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "22047-25-2"
+    ],
+    "cfr": "",
+    "fema_number": 3126,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/acetylpyrazine"
+   },
+   "pubchem": {
+    "cid": 30914,
+    "pubchem_fema": [
+     "3126"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/30914",
+    "smiles": "CC(=O)C1=NC=CN=C1",
+    "title": "Acetylpyrazine"
+   }
+  },
+  "23726-93-4": {
+   "eu": [],
+   "fema": {
+    "found": false,
+    "name_only_candidates": [
+     {
+      "cas_listed": [
+       "23696-85-7"
+      ],
+      "cfr": "",
+      "fema_number": 3420,
+      "url": "https://www.femaflavor.org/flavor-library/1-266-trimethylcyclohexa-13-dienyl-2-buten-1-one"
+     }
+    ],
+    "searched_urls": [
+     "https://www.femaflavor.org/flavor-library/search?fulltext=23726-93-4",
+     "https://www.femaflavor.org/flavor-library/search?fulltext=beta-damascenone",
+     "https://www.femaflavor.org/flavor-library/search?fulltext=damascenone"
+    ],
+    "slugs_seen": [
+     "1-266-trimethylcyclohexa-13-dienyl-2-buten-1-one"
+    ]
+   },
+   "pubchem": {
+    "cid": 5366074,
+    "pubchem_fema": [
+     "3420"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5366074",
+    "smiles": "C/C=C/C(=O)C1=C(C=CCC1(C)C)C",
+    "title": "beta-Damascenone"
+   }
+  },
+  "24295-03-2": {
+   "eu": [
+    {
+     "fl_no": "15.020",
+     "footnote": "",
+     "name": "2-Acetylthiazole",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "24295-03-2"
+    ],
+    "cfr": "",
+    "fema_number": 3328,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-acetylthiazole"
+   },
+   "pubchem": {
+    "cid": 520108,
+    "pubchem_fema": [
+     "3328"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/520108",
+    "smiles": "CC(=O)C1=NC=CS1",
+    "title": "2-Acetylthiazole"
+   }
+  },
+  "24683-00-9": {
+   "eu": [
+    {
+     "fl_no": "14.043",
+     "footnote": "",
+     "name": "2-Isobutyl-3-methoxypyrazine",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "24683-00-9"
+    ],
+    "cfr": "",
+    "fema_number": 3132,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-isobutyl-3-methoxypyrazine"
+   },
+   "pubchem": {
+    "cid": 32594,
+    "pubchem_fema": [
+     "3132"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/32594",
+    "smiles": "CC(C)CC1=NC=CN=C1OC",
+    "title": "2-Isobutyl-3-methoxypyrazine"
+   }
+  },
+  "28664-35-9": {
+   "eu": [
+    {
+     "fl_no": "10.030",
+     "footnote": "2",
+     "name": "3-Hydroxy-4,5-dimethylfuran-2(5H)-one",
+     "reference": "JECFA/EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "28664-35-9"
+    ],
+    "cfr": "",
+    "fema_number": 3634,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/45-dimethyl-3-hydroxy-25-dihydrofuran-2-one"
+   },
+   "pubchem": {
+    "cid": 62835,
+    "pubchem_fema": [
+     "3634"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/62835",
+    "smiles": "CC1C(=C(C(=O)O1)O)C",
+    "title": "Sotolone"
+   }
+  },
+  "3268-49-3": {
+   "eu": [
+    {
+     "fl_no": "12.001",
+     "footnote": "",
+     "name": "3-(Methylthio)propionaldehyde",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "3268-49-3"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2747,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/3-methylthiopropionaldehyde"
+   },
+   "pubchem": {
+    "cid": 18635,
+    "pubchem_fema": [
+     "2747"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/18635",
+    "smiles": "CSCCC=O",
+    "title": "Methional"
+   }
+  },
+  "3658-77-3": {
+   "eu": [
+    {
+     "fl_no": "13.010",
+     "footnote": "1",
+     "name": "4-Hydroxy-2,5-dimethylfuran-3(2H)-one",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "3658-77-3"
+    ],
+    "cfr": "",
+    "fema_number": 3174,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/4-hydroxy-25-dimethyl-32h-furanone"
+   },
+   "pubchem": {
+    "cid": 19309,
+    "pubchem_fema": [
+     "3174"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/19309",
+    "smiles": "CC1C(=O)C(=C(O1)C)O",
+    "title": "Furaneol"
+   }
+  },
+  "3658-80-8": {
+   "eu": [
+    {
+     "fl_no": "12.013",
+     "footnote": "4",
+     "name": "Dimethyl trisulfide",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "3658-80-8"
+    ],
+    "cfr": "",
+    "fema_number": 3275,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/dimethyl-trisulfide"
+   },
+   "pubchem": {
+    "cid": 19310,
+    "pubchem_fema": [
+     "3275"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/19310",
+    "smiles": "CSSSC",
+    "title": "Dimethyl trisulfide"
+   }
+  },
+  "431-03-8": {
+   "eu": [
+    {
+     "fl_no": "07.052",
+     "footnote": "",
+     "name": "Diacetyl",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "431-03-8"
+    ],
+    "cfr": "21CFR184.1278",
+    "fema_number": 2370,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/diacetyl"
+   },
+   "pubchem": {
+    "cid": 650,
+    "pubchem_fema": [
+     "2370"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/650",
+    "smiles": "CC(=O)C(=O)C",
+    "title": "Butanedione"
+   }
+  },
+  "4940-11-8": {
+   "eu": [
+    {
+     "fl_no": "07.047",
+     "footnote": "",
+     "name": "Ethyl maltol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "4940-11-8"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 3487,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-maltol"
+   },
+   "pubchem": {
+    "cid": 21059,
+    "pubchem_fema": [
+     "3487"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/21059",
+    "smiles": "CCC1=C(C(=O)C=CO1)O",
+    "title": "Ethyl Maltol"
+   }
+  },
+  "503-74-2": {
+   "eu": [
+    {
+     "fl_no": "08.008",
+     "footnote": "",
+     "name": "3-Methylbutyric acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "503-74-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 3102,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/isovaleric-acid"
+   },
+   "pubchem": {
+    "cid": 10430,
+    "pubchem_fema": [
+     "3102"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10430",
+    "smiles": "CC(C)CC(=O)O",
+    "title": "Isovaleric Acid"
+   }
+  },
+  "513-86-0": {
+   "eu": [
+    {
+     "fl_no": "07.051",
+     "footnote": "",
+     "name": "3-Hydroxybutan-2-one",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "513-86-0"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2008,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/acetoin"
+   },
+   "pubchem": {
+    "cid": 179,
+    "pubchem_fema": [
+     "2008"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/179",
+    "smiles": "CC(C(=O)C)O",
+    "title": "Acetoin"
+   }
+  },
+  "5392-40-5": {
+   "eu": [
+    {
+     "fl_no": "05.020",
+     "footnote": "",
+     "name": "Citral",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "5392-40-5",
+     "106-26-3",
+     "141-27-5"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2303,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/citral"
+   },
+   "pubchem": {
+    "cid": 638011,
+    "pubchem_fema": [
+     "2303"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/638011",
+    "smiles": "CC(=CCC/C(=C/C=O)/C)C",
+    "title": "Citral"
+   }
+  },
+  "5471-51-2": {
+   "eu": [
+    {
+     "fl_no": "07.055",
+     "footnote": "",
+     "name": "4-(p-Hydroxyphenyl)butan-2-one",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "5471-51-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2588,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/4-p-hydroxyphenyl-2-butanone"
+   },
+   "pubchem": {
+    "cid": 21648,
+    "pubchem_fema": [
+     "2588"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/21648",
+    "smiles": "CC(=O)CCC1=CC=C(C=C1)O",
+    "title": "4-(4'-Hydroxyphenyl)-2-butanone"
+   }
+  },
+  "590-86-3": {
+   "eu": [
+    {
+     "fl_no": "05.006",
+     "footnote": "",
+     "name": "3-Methylbutanal",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "590-86-3"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2692,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/3-methylbutyraldehyde"
+   },
+   "pubchem": {
+    "cid": 11552,
+    "pubchem_fema": [
+     "2692"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11552",
+    "smiles": "CC(C)CC=O",
+    "title": "3-Methylbutanal"
+   }
+  },
+  "5989-27-5": {
+   "eu": [
+    {
+     "fl_no": "01.045",
+     "footnote": "",
+     "name": "d-Limonene",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "5989-27-5"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2633,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/d-limonene"
+   },
+   "pubchem": {
+    "cid": 440917,
+    "pubchem_fema": [
+     "2633"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/440917",
+    "smiles": "CC1=CC[C@@H](CC1)C(=C)C",
+    "title": "(+)-Limonene"
+   }
+  },
+  "60-12-8": {
+   "eu": [
+    {
+     "fl_no": "02.019",
+     "footnote": "",
+     "name": "2-Phenylethan-1-ol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "60-12-8"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2858,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/phenethyl-alcohol"
+   },
+   "pubchem": {
+    "cid": 6054,
+    "pubchem_fema": [
+     "2858"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6054",
+    "smiles": "C1=CC=C(C=C1)CCO",
+    "title": "2-Phenylethanol"
+   }
+  },
+  "620-02-0": {
+   "eu": [
+    {
+     "fl_no": "13.001",
+     "footnote": "",
+     "name": "5-Methylfurfural",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "620-02-0"
+    ],
+    "cfr": "",
+    "fema_number": 2702,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/5-methylfurfural"
+   },
+   "pubchem": {
+    "cid": 12097,
+    "pubchem_fema": [
+     "2702"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/12097",
+    "smiles": "CC1=CC=C(O1)C=O",
+    "title": "5-Methylfurfural"
+   }
+  },
+  "64-19-7": {
+   "eu": [
+    {
+     "fl_no": "08.002",
+     "footnote": "",
+     "name": "Acetic acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "64-19-7"
+    ],
+    "cfr": "21CFR184.1005",
+    "fema_number": 2006,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/acetic-acid"
+   },
+   "pubchem": {
+    "cid": 176,
+    "pubchem_fema": [
+     "2006"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/176",
+    "smiles": "CC(=O)O",
+    "title": "Acetic Acid"
+   }
+  },
+  "65505-17-1": {
+   "eu": [
+    {
+     "fl_no": "13.079",
+     "footnote": "",
+     "name": "Methyl 2-methyl-3-furyl disulfide",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "65505-17-1"
+    ],
+    "cfr": "",
+    "fema_number": 3573,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/methyl-2-methyl-3-furyl-disulfide"
+   },
+   "pubchem": {
+    "cid": 47649,
+    "pubchem_fema": [
+     "3573"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/47649",
+    "smiles": "CC1=C(C=CO1)SSC",
+    "title": "Methyl 2-methyl-3-furyl disulfide"
+   }
+  },
+  "698-76-0": {
+   "eu": [
+    {
+     "fl_no": "10.015",
+     "footnote": "",
+     "name": "Octano-1,5-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "698-76-0"
+    ],
+    "cfr": "",
+    "fema_number": 3214,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/delta-octalactone"
+   },
+   "pubchem": {
+    "cid": 12777,
+    "pubchem_fema": [
+     "3214"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/12777",
+    "smiles": "CCCC1CCCC(=O)O1",
+    "title": "Delta-Octalactone"
+   }
+  },
+  "705-86-2": {
+   "eu": [
+    {
+     "fl_no": "10.007",
+     "footnote": "",
+     "name": "Decano-1,5-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "705-86-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2361,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/delta-decalactone"
+   },
+   "pubchem": {
+    "cid": 12810,
+    "pubchem_fema": [
+     "2361"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/12810",
+    "smiles": "CCCCCC1CCCC(=O)O1",
+    "title": "delta-Decalactone"
+   }
+  },
+  "706-14-9": {
+   "eu": [
+    {
+     "fl_no": "10.017",
+     "footnote": "",
+     "name": "Decano-1,4-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "706-14-9"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2360,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/gamma-decalactone"
+   },
+   "pubchem": {
+    "cid": 12813,
+    "pubchem_fema": [
+     "2360"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/12813",
+    "smiles": "CCCCCCC1CCC(=O)O1",
+    "title": "Gamma-Decalactone"
+   }
+  },
+  "713-95-1": {
+   "eu": [
+    {
+     "fl_no": "10.008",
+     "footnote": "",
+     "name": "Dodecano-1,5-lactone",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "713-95-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2401,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/delta-dodecalactone"
+   },
+   "pubchem": {
+    "cid": 12844,
+    "pubchem_fema": [
+     "2401"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/12844",
+    "smiles": "CCCCCCCC1CCCC(=O)O1",
+    "title": "delta-Dodecalactone"
+   }
+  },
+  "7452-79-1": {
+   "eu": [
+    {
+     "fl_no": "09.409",
+     "footnote": "",
+     "name": "Ethyl 2-methylbutyrate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "7452-79-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2443,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-2-methylbutyrate"
+   },
+   "pubchem": {
+    "cid": 24020,
+    "pubchem_fema": [
+     "2443"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/24020",
+    "smiles": "CCC(C)C(=O)OCC",
+    "title": "Ethyl 2-methylbutyrate"
+   }
+  },
+  "7786-61-0": {
+   "eu": [
+    {
+     "fl_no": "04.009",
+     "footnote": "",
+     "name": "2-Methoxy-4-vinylphenol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "7786-61-0"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2675,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-methoxy-4-vinylphenol"
+   },
+   "pubchem": {
+    "cid": 332,
+    "pubchem_fema": [
+     "2675"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/332",
+    "smiles": "COC1=C(C=CC(=C1)C=C)O",
+    "title": "4-Vinylguaiacol"
+   }
+  },
+  "78-70-6": {
+   "eu": [
+    {
+     "fl_no": "02.013",
+     "footnote": "",
+     "name": "Linalool",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "78-70-6",
+     "126-90-9",
+     "126-91-0"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2635,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/linalool"
+   },
+   "pubchem": {
+    "cid": 6549,
+    "pubchem_fema": [
+     "2635"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6549",
+    "smiles": "CC(=CCCC(C)(C=C)O)C",
+    "title": "Linalool"
+   }
+  },
+  "79-31-2": {
+   "eu": [
+    {
+     "fl_no": "08.006",
+     "footnote": "",
+     "name": "2-Methylpropionic acid",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "79-31-2"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2222,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/isobutyric-acid"
+   },
+   "pubchem": {
+    "cid": 6590,
+    "pubchem_fema": [
+     "2222"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6590",
+    "smiles": "CC(C)C(=O)O",
+    "title": "Isobutyric Acid"
+   }
+  },
+  "80-71-7": {
+   "eu": [
+    {
+     "fl_no": "07.056",
+     "footnote": "",
+     "name": "3-Methylcyclopentan-1,2-dione",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "80-71-7",
+     "765-70-8"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2700,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/methylcyclopentenolone"
+   },
+   "pubchem": {
+    "cid": 6660,
+    "pubchem_fema": [
+     "2700"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6660",
+    "smiles": "CC1=C(C(=O)CC1)O",
+    "title": "2-Hydroxy-3-methyl-2-cyclopenten-1-one"
+   }
+  },
+  "85213-22-5": {
+   "eu": [],
+   "fema": {
+    "cas_listed": [
+     "85213-22-5"
+    ],
+    "cfr": "",
+    "fema_number": 4249,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-acetyl-1-pyrroline"
+   },
+   "pubchem": {
+    "cid": 522834,
+    "pubchem_fema": [],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/522834",
+    "smiles": "CC(=O)C1=NCCC1",
+    "title": "2-Acetyl-1-pyrroline"
+   }
+  },
+  "89-78-1": {
+   "eu": [
+    {
+     "fl_no": "02.015",
+     "footnote": "",
+     "name": "Menthol",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "1490-04-6",
+     "2216-51-5",
+     "89-78-1",
+     "15356-60-2"
+    ],
+    "cfr": "",
+    "fema_number": 2665,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/menthol-racemic"
+   },
+   "pubchem": {
+    "cid": 1254,
+    "pubchem_fema": [
+     "2665"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1254",
+    "smiles": "CC1CCC(C(C1)O)C(C)C",
+    "title": "Menthol"
+   }
+  },
+  "89-82-7": {
+   "eu": [],
+   "fema": {
+    "cas_listed": [
+     "89-82-7"
+    ],
+    "cfr": "",
+    "fema_number": 2963,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/pulegone"
+   },
+   "pubchem": {
+    "cid": 442495,
+    "pubchem_fema": [
+     "2963"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/442495",
+    "smiles": "C[C@@H]1CCC(=C(C)C)C(=O)C1",
+    "title": "(+)-Pulegone"
+   }
+  },
+  "90-05-1": {
+   "eu": [
+    {
+     "fl_no": "04.005",
+     "footnote": "",
+     "name": "2-Methoxyphenol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "90-05-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2532,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/guaiacol"
+   },
+   "pubchem": {
+    "cid": 460,
+    "pubchem_fema": [
+     "2532"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/460",
+    "smiles": "COC1=CC=CC=C1O",
+    "title": "Guaiacol"
+   }
+  },
+  "928-96-1": {
+   "eu": [
+    {
+     "fl_no": "02.056",
+     "footnote": "",
+     "name": "Hex-3(cis)-en-1-ol",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "928-96-1",
+     "544-12-7"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2563,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/cis-3-hexenol"
+   },
+   "pubchem": {
+    "cid": 5281167,
+    "pubchem_fema": [
+     "2563"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281167",
+    "smiles": "CC/C=C\\CCO",
+    "title": "3-Hexenol"
+   }
+  },
+  "96-17-3": {
+   "eu": [
+    {
+     "fl_no": "05.049",
+     "footnote": "",
+     "name": "2-Methylbutyraldehyde",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "96-17-3"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2691,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/2-methylbutyraldehyde"
+   },
+   "pubchem": {
+    "cid": 7284,
+    "pubchem_fema": [
+     "2691"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7284",
+    "smiles": "CCC(C)C=O",
+    "title": "2-Methylbutanal"
+   }
+  },
+  "97-53-0": {
+   "eu": [
+    {
+     "fl_no": "04.003",
+     "footnote": "",
+     "name": "Eugenol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "97-53-0"
+    ],
+    "cfr": "21CFR184.1257",
+    "fema_number": 2467,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/eugenol"
+   },
+   "pubchem": {
+    "cid": 3314,
+    "pubchem_fema": [
+     "2467"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/3314",
+    "smiles": "COC1=C(C=CC(=C1)CC=C)O",
+    "title": "Eugenol"
+   }
+  },
+  "97-62-1": {
+   "eu": [
+    {
+     "fl_no": "09.413",
+     "footnote": "",
+     "name": "Ethyl isobutyrate",
+     "reference": "JECFA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "97-62-1"
+    ],
+    "cfr": "21CFR172.515",
+    "fema_number": 2428,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/ethyl-isobutyrate"
+   },
+   "pubchem": {
+    "cid": 7342,
+    "pubchem_fema": [
+     "2428"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7342",
+    "smiles": "CCOC(=O)C(C)C",
+    "title": "Ethyl isobutyrate"
+   }
+  },
+  "98-01-1": {
+   "eu": [
+    {
+     "fl_no": "13.018",
+     "footnote": "",
+     "name": "Furfural",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "98-01-1"
+    ],
+    "cfr": "",
+    "fema_number": 2489,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/furfural"
+   },
+   "pubchem": {
+    "cid": 7362,
+    "pubchem_fema": [
+     "2489"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7362",
+    "smiles": "C1=COC(=C1)C=O",
+    "title": "Furfural"
+   }
+  },
+  "98-02-2": {
+   "eu": [
+    {
+     "fl_no": "13.026",
+     "footnote": "",
+     "name": "2-Furanmethanethiol",
+     "reference": "EFSA",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "98-02-2"
+    ],
+    "cfr": "",
+    "fema_number": 2493,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/furfuryl-mercaptan"
+   },
+   "pubchem": {
+    "cid": 7363,
+    "pubchem_fema": [
+     "2493"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7363",
+    "smiles": "C1=COC(=C1)CS",
+    "title": "2-Furanmethanethiol"
+   }
+  },
+  "99-49-0": {
+   "eu": [
+    {
+     "fl_no": "07.012",
+     "footnote": "",
+     "name": "Carvone",
+     "reference": "SCF/CoE",
+     "restrictions_of_use": ""
+    }
+   ],
+   "fema": {
+    "cas_listed": [
+     "6485-40-1",
+     "2244-16-8",
+     "99-49-0"
+    ],
+    "cfr": "21CFR182.60",
+    "fema_number": 2249,
+    "found": true,
+    "matched_by": "CAS",
+    "name_only_candidates": [],
+    "url": "https://www.femaflavor.org/flavor-library/carvone"
+   },
+   "pubchem": {
+    "cid": 7439,
+    "pubchem_fema": [
+     "2249"
+    ],
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7439",
+    "smiles": "CC1=CCC(CC1=O)C(=C)C",
+    "title": "Carvone, (+-)-"
+   }
+  }
+ },
+ "sources": {
+  "eu_union_list": "https://eur-lex.europa.eu/eli/reg_impl/2012/872/oj (xhtml via http://publications.europa.eu/resource/celex/32012R0872); Reg. 872/2012 as adopted, NOT the later consolidated text",
+  "fda_delisting": "https://www.federalregister.gov/documents/2018/10/09/2018-21807/food-additive-regulations-synthetic-flavoring-agents-and-adjuvants",
+  "fema_page": "https://www.femaflavor.org/flavor-library/<slug>",
+  "fema_search": "https://www.femaflavor.org/flavor-library/search?fulltext=<CAS>",
+  "pubchem": "https://pubchem.ncbi.nlm.nih.gov/ (FEMA Number annotation, cross-check only)"
+ }
+}
