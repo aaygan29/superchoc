@@ -30,6 +30,8 @@ N_PERMUTATIONS = 10_000  # PROTOCOL.md P1, P2
 PERMUTATION_SEED = 20261114
 BOOT_LEVEL = 0.95  # one-sided lower bound, PROTOCOL.md P1
 ALPHA = 0.05
+MAX_EXCLUDED_PAIRS = 10  # PROTOCOL.md: more than this and the study was not run as designed
+MIN_RATINGS = 30  # PROTOCOL.md: at least 30 ratings per stimulus
 FAMILIES = ("pred_rf_ecfp", "pred_rf_desc", "pred_hgb_desc", "pred_knn_tanimoto")
 
 
@@ -53,11 +55,27 @@ def panel_means(ratings: pd.DataFrame, stimulus: str) -> pd.Series:
     return sub.groupby("stimulus_id").pleasantness.mean().rename("observed")
 
 
+def coverage(ratings: pd.DataFrame, stimulus: str, expected: pd.Series) -> dict:
+    """Which frozen stimuli have no ratings, and which have fewer than MIN_RATINGS."""
+    sub = ratings[ratings.stimulus == stimulus]
+    counts = sub.groupby(sub.stimulus_id.astype(str)).size()
+    ids = expected.astype(str)
+    return {"missing": sorted(set(ids) - set(counts.index)),
+            "under_min_ratings": sorted(i for i in ids if 0 < counts.get(i, 0) < MIN_RATINGS)}
+
+
 def analyse(ratings: pd.DataFrame) -> dict:
     pairs = load_frozen("FROZEN_PREDICTIONS.csv")
     molecules = load_frozen("FROZEN_COMPONENT_PREDICTIONS.csv")
     pair_means = panel_means(ratings, "pair")
     result: dict = {"frozen_sha256": FROZEN_SHA256}
+    test_ids = pairs.loc[~pairs.anchor, "pair_id"]
+    result["coverage"] = {"pairs": coverage(ratings, "pair", test_ids),
+                          "molecules": coverage(ratings, "molecule", molecules.cid)}
+    n_missing = len(result["coverage"]["pairs"]["missing"])
+    if n_missing > MAX_EXCLUDED_PAIRS:
+        result["status"] = f"not run as designed: {n_missing} test pairs unrated (> {MAX_EXCLUDED_PAIRS})"
+        return result
 
     tests = pairs[~pairs.anchor].set_index("pair_id").join(pair_means, how="inner")
     x, y = tests.pred_ensemble.to_numpy(), tests.observed.to_numpy()

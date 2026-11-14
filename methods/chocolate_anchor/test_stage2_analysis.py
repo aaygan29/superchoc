@@ -43,3 +43,12 @@ def test_rejects_changed_frozen_file(monkeypatch):
     monkeypatch.setitem(S.FROZEN_SHA256, "FROZEN_PREDICTIONS.csv", "0" * 64)
     with pytest.raises(RuntimeError):
         S.load_frozen("FROZEN_PREDICTIONS.csv")
+
+
+def test_reports_missing_and_stops_when_too_many_pairs_missing():
+    sim = simulate(signal=1.0)
+    pairs = S.load_frozen("FROZEN_PREDICTIONS.csv")
+    drop = pairs.loc[~pairs.anchor, "pair_id"].astype(str).head(11)
+    out = S.analyse(sim[~((sim.stimulus == "pair") & sim.stimulus_id.isin(drop))])
+    assert out["status"].startswith("not run as designed")
+    assert len(out["coverage"]["pairs"]["missing"]) == 11
