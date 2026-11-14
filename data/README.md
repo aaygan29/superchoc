@@ -1,47 +1,11 @@
 # data/
 
-Scaffold for the ground-truth corpus that anchors the three success criteria. See
-[../docs/GROUND_TRUTH.md](../docs/GROUND_TRUTH.md) for what each source certifies.
-
-## Layout
-
-```
-data/
-  raw/         # cached source files (gitignored; you download these)
-  processed/   # cleaned, split-ready tables you build
-  loaders/     # import-safe loaders with a uniform interface
-```
-
-## Principle
-
-Loaders do **not** ship data and do **not** fabricate it. Each loader targets one public
-source, documents the URL and expected columns, and raises `DataNotAvailable` until you
-download the source into `raw/` (or set `$SUPERCHOC_DATA`). This keeps invented numbers
-out of anything downstream.
-
-## Sources (mirror of GROUND_TRUTH.md)
-
-| key | layer | source |
+| folder | contents | licence / provenance |
 |---|---|---|
-| `pyrfume` | A (percept) | Pyrfume archive |
-| `leffingwell_goodscents` | A (percept) | GoodScents + Leffingwell odor labels |
-| `dream` | A (percept) | DREAM Olfaction Challenge (Keller et al. 2017) |
-| `gpcrdb` | B (receptor) | GPCRdb (incl. odorant receptors, 2025) |
-| `chembl` | C (affinity) | ChEMBL GPCR bioactivities |
+| `hedonics/` | Ma et al. 2021 binary-mixture pleasantness (test set), plus Keller 2016, Ravia 2020, Arshamian 2022, Weiss 2012 files fetched during the search. `HEDONICS.md` records what each contains and the mixture-liking rules found in the literature | Ma 2021: CC BY (Data in Brief / Recherche Data Gouv). Others via pyrfume, under their sources' terms |
+| `sensomics/` | cocoa and dark-chocolate key odorants: concentrations, odor thresholds, OAVs, with the table and page each number came from (`SOURCES.md`) | values extracted from open-access papers; short quotes only |
+| `candidates/` | the prospective candidate pool, its regulatory evidence, and the frozen predictions | built by `methods/chocolate_anchor/` |
+| `raw/m2or_*.csv` | M2OR subset used by the exploratory receptor model | M2OR (Lalis et al. 2024) |
 
-Layers: A = molecule to percept (Criterion 1), B = molecule to receptor activation
-(bridge), C = ligand to GPCR affinity (Criterion 3).
-
-## Usage
-
-```python
-from loaders import describe_sources
-from loaders.sources import LOADERS
-
-print(describe_sources())          # list sources and URLs
-LOADERS["dream"]()                 # raises DataNotAvailable until cached
-```
-
-Wiring a real loader: download the source into `raw/`, then implement the parse step
-(the loader currently raises `NotImplementedError` past the cache check) to return a
-`LoaderResult` validated against the source's `expected_columns`.
+No value here is invented. Where a value could not be sourced it is blank, and the gap is
+listed in that folder's notes.

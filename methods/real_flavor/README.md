@@ -1,92 +1,18 @@
-# Real-molecule flavor pipeline
+# real_flavor: components reused from version 1
 
-The real-data version of the goodness model + generator: real molecules, real human-panel
-labels, a food-appropriate safety screen, a learned mixture model, and a suite of novel
-candidate flavor combinations for a lab or molecular gastronomist to test.
+What survived the v1 audit (see `../../docs/REMOVED.md` for what did not).
 
-Everything here uses real inputs. The only synthetic component is the controlled oracle
-used to *validate the learned mixture model* (there is no large public dataset of mixture
-pleasantness to train on yet).
-
-## Data (real, via Pyrfume)
-
-`real_data.py` pulls **Keller & Vosshall 2016** (the DREAM dataset) through Pyrfume: ~420
-monomolecular odorants with canonical SMILES and a human panel rating of "HOW PLEASANT IS
-THE SMELL?" (0-100) at the standard 1/1000 dilution. Most pleasant come out as vanillin,
-ethyl vanillin, ethyl esters, carvone; least pleasant are sulfur/amine compounds, which is
-exactly right. Cached to `../../data/raw/`.
-
-## Results (reproducible: `python validate_real.py`)
-
-| component | metric | value |
+| file | what it does | used by |
 |---|---|---|
-| Goodness model (ECFP4 -> pleasantness, RandomForest) | 5-fold CV Spearman | **0.50** |
-| | 5-fold CV R2 | 0.26 |
-| Learned mixture model vs mean-pool (non-additive oracle) | Spearman | **0.82 vs 0.25** (+0.57) |
-| Safety screen | molecules passing (eligible) | 380 / 420 |
-| Suite | all members pass safety screen | yes (hard gate) |
-| | mean novelty vs cocoa | ~0.8 |
+| `real_data.py` | Keller & Vosshall 2016 single-molecule pleasantness (pyrfume), 1/1000 dilution | `chocolate_anchor` training data |
+| `featurize.py` | SMILES to ECFP4, Tanimoto | featurization |
+| `goodness_real.py` | v1 random forest on ECFP4. Random 5-fold Spearman 0.50; scaffold split 0.30 (the extrapolation figure) | reference only |
+| `mixtures.py` | angle distance between mixtures (Snitz 2013); tracks human similarity, Snitz rho -0.49, Ravia rho -0.25. Similarity, not pleasantness | `chocolate_anchor.discrimination` |
+| `flavor_profile.py` | Leffingwell odor descriptors (pyrfume) | `chocolate_anchor.discrimination` |
+| `significance.py` | bootstrap / permutation / FDR for the Snitz and Ravia results | `results/significance.json` |
+| `m2or_receptor.py` | molecule-to-odorant-receptor model on M2OR, leave-molecule-out AUC 0.89 (pooled). Exploratory; no pleasantness claim | none |
+| `safety.py` | structural hazard filter. Not a food-safety or regulatory clearance; eligibility comes from the FEMA / EU lists in `data/candidates/` | candidate pool |
+| `reference_flavors.py` | literature key-odorant sets for 23 flavors; non-cocoa entries are loosely sourced | reference only |
 
-Spearman 0.50 for structure->pleasantness on ~420 molecules is consistent with the
-olfaction literature (pleasantness is among the more predictable attributes). The mixture
-result shows a learned set model captures interaction that mean-pooling throws away,
-motivating a real learned mixture model over naive additivity.
-
-## The safety / toxicity checker (`safety.py`)
-
-A food-appropriate hazard screen, because drug-discovery filters are miscalibrated for
-food: tested directly, Brenk/PAINS flag vanillin (safe) for its aldehyde yet pass benzene
-(a carcinogen). Instead this combines (1) a curated denylist of known toxic/restricted
-substances, (2) genotoxic structural alerts (nitroaromatic, N-nitroso, azo, aromatic amine,
-epoxide, aziridine, hydrazine, diazo), and (3) element/property rules, returning
-OK / CAUTION / TOXIC. Only OK molecules enter a suite; CAUTION (e.g. cinnamaldehyde's enal)
-and TOXIC are excluded. **This is a screen, not a GRAS determination** - see HANDOFF.md.
-
-## The deliverable: candidate suite
-
-`python suite_real.py` (output in `results/flavor_suite_real.{json,md}`) composes k-molecule
-combos from safety-passing real molecules, hill-climbs on mean predicted pleasantness, keeps
-only combos chemically novel vs a cocoa key-odorant reference set, and ranks them. Each
-candidate lists real molecules + SMILES, predicted pleasantness, novelty, and safety. Combo
-score is the mean of member predicted pleasantness (a transparent additive estimate); the
-learned mixture model is the documented non-additive refinement (not yet trained on real
-mixture labels, so not used to rank).
-
-## Files
-
-- `real_data.py` - real molecules + real pleasantness labels (Keller 2016 via Pyrfume).
-- `featurize.py` - RDKit SMILES -> ECFP4.
-- `goodness_real.py` - real goodness model + cross-validation.
-- `flavor_profile.py` - odor descriptors (Leffingwell) used for profiling and geometry.
-- `receptors.py` - molecule -> odorant-receptor activation (Mainland 2015).
-- `neuro_reward.py` - reward/mood molecules (caffeine, PEA, serotonin/dopamine precursors).
-- `safety.py` - food-appropriate toxicity screen.
-- `mixture_model.py` - learned set mixture model vs mean-pool baseline (non-additive oracle).
-- `composition.py` - chemical-class composition statistics (see COMPOSITION.md).
-- `flavor_math.py` + `FlavorMath.lean` - tastiness metric + Lean-checked theorems (see MATH.md).
-- `flavor_geometry.py` - flavor-space geometry: hyperbolicity test + locate-a-blend (see GEOMETRY.md).
-- `flavor_field.py` - goodness field over flavor space: predict pleasantness from position; find sparse-good targets (see FLAVOR_FIELD.md).
-- `lego_assembly.py` - de-novo molecule construction + PubChem novelty (see LEGO.md).
-- `geometry_gate.py` - 3D-validity gate for de-novo molecules (see GEOMETRY_GATE.md).
-- `receptor_binding.py` - structure-based molecule<->receptor co-fold via Boltz-2 (see RECEPTOR_BINDING.md).
-- `reference_flavors.py` - reference flavor key-odorant sets for novelty comparison.
-- `mixtures.py` - combo science: validated mixture-distance, Scheffe ratio optimization, OAV, omission (see MIXTURES.md).
-- `recipe_classifier.py` - recipe-level good-flavor classifier (see RECIPE_CLASSIFIER.md).
-- `taste_profile.py` - five basic tastes + chef-descriptor flavor regions + steering lever.
-- `denovo_recipes.py` - composition-guided recipe generator (feeds the analyzer).
-- `analyzer.py` / `validated_recipe.py` - the overarching analyzer and single-recipe producer (see ANALYZER.md).
-- `suite_real.py` - the single-molecule candidate-suite generator.
-- `validate_real.py` - pre-registered validation incl. a hard safety gate.
-- `test_real_flavor.py` - offline unit tests.
-- `results/` - validation JSON + generated suites/recipes (JSON + markdown).
-- `HANDOFF.md` - what to give a chemist / molecular gastronomist, and safety caveats.
-
-## Honest limits
-
-Pleasantness R2 is modest (structure->hedonics is genuinely hard and individual-variable).
-The combo score assumes additivity; real mixtures are not additive, which is why the learned
-mixture model exists and why the top of the ranking should be treated as hypotheses. Nothing
-here is a safety clearance. See [HANDOFF.md](HANDOFF.md).
-
-_Conjecture and framing: from a recent essay on biological challenges for AI (not the author's own). (see repo README). Data: Keller 2016 via Pyrfume
-(Castro et al. 2024). Methods, safety screen, and analysis: mine._
+`HANDOFF.md` is the checklist anyone must follow before smelling or tasting anything.
+`results/NEWSLATE_findings.md` is the v1 self-audit, kept as the record of what was tested.

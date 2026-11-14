@@ -25,7 +25,7 @@ Gap confirmed: **no open dataset of mixture liking with >2 components, nor of fo
 Outputs in this folder:
 - `mixture_pleasantness_ma2021.csv`: 198 rows, one per unique pair: mixture_id, components, cids, conc_mg_per_mL, pleasantness_mix (panel mean), pleas_A_alone, pleas_B_alone, int_*, n_raters, scale, source_key.
 - `mixture_pleasantness_ma2021_long.csv`: 6,660 per-rater rows, same fields plus rater and rep.
-- `raw/ma_2021, raw/arshamian_2022, raw/keller_2016, raw/ravia_2020, raw/weiss_2012, raw/ahn_2011`.
+- `raw/ma_2021, raw/arshamian_2022, raw/keller_2016, raw/ravia_2020, raw/weiss_2012` (Ahn 2011 data was downloaded during the search and later removed as unused).
 Caveats: components were set to approximate isointensity (concentrations chosen around ethyl 2-methylbutyrate, 6 pilot raters, 0-7 scale) [OPENED]; vapors mixed in headspace on cotton (no chemistry); pleasantness VAS endpoints not stated on the page I read. One CID is a CAS string (13327-56-5) because the name field was empty in pyrfume; resolve before modelling.
 
 ### What the Ma 2021 data say [OWN, panel means of 198 pairs]
