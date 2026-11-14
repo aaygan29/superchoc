@@ -1,0 +1,586 @@
+{
+  "data_audit": {
+    "leffingwell_molecules_covered": 122,
+    "bushdid_molecules": 128,
+    "triangles_total": 264,
+    "triangles_with_any_uncovered_component": 190,
+    "triangles_perceptual_undefined_and_excluded_from_all_models": 0,
+    "triangles_used": 264,
+    "note": "Components lacking Leffingwell labels are skipped when summing a mixture's vector; a triangle is excluded only if a whole mixture has no labelled component. All models are scored on the same triangles."
+  },
+  "triangles_by_n_differ": {
+    "1": 64,
+    "4": 20,
+    "5": 20,
+    "7": 20,
+    "10": 60,
+    "15": 20,
+    "20": 40,
+    "30": 20
+  },
+  "mean_fraction_correct": 0.5538,
+  "full_data_fit": {
+    "overlap_only": {
+      "features": [
+        "overlap"
+      ],
+      "intercept": -0.7806,
+      "slopes_standardised": [
+        -0.749
+      ],
+      "in_sample_logloss": 0.66368,
+      "pearson_dispersion": 2.331
+    },
+    "overlap": {
+      "features": [
+        "overlap",
+        "log_n"
+      ],
+      "intercept": -0.7801,
+      "slopes_standardised": [
+        -0.7281,
+        -0.1387
+      ],
+      "in_sample_logloss": 0.66281,
+      "pearson_dispersion": 2.324
+    },
+    "structural": {
+      "features": [
+        "structural"
+      ],
+      "intercept": -0.7481,
+      "slopes_standardised": [
+        0.6056
+      ],
+      "in_sample_logloss": 0.6706,
+      "pearson_dispersion": 2.638
+    },
+    "perceptual": {
+      "features": [
+        "perceptual"
+      ],
+      "intercept": -0.7558,
+      "slopes_standardised": [
+        0.7141
+      ],
+      "in_sample_logloss": 0.66488,
+      "pearson_dispersion": 2.418
+    },
+    "combined": {
+      "features": [
+        "overlap",
+        "log_n",
+        "structural",
+        "perceptual"
+      ],
+      "intercept": -0.8016,
+      "slopes_standardised": [
+        -0.3391,
+        -0.0255,
+        0.2212,
+        0.3271
+      ],
+      "in_sample_logloss": 0.66102,
+      "pearson_dispersion": 2.235
+    }
+  },
+  "grouped_cv_10fold_3seeds": {
+    "n_triangles_tested": 264,
+    "logloss_constant_rate": 0.68768,
+    "models": {
+      "overlap_only": {
+        "logloss": 0.66433,
+        "skill_vs_constant": 0.0339,
+        "gain_vs_constant": 0.02334,
+        "spearman": 0.5772,
+        "calibration_5bins": [
+          {
+            "n": 53,
+            "predicted": 0.428,
+            "observed": 0.39
+          },
+          {
+            "n": 53,
+            "predicted": 0.475,
+            "observed": 0.488
+          },
+          {
+            "n": 53,
+            "predicted": 0.545,
+            "observed": 0.557
+          },
+          {
+            "n": 53,
+            "predicted": 0.629,
+            "observed": 0.665
+          },
+          {
+            "n": 52,
+            "predicted": 0.707,
+            "observed": 0.669
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.00032,
+          "ci95": [
+            -0.00203,
+            0.00136
+          ],
+          "verdict": "indistinguishable"
+        },
+        "spearman_minus_baseline": {
+          "mean": -0.0158,
+          "ci95": [
+            -0.0334,
+            0.00098
+          ]
+        }
+      },
+      "overlap": {
+        "logloss": 0.66402,
+        "skill_vs_constant": 0.0344,
+        "gain_vs_constant": 0.02366,
+        "spearman": 0.5929,
+        "calibration_5bins": [
+          {
+            "n": 53,
+            "predicted": 0.429,
+            "observed": 0.393
+          },
+          {
+            "n": 53,
+            "predicted": 0.473,
+            "observed": 0.484
+          },
+          {
+            "n": 53,
+            "predicted": 0.541,
+            "observed": 0.564
+          },
+          {
+            "n": 53,
+            "predicted": 0.627,
+            "observed": 0.642
+          },
+          {
+            "n": 52,
+            "predicted": 0.711,
+            "observed": 0.689
+          }
+        ]
+      },
+      "structural": {
+        "logloss": 0.67132,
+        "skill_vs_constant": 0.0238,
+        "gain_vs_constant": 0.01636,
+        "spearman": 0.5169,
+        "calibration_5bins": [
+          {
+            "n": 53,
+            "predicted": 0.451,
+            "observed": 0.41
+          },
+          {
+            "n": 53,
+            "predicted": 0.493,
+            "observed": 0.528
+          },
+          {
+            "n": 53,
+            "predicted": 0.542,
+            "observed": 0.535
+          },
+          {
+            "n": 53,
+            "predicted": 0.603,
+            "observed": 0.628
+          },
+          {
+            "n": 52,
+            "predicted": 0.691,
+            "observed": 0.67
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.0073,
+          "ci95": [
+            -0.01439,
+            -0.00016
+          ],
+          "verdict": "baseline better"
+        },
+        "spearman_minus_baseline": {
+          "mean": -0.0761,
+          "ci95": [
+            -0.15377,
+            0.00705
+          ]
+        }
+      },
+      "perceptual": {
+        "logloss": 0.66571,
+        "skill_vs_constant": 0.0319,
+        "gain_vs_constant": 0.02197,
+        "spearman": 0.5678,
+        "calibration_5bins": [
+          {
+            "n": 53,
+            "predicted": 0.435,
+            "observed": 0.398
+          },
+          {
+            "n": 53,
+            "predicted": 0.49,
+            "observed": 0.493
+          },
+          {
+            "n": 53,
+            "predicted": 0.545,
+            "observed": 0.549
+          },
+          {
+            "n": 53,
+            "predicted": 0.612,
+            "observed": 0.671
+          },
+          {
+            "n": 52,
+            "predicted": 0.703,
+            "observed": 0.661
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.00169,
+          "ci95": [
+            -0.00505,
+            0.00202
+          ],
+          "verdict": "indistinguishable"
+        },
+        "spearman_minus_baseline": {
+          "mean": -0.0251,
+          "ci95": [
+            -0.06234,
+            0.01377
+          ]
+        }
+      },
+      "combined": {
+        "logloss": 0.6629,
+        "skill_vs_constant": 0.036,
+        "gain_vs_constant": 0.02478,
+        "spearman": 0.6147,
+        "calibration_5bins": [
+          {
+            "n": 53,
+            "predicted": 0.414,
+            "observed": 0.391
+          },
+          {
+            "n": 53,
+            "predicted": 0.475,
+            "observed": 0.486
+          },
+          {
+            "n": 53,
+            "predicted": 0.543,
+            "observed": 0.559
+          },
+          {
+            "n": 53,
+            "predicted": 0.632,
+            "observed": 0.629
+          },
+          {
+            "n": 52,
+            "predicted": 0.715,
+            "observed": 0.706
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": 0.00112,
+          "ci95": [
+            -0.00099,
+            0.00341
+          ],
+          "verdict": "indistinguishable"
+        },
+        "spearman_minus_baseline": {
+          "mean": 0.0217,
+          "ci95": [
+            -0.00315,
+            0.04833
+          ]
+        }
+      }
+    }
+  },
+  "molecule_holdout_5fold_3seeds": {
+    "n_test_triangles_ever": 34,
+    "n_test_per_seed": [
+      18,
+      12,
+      10
+    ],
+    "test_triangles_by_n_differ": {
+      "1": 30,
+      "4": 1,
+      "5": 2,
+      "10": 1
+    },
+    "strict_split_diagnostic": {
+      "n_train_range": [
+        39,
+        54
+      ],
+      "min_fraction_one_differing_component": 0.69,
+      "reading": "strict split (no held-out molecule among training differing components) is degenerate; not scored"
+    },
+    "n_triangles_tested": 34,
+    "logloss_constant_rate": 0.69889,
+    "models": {
+      "overlap_only": {
+        "logloss": 0.66234,
+        "skill_vs_constant": 0.0523,
+        "gain_vs_constant": 0.03655,
+        "spearman": 0.3425,
+        "calibration_5bins": [
+          {
+            "n": 7,
+            "predicted": 0.423,
+            "observed": 0.44
+          },
+          {
+            "n": 7,
+            "predicted": 0.428,
+            "observed": 0.379
+          },
+          {
+            "n": 7,
+            "predicted": 0.434,
+            "observed": 0.599
+          },
+          {
+            "n": 7,
+            "predicted": 0.442,
+            "observed": 0.39
+          },
+          {
+            "n": 6,
+            "predicted": 0.602,
+            "observed": 0.75
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.00922,
+          "ci95": [
+            -0.01902,
+            -0.00135
+          ],
+          "verdict": "baseline better"
+        },
+        "spearman_minus_baseline": {
+          "mean": -0.017,
+          "ci95": [
+            -0.07887,
+            0.0203
+          ]
+        }
+      },
+      "overlap": {
+        "logloss": 0.65312,
+        "skill_vs_constant": 0.0655,
+        "gain_vs_constant": 0.04577,
+        "spearman": 0.3596,
+        "calibration_5bins": [
+          {
+            "n": 7,
+            "predicted": 0.419,
+            "observed": 0.44
+          },
+          {
+            "n": 7,
+            "predicted": 0.427,
+            "observed": 0.379
+          },
+          {
+            "n": 7,
+            "predicted": 0.448,
+            "observed": 0.599
+          },
+          {
+            "n": 7,
+            "predicted": 0.456,
+            "observed": 0.39
+          },
+          {
+            "n": 6,
+            "predicted": 0.645,
+            "observed": 0.75
+          }
+        ]
+      },
+      "structural": {
+        "logloss": 0.67382,
+        "skill_vs_constant": 0.0359,
+        "gain_vs_constant": 0.02507,
+        "spearman": 0.4213,
+        "calibration_5bins": [
+          {
+            "n": 7,
+            "predicted": 0.443,
+            "observed": 0.385
+          },
+          {
+            "n": 7,
+            "predicted": 0.453,
+            "observed": 0.484
+          },
+          {
+            "n": 7,
+            "predicted": 0.463,
+            "observed": 0.462
+          },
+          {
+            "n": 7,
+            "predicted": 0.497,
+            "observed": 0.544
+          },
+          {
+            "n": 6,
+            "predicted": 0.602,
+            "observed": 0.673
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.0207,
+          "ci95": [
+            -0.04882,
+            -0.00084
+          ],
+          "verdict": "baseline better"
+        },
+        "spearman_minus_baseline": {
+          "mean": 0.0617,
+          "ci95": [
+            -0.23574,
+            0.3701
+          ]
+        }
+      },
+      "perceptual": {
+        "logloss": 0.64546,
+        "skill_vs_constant": 0.0765,
+        "gain_vs_constant": 0.05343,
+        "spearman": 0.4769,
+        "calibration_5bins": [
+          {
+            "n": 7,
+            "predicted": 0.422,
+            "observed": 0.39
+          },
+          {
+            "n": 7,
+            "predicted": 0.436,
+            "observed": 0.505
+          },
+          {
+            "n": 7,
+            "predicted": 0.459,
+            "observed": 0.434
+          },
+          {
+            "n": 7,
+            "predicted": 0.481,
+            "observed": 0.473
+          },
+          {
+            "n": 6,
+            "predicted": 0.718,
+            "observed": 0.756
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": 0.00766,
+          "ci95": [
+            -0.00065,
+            0.01778
+          ],
+          "verdict": "indistinguishable"
+        },
+        "spearman_minus_baseline": {
+          "mean": 0.1173,
+          "ci95": [
+            -0.01103,
+            0.28727
+          ]
+        }
+      },
+      "combined": {
+        "logloss": 0.65332,
+        "skill_vs_constant": 0.0652,
+        "gain_vs_constant": 0.04558,
+        "spearman": 0.4535,
+        "calibration_5bins": [
+          {
+            "n": 7,
+            "predicted": 0.405,
+            "observed": 0.412
+          },
+          {
+            "n": 7,
+            "predicted": 0.414,
+            "observed": 0.489
+          },
+          {
+            "n": 7,
+            "predicted": 0.429,
+            "observed": 0.451
+          },
+          {
+            "n": 7,
+            "predicted": 0.448,
+            "observed": 0.451
+          },
+          {
+            "n": 6,
+            "predicted": 0.663,
+            "observed": 0.756
+          }
+        ],
+        "gain_vs_baseline_logloss": {
+          "mean": -0.0002,
+          "ci95": [
+            -0.00449,
+            0.0041
+          ],
+          "verdict": "indistinguishable"
+        },
+        "spearman_minus_baseline": {
+          "mean": 0.0939,
+          "ci95": [
+            -0.03057,
+            0.24395
+          ]
+        }
+      }
+    }
+  },
+  "descriptor_vs_human_similarity": {
+    "snitz_2013": {
+      "n_pairs_used": 349,
+      "n_pairs_skipped_no_descriptors": 11,
+      "leffingwell_coverage_of_molecules": "977/1322",
+      "spearman_descriptor_distance_vs_similarity": -0.512,
+      "spearman_structural_distance_vs_similarity": -0.506
+    },
+    "ravia_2020": {
+      "n_pairs_used": 195,
+      "n_pairs_skipped_no_descriptors": 0,
+      "leffingwell_coverage_of_molecules": "168/180",
+      "spearman_descriptor_distance_vs_similarity": -0.45,
+      "spearman_structural_distance_vs_similarity": -0.245
+    }
+  },
+  "default_model": "combined"
+}
